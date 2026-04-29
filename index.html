@@ -24,7 +24,6 @@ header{
     padding:12px;
 }
 
-/* Header Flex */
 .header-content{
     display:flex;
     align-items:center;
@@ -33,7 +32,6 @@ header{
     flex-wrap:wrap;
 }
 
-/* Logo */
 .logo{
     width:130px;
     height:130px;
@@ -42,28 +40,22 @@ header{
     padding:6px;
 }
 
-/* Title Box */
 .title-box{
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    text-align:center;
 }
 
-/* Main Title */
 .title-main{
     font-size:42px;
     font-weight:bold;
-    line-height:1;
     margin:0;
 }
 
-/* Sub Title */
 .title-sub{
     font-size:20px;
     margin-top:5px;
-    font-weight:normal;
     letter-spacing:1px;
 }
 
@@ -93,16 +85,15 @@ header{
     object-fit:cover;
 }
 
-/* Container */
+/* Main */
 .container{
     padding:20px;
 }
 
-/* Cards */
-.pooja{
+.section-card{
     background:white;
-    margin:20px auto;
-    padding:20px;
+    margin:25px auto;
+    padding:25px;
     border-radius:12px;
     max-width:700px;
     box-shadow:0 0 10px rgba(0,0,0,0.12);
@@ -112,7 +103,7 @@ header{
     color:#cc0000;
     font-size:34px;
     font-weight:bold;
-    margin-top:10px;
+    margin:15px 0;
 }
 
 .btn{
@@ -137,13 +128,9 @@ header{
     border:1px solid #eee;
 }
 
-.section{
-    background:white;
-    margin:20px auto;
-    padding:25px;
-    border-radius:12px;
-    max-width:700px;
-    box-shadow:0 0 10px rgba(0,0,0,0.10);
+.desc{
+    line-height:1.8;
+    font-size:17px;
 }
 </style>
 </head>
@@ -151,42 +138,37 @@ header{
 <body>
 
 <header>
-
 <div class="header-content">
 
 <img src="icon.jpeg" class="logo" alt="Logo">
 
 <div class="title-box">
-    <p class="title-main">PENDYALA</p>
-    <p class="title-sub">DIVINE SERVICES</p>
+<p class="title-main">PENDYALA</p>
+<p class="title-sub">DIVINE SERVICES</p>
 </div>
 
 </div>
-
 </header>
 
 <!-- MENU -->
 <div class="menu">
-    <a href="#pujas">Pujas</a>
-    <a href="#astrology">Astrology</a>
-    <a href="#muhurthas">Muhurthas</a>
+<a href="#pujas">Pujas</a>
+<a href="#astrology">Astrology</a>
+<a href="#muhurthas">Muhurthas</a>
 </div>
 
-<!-- Temple Banner -->
-<img src="Homam.jpeg" class="header-img" alt="Temple">
+<!-- Banner -->
+<img src="Homam.jpeg" class="header-img" alt="Banner">
 
 <div class="container">
 
 <!-- PUJAS -->
-<div id="pujas">
-<h2>Available Poojas</h2>
+<div id="pujas" class="section-card">
 
-<div class="pooja">
+<h2>Maha Nakshatra Homam</h2>
 
-<h3>Maha Nakshatra Homam Special Pooja (Single)</h3>
-
-<p style="line-height:1.7;">
-🙏 Sankalpam with your Gothram, Name & Nakshatram followed by Nakshatra aavahana along with its Graha and Maha Nakshatra Homam for all 27 nakshatras with multiple Veda Pandits in Draksharamam Maha Punya Kshetram.
+<p class="desc">
+🙏 Sankalpam with your Gothram, Name & Nakshatram followed by Nakshatra Aavahana with Graha Devatas and Maha Nakshatra Homam for all 27 Nakshatras with Veda Pandits in Draksharamam Maha Punya Kshetram.
 </p>
 
 <p><b>Location:</b> Draksharamam Temple</p>
@@ -205,26 +187,60 @@ header{
 </a>
 
 </div>
-</div>
 
 <!-- ASTROLOGY -->
-<div id="astrology" class="section">
+<div id="astrology" class="section-card">
+
 <h2>Astrology Services</h2>
-<p>🔯 Horoscope Reading</p>
-<p>🔯 Marriage Matching</p>
-<p>🔯 Career Guidance</p>
-<p>🔯 Dosha Analysis</p>
-<p>🔯 Personal Consultation</p>
+
+<p class="desc">
+🔯 We provide complete Horoscope / Kundali Analysis and guidance.<br>
+🔯 Marriage Matching, Career, Business, Finance and Dosha Remedies.<br>
+🔯 Personal consultation for important life decisions and future planning.<br><br>
+
+📌 To avail these Astrology services, please provide your details by clicking below after completing payment.
+</p>
+
+<div class="price">₹1116</div>
+
+<div class="payment">
+<h3>📲 Payment Details</h3>
+<p>Scan QR code to pay</p>
+<img src="upi-qr-1.jpeg" width="220">
+<p><b>Please complete payment before filling form</b></p>
+</div>
+
+<a href="https://tally.so/r/2Ebp5j" target="_blank">
+<button class="btn">Book Astrology</button>
+</a>
+
 </div>
 
 <!-- MUHURTHAS -->
-<div id="muhurthas" class="section">
-<h2>Shubha Muhurthas</h2>
-<p>📅 Marriage Muhurthas</p>
-<p>📅 Gruha Pravesham</p>
-<p>📅 Naming Ceremony</p>
-<p>📅 Business Opening</p>
-<p>📅 Vehicle Purchase</p>
+<div id="muhurthas" class="section-card">
+
+<h2>Muhurtha Services</h2>
+
+<p class="desc">
+📅 We provide auspicious Muhurthas for Marriage, Gruha Pravesham, Naming Ceremony and other important events.<br>
+📅 Also available for Business Opening, Vehicle Purchase, Property Registration and new beginnings.<br><br>
+
+📌 To receive your Muhurtham details, please provide your details by clicking below after completing payment.
+</p>
+
+<div class="price">₹516</div>
+
+<div class="payment">
+<h3>📲 Payment Details</h3>
+<p>Scan QR code to pay</p>
+<img src="upi-qr-1.jpeg" width="220">
+<p><b>Please complete payment before filling form</b></p>
+</div>
+
+<a href="https://tally.so/r/2Ebp5j" target="_blank">
+<button class="btn">Book Muhurtham</button>
+</a>
+
 </div>
 
 </div>
