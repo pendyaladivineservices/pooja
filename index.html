@@ -93,7 +93,7 @@ header{
     font-size:22px;
 }
 
-/* CAROUSEL */
+/* SLIDER */
 .slider{
     display:flex;
     overflow-x:auto;
@@ -116,6 +116,10 @@ header{
     box-shadow:0 0 8px rgba(0,0,0,0.10);
     scroll-snap-align:start;
     flex-shrink:0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 /* TEXT */
@@ -128,13 +132,25 @@ header{
     font-size:13px;
     line-height:1.5;
     color:#333;
+    text-align:center;
 }
 
+/* PRICE */
 .price{
     color:#cc0000;
     font-size:22px;
     font-weight:bold;
     margin:8px 0;
+}
+
+/* IMAGE FIX */
+.service-card img{
+    width:100%;
+    max-width:180px;
+    height:auto;
+    object-fit:contain;
+    margin-top:8px;
+    border-radius:8px;
 }
 
 /* BUTTON */
@@ -146,7 +162,7 @@ header{
     border-radius:6px;
     font-size:14px;
     cursor:pointer;
-    margin-top:8px;
+    margin-top:10px;
     width:100%;
 }
 
@@ -154,12 +170,7 @@ header{
     background:#e65c00;
 }
 
-.payment img{
-    width:160px;
-    margin-top:8px;
-}
-
-/* MOBILE RESPONSIVE */
+/* MOBILE */
 @media (max-width:600px){
     .service-card{
         min-width:220px;
@@ -212,9 +223,7 @@ header{
 </p>
 <p class="desc"><b>Location:</b> Draksharamam Temple</p>
 <div class="price">₹1601</div>
-<div class="payment">
 <img src="upi-qr-1.jpeg">
-</div>
 <button class="btn">Book</button>
 </div>
 
@@ -250,7 +259,7 @@ Performs worship of all nine planets to balance planetary doshas and bring harmo
 <div class="service-card">
 <h3>Horoscope Analysis</h3>
 <p class="desc">
-Complete horoscope analysis based on your birth details. Includes planetary positions, dosha analysis, career, marriage, and life predictions delivered via email within 48 hours.
+Complete horoscope analysis with planetary positions, dosha analysis, career, marriage, and life predictions delivered in 48 hours.
 </p>
 <div class="price">₹1000</div>
 <img src="upi-qr-1.jpeg">
@@ -260,7 +269,7 @@ Complete horoscope analysis based on your birth details. Includes planetary posi
 <div class="service-card">
 <h3>Marriage Matching</h3>
 <p class="desc">
-Detailed compatibility analysis of two horoscopes including guna matching, dosha check, and marriage suitability report.
+Compatibility analysis of two horoscopes including guna matching and marriage suitability report.
 </p>
 <div class="price">₹1800</div>
 <img src="upi-qr-1.jpeg">
@@ -270,7 +279,7 @@ Detailed compatibility analysis of two horoscopes including guna matching, dosha
 <div class="service-card">
 <h3>Personal Consultation</h3>
 <p class="desc">
-One-to-one consultation for career, health, marriage, finance, and personal life guidance based on your horoscope.
+One-to-one guidance for career, health, marriage, finance, and life decisions based on horoscope.
 </p>
 <div class="price">₹2500</div>
 <img src="upi-qr-1.jpeg">
@@ -280,7 +289,7 @@ One-to-one consultation for career, health, marriage, finance, and personal life
 <div class="service-card">
 <h3>Premium Couple Consultation</h3>
 <p class="desc">
-Advanced relationship and couple analysis with deep insights into compatibility, future planning, and remedies.
+Deep relationship and couple analysis with future planning and remedies.
 </p>
 <div class="price">₹3500</div>
 <img src="upi-qr-1.jpeg">
@@ -299,7 +308,7 @@ Advanced relationship and couple analysis with deep insights into compatibility,
 <div class="service-card">
 <h3>Individual Muhurthas</h3>
 <p class="desc">
-Auspicious timing selection for vehicle purchase, business start, property registration, and other individual events.
+Auspicious timing for vehicle, business, property and other personal events.
 </p>
 <div class="price">₹516</div>
 <img src="upi-qr-1.jpeg">
@@ -309,7 +318,7 @@ Auspicious timing selection for vehicle purchase, business start, property regis
 <div class="service-card">
 <h3>Marriage Muhurthas</h3>
 <p class="desc">
-Best auspicious dates and timings for marriage based on Tara Balam, Nakshatra compatibility, and horoscope matching.
+Best auspicious dates for marriage based on Tara Balam and compatibility analysis.
 </p>
 <div class="price">₹1116</div>
 <img src="upi-qr-1.jpeg">
