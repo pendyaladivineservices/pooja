@@ -43,7 +43,6 @@ header{
 .title-box{
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
 }
 
@@ -56,7 +55,6 @@ header{
 .title-sub{
     font-size:20px;
     margin-top:5px;
-    letter-spacing:1px;
 }
 
 /* Menu */
@@ -74,17 +72,13 @@ header{
     font-size:18px;
 }
 
-.menu a:hover{
-    color:#cc0000;
-}
-
 /* Banner */
 .header-img{
     width:100%;
     height:auto;
 }
 
-/* Main */
+/* Sections */
 .container{
     padding:20px;
 }
@@ -98,13 +92,28 @@ header{
     box-shadow:0 0 10px rgba(0,0,0,0.12);
 }
 
-.price{
+/* Section Headers Colors */
+.pujas-title{
     color:#cc0000;
-    font-size:34px;
-    font-weight:bold;
-    margin:15px 0;
 }
 
+.astrology-title{
+    color:#6a0dad;
+}
+
+.muhurtha-title{
+    color:#006400;
+}
+
+/* Price */
+.price{
+    color:#cc0000;
+    font-size:30px;
+    font-weight:bold;
+    margin:12px 0;
+}
+
+/* Button */
 .btn{
     background:#ff6600;
     color:white;
@@ -139,7 +148,7 @@ header{
 <header>
 <div class="header-content">
 
-<img src="icon.jpeg" class="logo" alt="Logo">
+<img src="icon.jpeg" class="logo">
 
 <div class="title-box">
 <p class="title-main">PENDYALA</p>
@@ -157,17 +166,17 @@ header{
 </div>
 
 <!-- Banner -->
-<img src="banner.png" class="header-img" alt="Banner">
+<img src="banner.png" class="header-img">
 
 <div class="container">
 
 <!-- PUJAS -->
 <div id="pujas" class="section-card">
 
-<h2>Maha Nakshatra Homam</h2>
+<h2 class="pujas-title">Maha Nakshatra Homam</h2>
 
 <p class="desc">
-🙏 Sankalpam with your Gothram, Name & Nakshatram followed by Nakshatra Aavahana with Graha Devatas and Maha Nakshatra Homam for all 27 Nakshatras with Veda Pandits in Draksharamam Maha Punya Kshetram.
+🙏 Sankalpam with your Gothram, Name & Nakshatram followed by Nakshatra Aavahana with Graha Devatas and Maha Nakshatra Homam.
 </p>
 
 <p><b>Location:</b> Draksharamam Temple</p>
@@ -175,131 +184,81 @@ header{
 <div class="price">₹1601</div>
 
 <div class="payment">
-<h3>📲 Payment Details</h3>
 <p>Scan QR code to pay</p>
 <img src="upi-qr-1.jpeg" width="220">
-<p><b>Please complete payment before filling form</b></p>
 </div>
 
-<a href="https://tally.so/r/2Ebp5j" target="_blank">
 <button class="btn">Enter Details</button>
-</a>
 
 </div>
 
 <!-- ASTROLOGY -->
 <div id="astrology" class="section-card">
 
-<h2>Astrology Services</h2>
+<h2 class="astrology-title">Astrology Services</h2>
 
-<!-- Service 1 -->
-<p class="desc">
-🔯 Complete Horoscope / Kundali Analysis with remedies and guidance steps will be sent to your Email within <b>48 Hours</b>.<br>
-<b>Price: ₹1000</b>
-</p>
+<p class="desc">🔯 Horoscope Analysis (Email in 48 hrs)</p>
+<div class="price">₹1000</div>
 
 <div class="payment">
-<h3>📲 Payment Details</h3>
-<p>Scan QR code to pay</p>
 <img src="upi-qr-1.jpeg" width="220">
 </div>
-
-<a href="https://tally.so/r/2Ebp5j" target="_blank">
 <button class="btn">Book Astrology</button>
-</a>
 
-<hr><br>
+<hr>
 
-<!-- Service 2 -->
-<p class="desc">
-🔯 Marriage Compatibility Matching (Bride & Groom) — Analysis of <b>2 Horoscopes</b> including Guna Milan, Doshas, strengths, compatibility score and detailed guidance report via Email within <b>48 Hours</b>.<br>
-<b>Price: ₹1800</b>
-</p>
+<p class="desc">🔯 Marriage Matching (2 Horoscopes)</p>
+<div class="price">₹1800</div>
 
 <div class="payment">
-<h3>📲 Payment Details</h3>
-<p>Scan QR code to pay</p>
 <img src="upi-qr-1.jpeg" width="220">
 </div>
-
-<a href="https://tally.so/r/2Ebp5j" target="_blank">
 <button class="btn">Book Marriage Matching</button>
-</a>
 
-<hr><br>
+<hr>
 
-<!-- Service 3 -->
-<p class="desc">
-🔯 Personal Consultation for individual life decisions and future planning. A call will be arranged after receiving your details based on available slots (mostly within <b>1 Week</b>).<br>
-<b>Price: ₹2500</b>
-</p>
+<p class="desc">🔯 Personal Consultation</p>
+<div class="price">₹2500</div>
 
 <div class="payment">
-<h3>📲 Payment Details</h3>
-<p>Scan QR code to pay</p>
 <img src="upi-qr-1.jpeg" width="220">
 </div>
-
-<a href="https://tally.so/r/2Ebp5j" target="_blank">
 <button class="btn">Book Consultation</button>
-</a>
 
-<hr><br>
+<hr>
 
-<!-- Service 4 -->
-<p class="desc">
-🔯 <b>Premium Couple Consultation</b> — Detailed analysis of both horoscopes along with relationship compatibility, future planning, dosha balancing and practical guidance. Live discussion will be arranged based on availability (priority scheduling).<br>
-<b>Price: ₹3500</b>
-</p>
+<p class="desc">🔯 Premium Couple Consultation</p>
+<div class="price">₹3500</div>
 
 <div class="payment">
-<h3>📲 Payment Details</h3>
-<p>Scan QR code to pay</p>
 <img src="upi-qr-1.jpeg" width="220">
 </div>
-
-<a href="https://tally.so/r/2Ebp5j" target="_blank">
 <button class="btn">Book Couple Consultation</button>
-</a>
 
 </div>
 
 <!-- MUHURTHAS -->
 <div id="muhurthas" class="section-card">
 
-<h2>Muhurtha Services</h2>
+<h2 class="muhurtha-title">Muhurtha Services</h2>
 
-<!-- Individual -->
-<p class="desc">
-📅 <b>Individual Muhurthas</b> — Vehicle, Business, Property, Travel, New Beginnings.<br>
-🔎 Based on Tithi, Vara, Nakshatra and personal horoscope.<br>
-<b>Price: ₹516</b>
-</p>
+<p class="desc">📅 Individual Muhurthas (Vehicle, Business, Property)</p>
+<div class="price">₹516</div>
 
 <div class="payment">
 <img src="upi-qr-1.jpeg" width="220">
 </div>
-
-<a href="https://tally.so/r/2Ebp5j">
 <button class="btn">Book Individual Muhurtham</button>
-</a>
 
-<hr><br>
+<hr>
 
-<!-- Couple -->
-<p class="desc">
-📅 <b>Marriage & Family Muhurthas</b> — Marriage, Gruha Pravesham, Naming Ceremonies.<br>
-🔎 Includes <b>Tara Balam, Chandrabalam and compatibility</b> of both horoscopes.<br>
-<b>Price: ₹1116</b>
-</p>
+<p class="desc">📅 Marriage & Family Muhurthas (Tara Balam, Compatibility)</p>
+<div class="price">₹1116</div>
 
 <div class="payment">
 <img src="upi-qr-1.jpeg" width="220">
 </div>
-
-<a href="https://tally.so/r/2Ebp5j">
-<button class="btn">Book Marriage / Family Muhurtham</button>
-</a>
+<button class="btn">Book Family Muhurtham</button>
 
 </div>
 
