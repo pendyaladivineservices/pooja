@@ -17,7 +17,7 @@ body{
     text-align:center;
 }
 
-/* Header */
+/* HEADER */
 header{
     background:#ff6600;
     color:white;
@@ -33,34 +33,28 @@ header{
 }
 
 .logo{
-    width:130px;
-    height:130px;
+    width:110px;
+    height:110px;
     border-radius:50%;
     background:white;
     padding:6px;
 }
 
-.title-box{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
 .title-main{
-    font-size:42px;
+    font-size:36px;
     font-weight:bold;
     margin:0;
 }
 
 .title-sub{
-    font-size:20px;
+    font-size:18px;
     margin-top:5px;
 }
 
-/* Menu */
+/* MENU */
 .menu{
     background:white;
-    padding:12px;
+    padding:10px;
     box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
 
@@ -68,94 +62,117 @@ header{
     text-decoration:none;
     color:#ff6600;
     font-weight:bold;
-    margin:0 15px;
-    font-size:18px;
+    margin:0 12px;
+    font-size:16px;
 }
 
-/* Banner */
+/* BANNER */
 .header-img{
     width:100%;
     height:auto;
 }
 
-/* Main */
+/* CONTAINER */
 .container{
-    padding:20px;
+    padding:15px;
 }
 
-/* Section */
+/* SECTION */
 .section-card{
     background:white;
-    margin:25px auto;
-    padding:20px;
+    margin:20px auto;
+    padding:15px;
     border-radius:12px;
-    max-width:1000px;
+    max-width:1100px;
     box-shadow:0 0 10px rgba(0,0,0,0.12);
 }
 
-/* Section Title */
 .section-title{
     color:#8B0000;
     margin-bottom:10px;
+    font-size:22px;
 }
 
-/* ===== CAROUSEL ===== */
+/* CAROUSEL */
 .slider{
     display:flex;
     overflow-x:auto;
-    gap:20px;
+    gap:15px;
     padding:10px;
     scroll-snap-type:x mandatory;
 }
 
-/* Card */
-.service-card{
-    min-width:280px;
-    background:white;
-    border-radius:12px;
-    padding:15px;
-    box-shadow:0 0 10px rgba(0,0,0,0.12);
-    scroll-snap-align:start;
-    flex-shrink:0;
-    text-align:center;
-}
-
-/* Hide scrollbar */
 .slider::-webkit-scrollbar{
     display:none;
 }
 
-/* Price */
-.price{
-    color:#cc0000;
-    font-size:28px;
-    font-weight:bold;
-    margin:10px 0;
+/* CARD */
+.service-card{
+    min-width:260px;
+    max-width:260px;
+    background:white;
+    border-radius:12px;
+    padding:12px;
+    box-shadow:0 0 8px rgba(0,0,0,0.10);
+    scroll-snap-align:start;
+    flex-shrink:0;
 }
 
-/* Button */
+/* TEXT */
+.service-card h3{
+    font-size:16px;
+    margin:6px 0;
+}
+
+.desc{
+    font-size:13px;
+    line-height:1.5;
+    color:#333;
+}
+
+.price{
+    color:#cc0000;
+    font-size:22px;
+    font-weight:bold;
+    margin:8px 0;
+}
+
+/* BUTTON */
 .btn{
     background:#ff6600;
     color:white;
-    padding:10px 18px;
+    padding:8px 16px;
     border:none;
     border-radius:6px;
-    font-size:15px;
+    font-size:14px;
     cursor:pointer;
-    margin-top:10px;
+    margin-top:8px;
+    width:100%;
 }
 
 .btn:hover{
     background:#e65c00;
 }
 
-.payment{
-    margin:10px 0;
+.payment img{
+    width:160px;
+    margin-top:8px;
 }
 
-.desc{
-    font-size:15px;
-    line-height:1.5;
+/* MOBILE RESPONSIVE */
+@media (max-width:600px){
+    .service-card{
+        min-width:220px;
+        max-width:220px;
+    }
+
+    .title-main{
+        font-size:28px;
+    }
+
+    .title-sub{
+        font-size:14px;
+    }
 }
 </style>
 </head>
@@ -165,7 +182,7 @@ header{
 <header>
 <div class="header-content">
 <img src="icon.jpeg" class="logo">
-<div class="title-box">
+<div>
 <p class="title-main">PENDYALA</p>
 <p class="title-sub">DIVINE SERVICES</p>
 </div>
@@ -190,29 +207,35 @@ header{
 
 <div class="service-card">
 <h3>Maha Nakshatra Homam</h3>
-<p class="desc">Sankalpam with Gothram, Name & Nakshatram.</p>
-<p><b>Draksharamam Temple</b></p>
+<p class="desc">
+🙏 Sankalpam with your Gothram, Name & Nakshatram followed by Nakshatra Aavahana with Graha Devatas and Maha Nakshatra Homam.
+</p>
+<p class="desc"><b>Location:</b> Draksharamam Temple</p>
 <div class="price">₹1601</div>
 <div class="payment">
-<img src="upi-qr-1.jpeg" width="180">
+<img src="upi-qr-1.jpeg">
 </div>
-<button class="btn">Enter Details</button>
+<button class="btn">Book</button>
 </div>
 
 <div class="service-card">
 <h3>Ganapathi Homam</h3>
-<p class="desc">Removes obstacles & brings success.</p>
+<p class="desc">
+Removes obstacles, clears negative energy, and brings success in new beginnings, education, and business ventures.
+</p>
 <div class="price">₹1161</div>
-<img src="upi-qr-1.jpeg" width="180">
-<button class="btn">Book Now</button>
+<img src="upi-qr-1.jpeg">
+<button class="btn">Book</button>
 </div>
 
 <div class="service-card">
 <h3>Navagraha Homam</h3>
-<p class="desc">Balances all planetary doshas.</p>
+<p class="desc">
+Performs worship of all nine planets to balance planetary doshas and bring harmony, prosperity, and peace in life.
+</p>
 <div class="price">₹2100</div>
-<img src="upi-qr-1.jpeg" width="180">
-<button class="btn">Book Now</button>
+<img src="upi-qr-1.jpeg">
+<button class="btn">Book</button>
 </div>
 
 </div>
@@ -226,33 +249,41 @@ header{
 
 <div class="service-card">
 <h3>Horoscope Analysis</h3>
-<p class="desc">Detailed report in 48 hours.</p>
+<p class="desc">
+Complete horoscope analysis based on your birth details. Includes planetary positions, dosha analysis, career, marriage, and life predictions delivered via email within 48 hours.
+</p>
 <div class="price">₹1000</div>
-<img src="upi-qr-1.jpeg" width="180">
+<img src="upi-qr-1.jpeg">
 <button class="btn">Book</button>
 </div>
 
 <div class="service-card">
 <h3>Marriage Matching</h3>
-<p class="desc">2 horoscope compatibility check.</p>
+<p class="desc">
+Detailed compatibility analysis of two horoscopes including guna matching, dosha check, and marriage suitability report.
+</p>
 <div class="price">₹1800</div>
-<img src="upi-qr-1.jpeg" width="180">
+<img src="upi-qr-1.jpeg">
 <button class="btn">Book</button>
 </div>
 
 <div class="service-card">
 <h3>Personal Consultation</h3>
-<p class="desc">One-to-one astrology guidance.</p>
+<p class="desc">
+One-to-one consultation for career, health, marriage, finance, and personal life guidance based on your horoscope.
+</p>
 <div class="price">₹2500</div>
-<img src="upi-qr-1.jpeg" width="180">
+<img src="upi-qr-1.jpeg">
 <button class="btn">Book</button>
 </div>
 
 <div class="service-card">
-<h3>Premium Couple Reading</h3>
-<p class="desc">Deep relationship analysis.</p>
+<h3>Premium Couple Consultation</h3>
+<p class="desc">
+Advanced relationship and couple analysis with deep insights into compatibility, future planning, and remedies.
+</p>
 <div class="price">₹3500</div>
-<img src="upi-qr-1.jpeg" width="180">
+<img src="upi-qr-1.jpeg">
 <button class="btn">Book</button>
 </div>
 
@@ -266,26 +297,22 @@ header{
 <div class="slider">
 
 <div class="service-card">
-<h3>Individual Muhurtham</h3>
-<p class="desc">Vehicle, Business, Property.</p>
+<h3>Individual Muhurthas</h3>
+<p class="desc">
+Auspicious timing selection for vehicle purchase, business start, property registration, and other individual events.
+</p>
 <div class="price">₹516</div>
-<img src="upi-qr-1.jpeg" width="180">
+<img src="upi-qr-1.jpeg">
 <button class="btn">Book</button>
 </div>
 
 <div class="service-card">
-<h3>Marriage Muhurtham</h3>
-<p class="desc">Tara Balam & compatibility.</p>
+<h3>Marriage Muhurthas</h3>
+<p class="desc">
+Best auspicious dates and timings for marriage based on Tara Balam, Nakshatra compatibility, and horoscope matching.
+</p>
 <div class="price">₹1116</div>
-<img src="upi-qr-1.jpeg" width="180">
-<button class="btn">Book</button>
-</div>
-
-<div class="service-card">
-<h3>Griha Pravesh</h3>
-<p class="desc">House entry auspicious timing.</p>
-<div class="price">₹1500</div>
-<img src="upi-qr-1.jpeg" width="180">
+<img src="upi-qr-1.jpeg">
 <button class="btn">Book</button>
 </div>
 
