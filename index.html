@@ -93,7 +93,7 @@ header{
     font-size:22px;
 }
 
-/* WRAPPER FOR SLIDER + ARROWS */
+/* SLIDER WRAPPER */
 .slider-wrapper{
     position:relative;
 }
@@ -127,13 +127,8 @@ header{
     z-index:5;
 }
 
-.arrow.left{
-    left:-10px;
-}
-
-.arrow.right{
-    right:-10px;
-}
+.arrow.left{ left:-10px; }
+.arrow.right{ right:-10px; }
 
 /* CARD */
 .service-card{
@@ -149,12 +144,10 @@ header{
     flex-direction:column;
 }
 
-/* CONTENT FLEX */
 .card-content{
     flex:1;
 }
 
-/* TEXT */
 .service-card h3{
     font-size:16px;
     margin:6px 0;
@@ -164,10 +157,8 @@ header{
     font-size:13px;
     line-height:1.5;
     color:#333;
-    text-align:center;
 }
 
-/* PRICE */
 .price{
     color:#cc0000;
     font-size:22px;
@@ -175,7 +166,7 @@ header{
     margin:8px 0;
 }
 
-/* QR IMAGE */
+/* QR */
 .service-card img{
     width:100%;
     max-width:170px;
@@ -185,7 +176,7 @@ header{
     border-radius:8px;
 }
 
-/* FIXED FOOTER (VERY IMPORTANT FIX) */
+/* FOOTER FIX */
 .card-footer{
     margin-top:auto;
     display:flex;
@@ -194,7 +185,6 @@ header{
     gap:10px;
 }
 
-/* BUTTON */
 .btn{
     background:#ff6600;
     color:white;
@@ -260,7 +250,6 @@ header{
 <p class="desc"><b>Date:</b> 08/05/2026</p>
 <div class="price">₹1601</div>
 </div>
-
 <div class="card-footer">
 <img src="upi-qr-1.jpeg">
 <button class="btn">Book</button>
@@ -270,12 +259,11 @@ header{
 <div class="service-card">
 <div class="card-content">
 <h3>Ganapathi Homam</h3>
-<p class="desc">Removes obstacles, clears negative energy, and brings success in new beginnings, education, and business ventures.</p>
+<p class="desc">Removes obstacles, clears negative energy, and brings success in new beginnings.</p>
 <p class="desc"><b>Location:</b> Draksharamam Temple</p>
 <p class="desc"><b>Date:</b> 08/05/2026</p>
 <div class="price">₹1161</div>
 </div>
-
 <div class="card-footer">
 <img src="upi-qr-1.jpeg">
 <button class="btn">Book</button>
@@ -285,12 +273,111 @@ header{
 <div class="service-card">
 <div class="card-content">
 <h3>Navagraha Homam</h3>
-<p class="desc">Performs worship of all nine planets to balance planetary doshas and bring harmony, prosperity, and peace in life.</p>
+<p class="desc">Worship of nine planets for harmony, prosperity, and peace.</p>
 <p class="desc"><b>Location:</b> Draksharamam Temple</p>
 <p class="desc"><b>Date:</b> 08/05/2026</p>
 <div class="price">₹2100</div>
 </div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<button class="btn">Book</button>
+</div>
+</div>
 
+</div>
+</div>
+</div>
+
+<!-- ================= ASTROLOGY ================= -->
+<div id="astrology" class="section-card">
+<h2 class="section-title">Astrology Services</h2>
+
+<div class="slider-wrapper">
+<button class="arrow left" onclick="scrollSlider(this, -1)">&#10094;</button>
+<button class="arrow right" onclick="scrollSlider(this, 1)">&#10095;</button>
+
+<div class="slider">
+
+<div class="service-card">
+<div class="card-content">
+<h3>Horoscope Analysis</h3>
+<p class="desc">Complete horoscope analysis with predictions and dosha analysis.</p>
+<div class="price">₹1000</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<button class="btn">Book</button>
+</div>
+</div>
+
+<div class="service-card">
+<div class="card-content">
+<h3>Marriage Matching</h3>
+<p class="desc">Guna matching and compatibility analysis.</p>
+<div class="price">₹1800</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<button class="btn">Book</button>
+</div>
+</div>
+
+<div class="service-card">
+<div class="card-content">
+<h3>Personal Consultation</h3>
+<p class="desc">Career, health, finance guidance.</p>
+<div class="price">₹2500</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<button class="btn">Book</button>
+</div>
+</div>
+
+<div class="service-card">
+<div class="card-content">
+<h3>Couple Consultation</h3>
+<p class="desc">Relationship analysis and remedies.</p>
+<div class="price">₹3500</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<button class="btn">Book</button>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ================= MUHURTHAS ================= -->
+<div id="muhurthas" class="section-card">
+<h2 class="section-title">Muhurtha Services</h2>
+
+<div class="slider-wrapper">
+<button class="arrow left" onclick="scrollSlider(this, -1)">&#10094;</button>
+<button class="arrow right" onclick="scrollSlider(this, 1)">&#10095;</button>
+
+<div class="slider">
+
+<div class="service-card">
+<div class="card-content">
+<h3>Individual Muhurthas</h3>
+<p class="desc">Auspicious timing for events.</p>
+<div class="price">₹516</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<button class="btn">Book</button>
+</div>
+</div>
+
+<div class="service-card">
+<div class="card-content">
+<h3>Marriage Muhurthas</h3>
+<p class="desc">Best wedding dates selection.</p>
+<div class="price">₹1116</div>
+</div>
 <div class="card-footer">
 <img src="upi-qr-1.jpeg">
 <button class="btn">Book</button>
