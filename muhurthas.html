@@ -56,16 +56,33 @@ header{
     background:white;
     padding:10px;
     box-shadow:0 2px 8px rgba(0,0,0,0.08);
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;   /* 👈 IMPORTANT */
+    gap:10px;         /* spacing between items */
 }
 
 .menu a{
     text-decoration:none;
     color:#ff6600;
     font-weight:bold;
-    margin:0 12px;
-    font-size:16px;
+    font-size:15px;
+    padding:6px 10px;
+    border-radius:6px;
 }
 
+/* MOBILE FIX */
+@media (max-width:600px){
+    .menu{
+        justify-content:space-around;
+    }
+
+    .menu a{
+        font-size:13px;
+        padding:6px 8px;
+    }
+}
 /* BANNER */
 .header-img{
     width:100%;
