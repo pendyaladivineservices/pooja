@@ -15,7 +15,7 @@ body{
     text-align:center;
 }
 
-/* HEADER (same as index) */
+/* HEADER */
 header{
     background:#ff6600;
     color:white;
@@ -60,7 +60,6 @@ header{
     padding:20px;
 }
 
-/* TITLE */
 .section-title{
     color:#8B0000;
     font-size:24px;
@@ -82,21 +81,53 @@ header{
     box-shadow:0 0 10px rgba(0,0,0,0.12);
     transition:0.3s;
 }
-.card:hover{
-    transform:translateY(-5px);
+.card:hover{ transform:translateY(-5px); }
+
+/* IMAGE GALLERY */
+.image-gallery{ text-align:center; }
+
+.main-image{
+    width:100%;
+    height:180px;
+    overflow:hidden;
+    border-radius:8px;
 }
 
-.card img{
+.main-image img{
     width:100%;
-    max-width:180px;
-    height:160px;
+    height:100%;
     object-fit:contain;
+    transition:transform 0.3s ease;
+}
+
+/* ZOOM */
+.main-image:hover img{
+    transform:scale(1.6);
+}
+
+/* THUMBS */
+.thumbs{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin-top:8px;
+}
+
+.thumbs img{
+    width:45px;
+    height:45px;
+    object-fit:cover;
+    border-radius:6px;
+    cursor:pointer;
+    border:2px solid transparent;
+}
+
+.thumbs img:hover{
+    border:2px solid #ff6600;
 }
 
 /* TEXT */
-.card h3{
-    font-size:16px;
-}
+.card h3{ font-size:16px; }
 
 .desc{
     font-size:13px;
@@ -123,12 +154,16 @@ header{
 .btn:hover{
     background:#e65c00;
 }
+
+/* MOBILE */
+@media (max-width:600px){
+    .main-image{ height:150px; }
+}
 </style>
 </head>
 
 <body>
 
-<!-- SAME HEADER -->
 <header>
 <div class="header-content">
 <img src="icon.jpeg" class="logo">
@@ -139,7 +174,6 @@ header{
 </div>
 </header>
 
-<!-- SAME MENU -->
 <div class="menu">
 <a href="index.html">Poojas</a>
 <a href="astrology.html">Astrology</a>
@@ -153,25 +187,54 @@ header{
 
 <div class="products">
 
-<!-- PRODUCT -->
+<!-- PRODUCT 1 -->
 <div class="card">
-<img src="product1.jpeg">
+<div class="image-gallery">
+    <div class="main-image">
+        <img src="product1-1.jpeg" class="active-img">
+    </div>
+    <div class="thumbs">
+        <img src="product1-1.jpeg" onclick="changeImage(this)">
+        <img src="product1-2.jpeg" onclick="changeImage(this)">
+        <img src="product1-3.jpeg" onclick="changeImage(this)">
+    </div>
+</div>
 <h3>Spatika Shivlingam</h3>
 <p class="desc">Brings peace, purity, and spiritual growth.</p>
 <div class="price">₹999</div>
 <a href="#" class="btn">Buy Now</a>
 </div>
 
+<!-- PRODUCT 2 -->
 <div class="card">
-<img src="product2.jpeg">
+<div class="image-gallery">
+    <div class="main-image">
+        <img src="product2-1.jpeg" class="active-img">
+    </div>
+    <div class="thumbs">
+        <img src="product2-1.jpeg" onclick="changeImage(this)">
+        <img src="product2-2.jpeg" onclick="changeImage(this)">
+        <img src="product2-3.jpeg" onclick="changeImage(this)">
+    </div>
+</div>
 <h3>Navagraha Mala</h3>
 <p class="desc">Balances all planetary energies and removes doshas.</p>
 <div class="price">₹799</div>
 <a href="#" class="btn">Buy Now</a>
 </div>
 
+<!-- PRODUCT 3 -->
 <div class="card">
-<img src="product3.jpeg">
+<div class="image-gallery">
+    <div class="main-image">
+        <img src="product3-1.jpeg" class="active-img">
+    </div>
+    <div class="thumbs">
+        <img src="product3-1.jpeg" onclick="changeImage(this)">
+        <img src="product3-2.jpeg" onclick="changeImage(this)">
+        <img src="product3-3.jpeg" onclick="changeImage(this)">
+    </div>
+</div>
 <h3>Spatika Mala</h3>
 <p class="desc">Improves focus, calmness, and positive vibrations.</p>
 <div class="price">₹699</div>
@@ -181,6 +244,13 @@ header{
 </div>
 
 </div>
+
+<script>
+function changeImage(el){
+    const main = el.closest('.image-gallery').querySelector('.active-img');
+    main.src = el.src;
+}
+</script>
 
 </body>
 </html>
