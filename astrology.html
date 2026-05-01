@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PENDYALA DIVINE SERVICES</title>
+
+<style>
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#fff5e6;
+    text-align:center;
+}
+
+/* HEADER */
+header{
+    background:#ff6600;
+    color:white;
+    padding:12px;
+}
+
+.header-content{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:white;
+    padding:6px;
+}
+
+.title-main{
+    font-size:36px;
+    font-weight:bold;
+    margin:0;
+}
+
+.title-sub{
+    font-size:18px;
+    margin-top:5px;
+}
+
+/* MENU */
+.menu{
+    background:white;
+    padding:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.menu a{
+    text-decoration:none;
+    color:#ff6600;
+    font-weight:bold;
+    margin:0 12px;
+    font-size:16px;
+}
+
+/* BANNER */
+.header-img{
+    width:100%;
+    height:auto;
+}
+
+/* CONTAINER */
+.container{
+    padding:15px;
+}
+
+/* SECTION */
+.section-card{
+    background:white;
+    margin:20px auto;
+    padding:15px;
+    border-radius:12px;
+    max-width:1100px;
+    box-shadow:0 0 10px rgba(0,0,0,0.12);
+}
+
+.section-title{
+    color:#8B0000;
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+/* SLIDER WRAPPER */
+.slider-wrapper{
+    position:relative;
+}
+
+/* SLIDER */
+.slider{
+    display:flex;
+    overflow-x:auto;
+    gap:15px;
+    padding:10px;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+}
+
+.slider::-webkit-scrollbar{
+    display:none;
+}
+
+/* ARROWS */
+.arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:#ff6600;
+    color:white;
+    border:none;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    cursor:pointer;
+    z-index:5;
+}
+
+.arrow.left{ left:-10px; }
+.arrow.right{ right:-10px; }
+
+/* CARD */
+.service-card{
+    min-width:260px;
+    max-width:260px;
+    background:white;
+    border-radius:12px;
+    padding:12px;
+    box-shadow:0 0 8px rgba(0,0,0,0.10);
+    scroll-snap-align:start;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.card-content{
+    flex:1;
+}
+
+.service-card h3{
+    font-size:16px;
+    margin:6px 0;
+}
+
+.desc{
+    font-size:13px;
+    line-height:1.5;
+    color:#333;
+}
+
+.price{
+    color:#cc0000;
+    font-size:22px;
+    font-weight:bold;
+    margin:8px 0;
+}
+
+/* QR */
+.service-card img{
+    width:100%;
+    max-width:170px;
+    height:auto;
+    object-fit:contain;
+    margin:8px auto;
+    border-radius:8px;
+}
+
+/* FOOTER FIX */
+.card-footer{
+    margin-top:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
+.btn{
+    background:#ff6600;
+    color:white;
+    padding:8px 16px;
+    border:none;
+    border-radius:6px;
+    font-size:14px;
+    cursor:pointer;
+    width:100%;
+    text-decoration:none;
+    display:inline-block;
+}
+
+.btn:hover{
+    background:#e65c00;
+}
+
+/* MOBILE */
+@media (max-width:600px){
+    .service-card{
+        min-width:220px;
+        max-width:220px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+<img src="icon.jpeg" class="logo">
+<div>
+<p class="title-main">PENDYALA</p>
+<p class="title-sub">DIVINE SERVICES</p>
+</div>
+</div>
+</header>
+
+<!-- <div class="menu">
+<a href="#poojas">Poojas</a>
+<a href="#astrology">Astrology</a>
+<a href="#muhurthas">Muhurthas</a>
+</div> -->
+
+<div class="menu">
+<a href="index.html">Poojas</a>
+<a href="astrology.html">Astrology</a>
+<a href="muhurthas.html">Muhurthas</a>
+<a href="products.html">Spiritual Products</a>
+</div>
+    
+<img src="banner.png" class="header-img">
+
+<div class="container">
+
+<!-- ================= POOJAS ================= -->
+<!-- <div id="poojas" class="section-card">
+<h2 class="section-title">Pooja Services</h2>
+
+<div class="slider-wrapper">
+<button class="arrow left" onclick="scrollSlider(this, -1)">&#10094;</button>
+<button class="arrow right" onclick="scrollSlider(this, 1)">&#10095;</button>
+
+<div class="slider">
+
+<div class="service-card">
+<div class="card-content">
+<h3>Maha Nakshatra Homam</h3>
+<p class="desc">Nakshatra & Navagraha Homam with Durga Pooja balances planetary influences and aligns your birth star, removing doshas and obstacles. It brings protection, peace, prosperity, and success in life.”</p>
+<p class="desc"><b>Location:</b> Draksharamam Temple</p>
+<p class="desc"><b>Date:</b> 08/05/2026</p>
+<div class="price">₹1601</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<a href="https://tally.so/r/2Ebp5j" class="btn" target="_blank">Book</a>
+</div>
+</div>
+
+<div class="service-card">
+<div class="card-content">
+<h3>Maha Nakshatra Homam (Couple)</h3>
+<p class="desc">Nakshatra & Navagraha Homam with Durga Pooja balances planetary influences and aligns your birth star, removing doshas and obstacles. It brings protection, peace, prosperity, and success in life.”</p>
+<p class="desc"><b>Location:</b> Draksharamam Temple</p>
+<p class="desc"><b>Date:</b> 08/05/2026</p>
+<div class="price">₹2116</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<a href="https://tally.so/r/2EOEEV" class="btn" target="_blank">Book</a>
+</div>
+</div>
+
+<div class="service-card">
+<div class="card-content">
+<h3>Maha Nakshatra Homam (Family)</h3>
+<p class="desc">Nakshatra & Navagraha Homam with Durga Pooja balances planetary influences and aligns your birth star, removing doshas and obstacles. It brings protection, peace, prosperity, and success in life.”</p>
+<p class="desc"><b>Location:</b> Draksharamam Temple</p>
+<p class="desc"><b>Date:</b> 08/05/2026</p>
+<div class="price">₹3116</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<a href="https://tally.so/r/81j1NA" class="btn" target="_blank">Book</a>
+</div>
+</div>
+
+</div>
+</div>
+</div> -->
+
+<!-- ================= ASTROLOGY ================= -->
+<div id="astrology" class="section-card">
+<h2 class="section-title">Astrology Services</h2>
+
+<div class="slider-wrapper">
+<button class="arrow left" onclick="scrollSlider(this, -1)">&#10094;</button>
+<button class="arrow right" onclick="scrollSlider(this, 1)">&#10095;</button>
+
+<div class="slider">
+
+<div class="service-card">
+<div class="card-content">
+<h3>Horoscope Analysis</h3>
+<p class="desc">Complete horoscope analysis with predictions and dosha analysis.</p>
+<div class="price">₹1000</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<a href="https://tally.so/r/81j1RO" class="btn" target="_blank">Book</a>
+</div>
+</div>
+
+<div class="service-card">
+<div class="card-content">
+<h3>Marriage Matching</h3>
+<p class="desc">Guna matching and compatibility analysis.</p>
+<div class="price">₹1800</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<a href="https://tally.so/r/dWQq4V" class="btn" target="_blank">Book</a>
+</div>
+</div>
+
+<div class="service-card">
+<div class="card-content">
+<h3>Personal Consultation</h3>
+<p class="desc">Career, health, finance guidance.</p>
+<div class="price">₹2500</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<a href="https://tally.so/r/XxOlAP" class="btn" target="_blank">Book</a>
+</div>
+</div>
+
+<div class="service-card">
+<div class="card-content">
+<h3>Couple Consultation</h3>
+<p class="desc">Relationship analysis and remedies.</p>
+<div class="price">₹3500</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<a href="https://tally.so/r/eq9ZOx" class="btn" target="_blank">Book</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ================= MUHURTHAS ================= -->
+<!-- <div id="muhurthas" class="section-card">
+<h2 class="section-title">Muhurtha Services</h2>
+
+<div class="slider-wrapper">
+<button class="arrow left" onclick="scrollSlider(this, -1)">&#10094;</button>
+<button class="arrow right" onclick="scrollSlider(this, 1)">&#10095;</button>
+
+<div class="slider">
+
+<div class="service-card">
+<div class="card-content">
+<h3>Individual Muhurthas</h3>
+<p class="desc">Auspicious timing for events.</p>
+<div class="price">₹1116</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<a href="https://tally.so/r/zxWXOE" class="btn" target="_blank">Book</a>
+</div>
+</div> -->
+
+<div class="service-card">
+<div class="card-content">
+<h3>Marriage Muhurthas</h3>
+<p class="desc">Best wedding dates selection.</p>
+<div class="price">₹1501</div>
+</div>
+<div class="card-footer">
+<img src="upi-qr-1.jpeg">
+<a href="https://tally.so/r/44PX5X" class="btn" target="_blank">Book</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+function scrollSlider(btn, dir){
+    const wrapper = btn.parentElement;
+    const slider = wrapper.querySelector('.slider');
+    slider.scrollBy({ left: dir * 300, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
