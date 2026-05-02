@@ -49,6 +49,10 @@ header{
     margin-top:5px;
 }
 
+<div id="cartBox" style="position:absolute;right:20px;top:20px;font-size:18px;">
+🛒 <span id="cartCount">0</span>
+</div>    
+
 /* MENU */
 .menu{
     background:white;
@@ -118,14 +122,16 @@ header{
 }
 
 /* CARD */
-.card{
-    background:white;
-    border-radius:12px;
-    padding:15px;
-    box-shadow:0 0 10px rgba(0,0,0,0.12);
-    transition:0.3s;
-}
-.card:hover{ transform:translateY(-5px); }
+<!-- QUANTITY -->
+<div style="display:flex;justify-content:center;align-items:center;gap:10px;margin-top:10px;">
+<button onclick="changeQty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+
+<a href="#" class="btn" onclick="addToCart(this)">Add to Cart</a>
+
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
 
 /* IMAGE GALLERY */
 .main-image{
@@ -220,6 +226,9 @@ header{
 
 <div class="container">
 
+<input type="text" id="searchBox" placeholder="Search products..." 
+style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid #ccc;margin-bottom:20px;">
+
 <h2 class="section-title">Spiritual Products</h2>
 
 <div class="products">
@@ -286,9 +295,58 @@ header{
 </div>
 
 <script>
+// IMAGE CHANGE
 function changeImage(el){
     const main = el.closest('.card').querySelector('.active-img');
     main.src = el.src;
+}
+
+// SEARCH FUNCTION
+document.getElementById("searchBox").addEventListener("keyup", function(){
+    let filter = this.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card=>{
+        let title = card.querySelector("h3").innerText.toLowerCase();
+        card.style.display = title.includes(filter) ? "block" : "none";
+    });
+});
+
+// QUANTITY CHANGE
+function changeQty(btn, change){
+    let qtyEl = btn.parentElement.querySelector(".qty");
+    let qty = parseInt(qtyEl.innerText);
+    qty = Math.max(1, qty + change);
+    qtyEl.innerText = qty;
+}
+
+// CART SYSTEM
+let cartCount = 0;
+
+function addToCart(btn){
+    let card = btn.closest(".card");
+    let name = card.querySelector("h3").innerText;
+    let qty = card.querySelector(".qty").innerText;
+
+    cartCount += parseInt(qty);
+    document.getElementById("cartCount").innerText = cartCount;
+
+    alert(name + " added to cart (Qty: " + qty + ")");
+}
+
+// WHATSAPP ORDER
+function orderWhatsApp(btn){
+    let card = btn.closest(".card");
+    let name = card.querySelector("h3").innerText;
+    let price = card.querySelector(".price").innerText;
+    let qty = card.querySelector(".qty").innerText;
+
+    let message = `Hello, I want to order:\n\n${name}\nPrice: ${price}\nQuantity: ${qty}`;
+    
+    let phone = "91XXXXXXXXXX";
+    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    
+    window.open(url, "_blank");
 }
 </script>
 
