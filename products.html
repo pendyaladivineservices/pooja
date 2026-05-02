@@ -291,15 +291,22 @@ function changeImage(el){
 }
 
 // SEARCH
+<script>
 document.getElementById("searchBox").addEventListener("keyup", function(){
     let filter = this.value.toLowerCase();
     let cards = document.querySelectorAll(".card");
 
     cards.forEach(card=>{
         let title = card.querySelector("h3").innerText.toLowerCase();
-        card.style.display = title.includes(filter) ? "block" : "none";
+
+        if(title.includes(filter)){
+            card.style.display = "";   // ✅ keeps grid intact
+        } else {
+            card.style.display = "none";
+        }
     });
 });
+</script>
 
 // QTY
 function changeQty(btn, change){
