@@ -370,13 +370,16 @@ function submitOrder(){
         return;
     }
 
-    let message = `New Order:\n\nProduct: ${selectedProduct}\nPrice: ${selectedPrice}\nQty: ${selectedQty}\n\nName: ${name}\nPhone: ${phone}\nAddress: ${address}`;
+    // Save data (optional - useful for payment page)
+    localStorage.setItem("order_name", name);
+    localStorage.setItem("order_phone", phone);
+    localStorage.setItem("order_address", address);
+    localStorage.setItem("order_product", selectedProduct);
+    localStorage.setItem("order_price", selectedPrice);
+    localStorage.setItem("order_qty", selectedQty);
 
-    window.open(`https://wa.me/919347184217?text=${encodeURIComponent(message)}`);
-
-    setTimeout(()=>{
-        window.location.href="payment.html";
-    },1500);
+    // 👉 Directly go to payment page(Razorpay)
+    window.location.href = "payment.html";
 }
 </script>
 
