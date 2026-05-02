@@ -290,8 +290,7 @@ function changeImage(el){
     main.src = el.src;
 }
 
-// SEARCH
-<script>
+// SEARCH (FIXED)
 document.getElementById("searchBox").addEventListener("keyup", function(){
     let filter = this.value.toLowerCase();
     let cards = document.querySelectorAll(".card");
@@ -300,14 +299,34 @@ document.getElementById("searchBox").addEventListener("keyup", function(){
         let title = card.querySelector("h3").innerText.toLowerCase();
 
         if(title.includes(filter)){
-            card.style.display = "";   // ✅ keeps grid intact
+            card.style.display = "";   // keeps grid layout
         } else {
             card.style.display = "none";
         }
     });
 });
-</script>
 
+// QTY
+function changeQty(btn, change){
+    let qtyEl = btn.parentElement.querySelector(".qty");
+    let qty = parseInt(qtyEl.innerText);
+    qty = Math.max(1, qty + change);
+    qtyEl.innerText = qty;
+}
+
+// WHATSAPP ORDER
+function orderWhatsApp(btn){
+    let card = btn.closest(".card");
+    let name = card.querySelector("h3").innerText;
+    let price = card.querySelector(".price").innerText;
+    let qty = card.querySelector(".qty").innerText;
+
+    let message = `Hello, I want to order:\n\n${name}\nPrice: ${price}\nQuantity: ${qty}`;
+    let url = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+}
+</script>
 // QTY
 function changeQty(btn, change){
     let qtyEl = btn.parentElement.querySelector(".qty");
