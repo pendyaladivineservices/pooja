@@ -1,23 +1,327 @@
-<!-- ✅ ADD THIS BEFORE </body> -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PENDYALA DIVINE SERVICES</title>
+
+<style>
+html{ scroll-behavior:smooth; }
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#fff5e6;
+    text-align:center;
+}
+
+/* HEADER */
+header{
+    background:#ff6600;
+    color:white;
+    padding:12px;
+}
+
+.header-content{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:white;
+    padding:6px;
+}
+
+.title-main{
+    font-size:36px;
+    font-weight:bold;
+    margin:0;
+}
+
+.title-sub{
+    font-size:18px;
+    margin-top:5px;
+}
+
+/* MENU */
+.menu{
+    background:white;
+    padding:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#ff6600;
+    font-weight:bold;
+    font-size:15px;
+    padding:6px 10px;
+    border-radius:6px;
+}
+
+@media (max-width:600px){
+    .menu{
+        justify-content:space-around;
+    }
+    .menu a{
+        font-size:13px;
+        padding:6px 8px;
+    }
+}
+
+/* CONTAINER */
+.container{
+    padding:20px;
+}
+
+/* TITLE */
+.section-title{
+    color:#8B0000;
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+/* GRID (FIX: prevents single product becoming huge) */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,280px));
+    justify-content:center;
+    gap:20px;
+}
+
+/* CARD */
+.card{
+    background:white;
+    border-radius:12px;
+    padding:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.12);
+}
+
+/* IMAGE */
+.main-image{
+    width:100%;
+    aspect-ratio:1/1;
+    overflow:hidden;
+    border-radius:8px;
+}
+
+.main-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* THUMBS */
+.thumbs{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin-top:8px;
+}
+
+.thumbs img{
+    width:45px;
+    height:45px;
+    object-fit:cover;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* TEXT */
+.card h3{ font-size:15px; }
+
+.desc{
+    font-size:13px;
+    color:#444;
+}
+
+.price{
+    color:#cc0000;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* BUTTON */
+.btn{
+    background:#ff6600;
+    color:white;
+    padding:7px;
+    border-radius:6px;
+    text-decoration:none;
+    display:block;
+    margin-top:8px;
+}
+
+.whatsapp{
+    background:#25D366;
+}
+
+/* QTY */
+.qty-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+<img src="icon.jpeg" class="logo">
+<div>
+<p class="title-main">PENDYALA</p>
+<p class="title-sub">DIVINE SERVICES</p>
+</div>
+</div>
+</header>
+
+<div class="menu">
+<a href="index.html">Poojas</a>
+<a href="astrology.html">Astrology</a>
+<a href="muhurthas.html">Muhurthas</a>
+<a href="products.html">Spiritual Products</a>
+</div>
+
+<div class="container">
+
+<input type="text" id="searchBox" placeholder="Search products..." 
+style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid #ccc;margin-bottom:20px;">
+
+<h2 class="section-title">Spiritual Products</h2>
+
+<div class="products">
+
+<!-- PRODUCT 1 -->
+<div class="card">
+<div class="main-image">
+<img src="Images/Chandra Mouli Lingam.jpeg" class="active-img">
+</div>
+
+<div class="thumbs">
+<img src="Images/Chandra Mouli Lingam.jpeg" onclick="changeImage(this)">
+<img src="Images/Chandra Mouli Lingam.jpeg" onclick="changeImage(this)">
+<img src="Images/Chandra Mouli Lingam.jpeg" onclick="changeImage(this)">
+</div>
+
+<h3>Chandra Mouleeswara Spatika Shivlingam</h3>
+<p class="desc">Brings peace, purity, and spiritual growth.</p>
+<div class="price">₹3999</div>
+
+<div class="qty-box">
+<button onclick="changeQty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+
+<a href="#" class="btn" onclick="openCheckout(this)">Buy Now</a>
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this, event)">Order on WhatsApp</a>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="card">
+<div class="main-image">
+<img src="product2-1.jpeg" class="active-img">
+</div>
+
+<div class="thumbs">
+<img src="product2-1.jpeg" onclick="changeImage(this)">
+<img src="product2-2.jpeg" onclick="changeImage(this)">
+<img src="product2-3.jpeg" onclick="changeImage(this)">
+</div>
+
+<h3>Navagraha Mala</h3>
+<p class="desc">Balances all planetary energies and removes doshas.</p>
+<div class="price">₹799</div>
+
+<div class="qty-box">
+<button onclick="changeQty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+
+<a href="#" class="btn" onclick="openCheckout(this)">Buy Now</a>
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this, event)">Order on WhatsApp</a>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="card">
+<div class="main-image">
+<img src="product3-1.jpeg" class="active-img">
+</div>
+
+<div class="thumbs">
+<img src="product3-1.jpeg" onclick="changeImage(this)">
+<img src="product3-2.jpeg" onclick="changeImage(this)">
+<img src="product3-3.jpeg" onclick="changeImage(this)">
+</div>
+
+<h3>Spatika Mala</h3>
+<p class="desc">Improves focus, calmness, and positive vibrations.</p>
+<div class="price">₹699</div>
+
+<div class="qty-box">
+<button onclick="changeQty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+
+<a href="#" class="btn" onclick="openCheckout(this)">Buy Now</a>
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this, event)">Order on WhatsApp</a>
+</div>
+
+</div>
+</div>
+
+<!-- CHECKOUT POPUP -->
+<div id="checkoutBox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:999;">
+<div style="background:white;padding:20px;border-radius:10px;width:90%;max-width:400px;text-align:left;">
+<h3>Enter Details</h3>
+
+<input id="c_name" placeholder="Full Name" style="width:100%;padding:8px;margin:5px 0;">
+<input id="c_phone" placeholder="Phone Number" style="width:100%;padding:8px;margin:5px 0;">
+<textarea id="c_address" placeholder="Address" style="width:100%;padding:8px;margin:5px 0;"></textarea>
+
+<button onclick="submitOrder()" style="width:100%;padding:10px;background:#ff6600;color:white;border:none;border-radius:6px;margin-top:10px;">
+Proceed to Payment
+</button>
+
+<button onclick="closeCheckout()" style="margin-top:10px;">Cancel</button>
+</div>
+</div>
 
 <script>
-// EXISTING FUNCTIONS SAME
+// IMAGE
 function changeImage(el){
     const main = el.closest('.card').querySelector('.active-img');
     main.src = el.src;
 }
 
+// SEARCH (FIXED SIZE ISSUE)
 document.getElementById("searchBox").addEventListener("keyup", function(){
     let filter = this.value.toLowerCase();
     let cards = document.querySelectorAll(".card");
 
     cards.forEach(card=>{
         let text = card.innerText.toLowerCase();
-        card.style.display = text.includes(filter) ? "" : "none";
+        card.style.display = text.includes(filter) ? "block" : "none";
     });
 });
 
+// QTY
 function changeQty(btn, change){
     let qtyEl = btn.parentElement.querySelector(".qty");
     let qty = parseInt(qtyEl.innerText);
@@ -25,6 +329,7 @@ function changeQty(btn, change){
     qtyEl.innerText = qty;
 }
 
+// WHATSAPP
 function orderWhatsApp(btn, e){
     e.preventDefault();
 
@@ -39,7 +344,7 @@ function orderWhatsApp(btn, e){
     window.open(url, "_blank");
 }
 
-// ✅ NEW FEATURE ONLY (MODIFIED FOR RAZORPAY)
+// CHECKOUT FLOW
 let selectedProduct="", selectedPrice="", selectedQty="";
 
 function openCheckout(btn){
@@ -55,9 +360,7 @@ function closeCheckout(){
     document.getElementById("checkoutBox").style.display = "none";
 }
 
-// 🔥 REPLACED FUNCTION (ONLY CHANGE)
-function payNow(){
-
+function submitOrder(){
     let name = document.getElementById("c_name").value;
     let phone = document.getElementById("c_phone").value;
     let address = document.getElementById("c_address").value;
@@ -67,39 +370,15 @@ function payNow(){
         return;
     }
 
-    let price = selectedPrice.replace("₹","");
-    let qty = selectedQty;
-    let total = parseInt(price) * parseInt(qty);
+    let message = `New Order:\n\nProduct: ${selectedProduct}\nPrice: ${selectedPrice}\nQty: ${selectedQty}\n\nName: ${name}\nPhone: ${phone}\nAddress: ${address}`;
 
-    let options = {
-        "key": "YOUR_KEY_ID", // 🔴 replace with your Razorpay key
-        "amount": total * 100,
-        "currency": "INR",
-        "name": "Pendyala Divine Services",
-        "description": selectedProduct,
+    window.open(`https://wa.me/919347184217?text=${encodeURIComponent(message)}`);
 
-        "prefill": {
-            "name": name,
-            "contact": phone
-        },
-
-        "notes": {
-            "address": address,
-            "product": selectedProduct,
-            "quantity": qty
-        },
-
-        "theme": {
-            "color": "#ff6600"
-        },
-
-        "handler": function (response){
-            alert("Payment Successful! ID: " + response.razorpay_payment_id);
-            closeCheckout();
-        }
-    };
-
-    let rzp = new Razorpay(options);
-    rzp.open();
+    setTimeout(()=>{
+        window.location.href="payment.html";
+    },1500);
 }
 </script>
+
+</body>
+</html>
