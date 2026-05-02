@@ -20,6 +20,7 @@ header{
     background:#ff6600;
     color:white;
     padding:12px;
+    position:relative;
 }
 
 .header-content{
@@ -31,75 +32,48 @@ header{
 }
 
 .logo{
-    width:110px;
-    height:110px;
+    width:90px;
+    height:90px;
     border-radius:50%;
     background:white;
     padding:6px;
 }
 
 .title-main{
-    font-size:36px;
+    font-size:28px;
     font-weight:bold;
     margin:0;
 }
 
 .title-sub{
-    font-size:18px;
-    margin-top:5px;
+    font-size:16px;
 }
 
-<div id="cartBox" style="position:absolute;right:20px;top:20px;font-size:18px;">
-🛒 <span id="cartCount">0</span>
-</div>    
+/* CART */
+#cartBox{
+    position:absolute;
+    right:20px;
+    top:20px;
+    font-size:18px;
+}
 
 /* MENU */
 .menu{
     background:white;
     padding:10px;
     box-shadow:0 2px 8px rgba(0,0,0,0.08);
-
     display:flex;
     justify-content:center;
-    flex-wrap:wrap;   /* 👈 IMPORTANT */
-    gap:10px;         /* spacing between items */
-}
-
-.menu{
-    background:white;
-    padding:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
-
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;   /* 👈 IMPORTANT */
-    gap:10px;         /* spacing between items */
+    flex-wrap:wrap;
+    gap:10px;
 }
 
 .menu a{
     text-decoration:none;
     color:#ff6600;
     font-weight:bold;
-    font-size:15px;
+    font-size:14px;
     padding:6px 10px;
-    border-radius:6px;
-}
-
-/* MOBILE FIX */
-@media (max-width:600px){
-    .menu{
-        justify-content:space-around;
-    }
-
-    .menu a{
-        font-size:13px;
-        padding:6px 8px;
-    }
-}
-/* BANNER */
-.header-img{
-    width:100%;
-    height:auto;
 }
 
 /* CONTAINER */
@@ -107,98 +81,76 @@ header{
     padding:20px;
 }
 
-/* TITLE */
 .section-title{
     color:#8B0000;
-    font-size:24px;
-    margin-bottom:20px;
+    font-size:22px;
 }
 
-/* GRID */
+/* GRID (smaller cards) */
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:15px;
 }
 
 /* CARD */
-<!-- QUANTITY -->
-<div style="display:flex;justify-content:center;align-items:center;gap:10px;margin-top:10px;">
-<button onclick="changeQty(this,-1)">-</button>
-<span class="qty">1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
+.card{
+    background:white;
+    border-radius:10px;
+    padding:10px;
+    box-shadow:0 0 8px rgba(0,0,0,0.1);
+}
 
-<a href="#" class="btn" onclick="addToCart(this)">Add to Cart</a>
-
-<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
-
-/* IMAGE GALLERY */
+/* IMAGE */
 .main-image{
     width:100%;
-    height:200px;
+    height:150px;
     overflow:hidden;
-    border-radius:8px;
 }
 
 .main-image img{
     width:100%;
     height:100%;
     object-fit:contain;
-    transition:0.3s;
-}
-
-.main-image:hover img{
-    transform:scale(1.5);
 }
 
 .thumbs{
     display:flex;
     justify-content:center;
-    gap:6px;
-    margin-top:8px;
+    gap:5px;
 }
 
 .thumbs img{
-    width:50px;
-    height:50px;
-    object-fit:cover;
-    border-radius:6px;
+    width:40px;
+    height:40px;
     cursor:pointer;
 }
 
 /* TEXT */
-.card h3{ font-size:16px; }
+.card h3{ font-size:14px; }
+.desc{ font-size:12px; }
+.price{ font-size:16px; color:red; }
 
-.desc{
-    font-size:13px;
-    color:#444;
-}
-
-.price{
-    color:#cc0000;
-    font-size:20px;
-    font-weight:bold;
-}
-
-/* BUTTONS */
+/* BUTTON */
 .btn{
     background:#ff6600;
     color:white;
-    padding:8px;
+    padding:6px;
+    display:block;
+    margin-top:6px;
     border-radius:6px;
     text-decoration:none;
-    display:block;
+    font-size:13px;
+}
+
+.whatsapp{ background:#25D366; }
+
+/* QTY */
+.qty-box{
+    display:flex;
+    justify-content:center;
+    gap:10px;
     margin-top:8px;
-}
-
-.whatsapp{
-    background:#25D366;
-}
-
-/* MOBILE */
-@media (max-width:600px){
-    .main-image{ height:160px; }
 }
 </style>
 </head>
@@ -206,6 +158,8 @@ header{
 <body>
 
 <header>
+<div id="cartBox">🛒 <span id="cartCount">0</span></div>
+
 <div class="header-content">
 <img src="icon.jpeg" class="logo">
 <div>
@@ -222,8 +176,6 @@ header{
 <a href="products.html">Spiritual Products</a>
 </div>
 
-<!-- <img src="banner.png" class="header-img"> -->
-
 <div class="container">
 
 <input type="text" id="searchBox" placeholder="Search products..." 
@@ -238,6 +190,7 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <div class="main-image">
 <img src="Images/Chandra Mouli Lingam.jpeg" class="active-img">
 </div>
+
 <div class="thumbs">
 <img src="Images/Chandra Mouli Lingam.jpeg" onclick="changeImage(this)">
 <img src="Images/Chandra Mouli Lingam.jpeg" onclick="changeImage(this)">
@@ -248,8 +201,14 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <p class="desc">Brings peace, purity, and spiritual growth.</p>
 <div class="price">₹3999</div>
 
-<a href="#" class="btn">Buy Now</a>
-<a href="https://wa.me/91XXXXXXXXXX" class="btn whatsapp">Order on WhatsApp</a>
+<div class="qty-box">
+<button onclick="changeQty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+
+<a href="#" class="btn" onclick="addToCart(this)">Add to Cart</a>
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
 </div>
 
 <!-- PRODUCT 2 -->
@@ -257,6 +216,7 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <div class="main-image">
 <img src="product2-1.jpeg" class="active-img">
 </div>
+
 <div class="thumbs">
 <img src="product2-1.jpeg" onclick="changeImage(this)">
 <img src="product2-2.jpeg" onclick="changeImage(this)">
@@ -264,11 +224,17 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 </div>
 
 <h3>Navagraha Mala</h3>
-<p class="desc">Balances all planetary energies and removes doshas.</p>
+<p class="desc">Balances planetary energies.</p>
 <div class="price">₹799</div>
 
-<a href="#" class="btn">Buy Now</a>
-<a href="https://wa.me/91XXXXXXXXXX" class="btn whatsapp">Order on WhatsApp</a>
+<div class="qty-box">
+<button onclick="changeQty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+
+<a href="#" class="btn" onclick="addToCart(this)">Add to Cart</a>
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
 </div>
 
 <!-- PRODUCT 3 -->
@@ -276,6 +242,7 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <div class="main-image">
 <img src="product3-1.jpeg" class="active-img">
 </div>
+
 <div class="thumbs">
 <img src="product3-1.jpeg" onclick="changeImage(this)">
 <img src="product3-2.jpeg" onclick="changeImage(this)">
@@ -283,15 +250,20 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 </div>
 
 <h3>Spatika Mala</h3>
-<p class="desc">Improves focus, calmness, and positive vibrations.</p>
+<p class="desc">Improves focus & positivity.</p>
 <div class="price">₹699</div>
 
-<a href="#" class="btn">Buy Now</a>
-<a href="https://wa.me/91XXXXXXXXXX" class="btn whatsapp">Order on WhatsApp</a>
+<div class="qty-box">
+<button onclick="changeQty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+
+<a href="#" class="btn" onclick="addToCart(this)">Add to Cart</a>
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
 </div>
 
 </div>
-
 </div>
 
 <script>
@@ -301,7 +273,7 @@ function changeImage(el){
     main.src = el.src;
 }
 
-// SEARCH FUNCTION
+// SEARCH
 document.getElementById("searchBox").addEventListener("keyup", function(){
     let filter = this.value.toLowerCase();
     let cards = document.querySelectorAll(".card");
@@ -312,7 +284,7 @@ document.getElementById("searchBox").addEventListener("keyup", function(){
     });
 });
 
-// QUANTITY CHANGE
+// QTY
 function changeQty(btn, change){
     let qtyEl = btn.parentElement.querySelector(".qty");
     let qty = parseInt(qtyEl.innerText);
@@ -320,9 +292,8 @@ function changeQty(btn, change){
     qtyEl.innerText = qty;
 }
 
-// CART SYSTEM
+// CART
 let cartCount = 0;
-
 function addToCart(btn){
     let card = btn.closest(".card");
     let name = card.querySelector("h3").innerText;
@@ -331,21 +302,19 @@ function addToCart(btn){
     cartCount += parseInt(qty);
     document.getElementById("cartCount").innerText = cartCount;
 
-    alert(name + " added to cart (Qty: " + qty + ")");
+    alert(name + " added (Qty: " + qty + ")");
 }
 
-// WHATSAPP ORDER
+// WHATSAPP
 function orderWhatsApp(btn){
     let card = btn.closest(".card");
     let name = card.querySelector("h3").innerText;
     let price = card.querySelector(".price").innerText;
     let qty = card.querySelector(".qty").innerText;
 
-    let message = `Hello, I want to order:\n\n${name}\nPrice: ${price}\nQuantity: ${qty}`;
-    
-    let phone = "91XXXXXXXXXX";
-    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    
+    let message = `Hello, I want to order:\n${name}\n${price}\nQty: ${qty}`;
+    let url = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(message)}`;
+
     window.open(url, "_blank");
 }
 </script>
