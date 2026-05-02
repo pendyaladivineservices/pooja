@@ -310,14 +310,18 @@ function changeQty(btn, change){
 }
 
 // WHATSAPP
-function orderWhatsApp(btn){
+function orderWhatsApp(btn, e){
+    e.preventDefault(); // stop default link
+
     let card = btn.closest(".card");
     let name = card.querySelector("h3").innerText;
     let price = card.querySelector(".price").innerText;
     let qty = card.querySelector(".qty").innerText;
 
     let message = `Hello, I want to order:\n\n${name}\nPrice: ${price}\nQuantity: ${qty}`;
-    let url = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(message)}`;
+
+    let phone = "919347184217";
+    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
     window.open(url, "_blank");
 }
