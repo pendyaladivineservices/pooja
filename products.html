@@ -334,6 +334,50 @@ select{
 <div class="products">
 
 <div class="card" data-is-digital="false">
+
+<div class="slider">
+<button class="slide-btn slide-prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+<img src="Images/KuberPotli_1.jpeg" class="active" alt="Kuber Potli View 1">
+<img src="Images/KuberPotli_2.jpeg" alt="Kuber Potli View 2">
+<img src="Images/KuberPotli_3.jpeg" alt="Kuber Potli View 3">
+<img src="Images/KuberPotli_4.jpeg" alt="Kuber Potli View 4">
+
+<button class="slide-btn slide-next" onclick="moveSlide(this, 1)">&#10095;</button>
+</div>
+
+<h3>Kuber Potli</h3>
+
+<p class="desc">
+Invite prosperity, abundance and positive financial energy with this sacred Kuber Potli.
+Ideal for homes, businesses, cash counters and lockers.
+</p>
+
+<div class="price">₹999</div>
+
+<div class="qty-box">
+<button onclick="changeQty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+
+<button class="btn"
+onclick="openDetails(
+this,
+'Kuber Potli',
+'₹999',
+'The Kuber Potli is a spiritually energized prosperity potli inspired by Lord Kuber, the celestial treasurer of wealth. Traditionally kept in homes, offices, shops, lockers and cash boxes to attract abundance, prosperity and positive financial vibrations. It is ideal for business owners, professionals and families seeking financial growth and stability. Shipping charges of ₹100 apply.'
+)">
+View Details
+</button>
+
+<button class="btn" onclick="openCheckout(this)">
+Buy Now
+</button>
+
+</div>
+    
+<div class="card" data-is-digital="false">
 <div class="slider">
 <button class="slide-btn slide-prev" onclick="moveSlide(this, -1)">&#10094;</button>
 <img src="Images/SpatikaShivaLingam_One Inch.jpeg" class="active" alt="Spatika Shivlingam View 1">
