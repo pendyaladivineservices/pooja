@@ -1,0 +1,407 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuber Potli | PENDYALA DIVINE SERVICES</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#fff8f0;
+    color:#333;
+}
+
+header{
+    background:#ff6600;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+
+.logo{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:white;
+    padding:5px;
+}
+
+.page{
+    max-width:1200px;
+    margin:auto;
+    padding:25px;
+}
+
+.product-container{
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.gallery{
+    flex:1;
+    min-width:320px;
+}
+
+.main-image{
+    width:100%;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,.1);
+}
+
+.thumbnails{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.thumbnails img{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:8px;
+    cursor:pointer;
+    border:2px solid transparent;
+}
+
+.thumbnails img:hover{
+    border-color:#ff6600;
+}
+
+.product-info{
+    flex:1;
+    min-width:320px;
+}
+
+.product-title{
+    font-size:34px;
+    color:#8B0000;
+    margin-bottom:10px;
+}
+
+.rating{
+    color:#ff9900;
+    margin-bottom:10px;
+}
+
+.price{
+    font-size:34px;
+    color:#cc0000;
+    font-weight:bold;
+}
+
+.old-price{
+    text-decoration:line-through;
+    color:#777;
+    font-size:20px;
+}
+
+.discount{
+    color:green;
+    font-weight:bold;
+}
+
+.shipping{
+    margin-top:10px;
+    color:#555;
+}
+
+.qty-box{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.qty-box button{
+    width:35px;
+    height:35px;
+    border:none;
+    background:#ff6600;
+    color:white;
+    font-size:18px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.buy-btn{
+    margin-top:20px;
+    width:100%;
+    background:#ff6600;
+    color:white;
+    border:none;
+    padding:15px;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.buy-btn:hover{
+    background:#e55c00;
+}
+
+.section{
+    background:white;
+    margin-top:25px;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,.08);
+}
+
+.section h2{
+    color:#8B0000;
+}
+
+ul{
+    line-height:1.8;
+}
+
+.spec-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.spec-table td{
+    border:1px solid #ddd;
+    padding:12px;
+}
+
+.spec-table tr:nth-child(even){
+    background:#fafafa;
+}
+
+@media(max-width:768px){
+
+.product-container{
+    flex-direction:column;
+}
+
+.product-title{
+    font-size:28px;
+}
+
+.price{
+    font-size:28px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="icon.PNG" class="logo">
+<h1>PENDYALA DIVINE SERVICES</h1>
+</header>
+
+<div class="page">
+
+<div class="product-container">
+
+<div class="gallery">
+
+<img id="mainImage"
+src="Images/KuberPotli_1.jpeg"
+class="main-image">
+
+<div class="thumbnails">
+
+<img src="Images/KuberPotli_1.jpeg"
+onclick="changeImage(this.src)">
+
+<img src="Images/KuberPotli_2.jpeg"
+onclick="changeImage(this.src)">
+
+<img src="Images/KuberPotli_3.jpeg"
+onclick="changeImage(this.src)">
+
+<img src="Images/KuberPotli_4.jpeg"
+onclick="changeImage(this.src)">
+
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h1 class="product-title">Kuber Potli</h1>
+
+<div class="rating">
+★★★★★ (4.9/5)
+</div>
+
+<div>
+<span class="old-price">₹1499</span>
+</div>
+
+<div class="price">₹999</div>
+
+<div class="discount">
+Save ₹500 Today
+</div>
+
+<div class="shipping">
+🚚 Free Shipping Across India
+</div>
+
+<p>
+Invite divine prosperity, abundance and positive financial energy
+into your life with the sacred Kuber Potli inspired by Lord Kuber,
+the celestial treasurer of wealth.
+</p>
+
+<div class="qty-box">
+<button onclick="changeQty(-1)">-</button>
+<span id="qty">1</span>
+<button onclick="changeQty(1)">+</button>
+</div>
+
+<button class="buy-btn" onclick="buyNow()">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Product Description</h2>
+
+<p>
+The Kuber Potli is a spiritually energized prosperity kit
+prepared according to traditional practices associated with
+wealth attraction and abundance.
+It is commonly placed in homes, business establishments,
+cash boxes, lockers and puja rooms.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>Benefits</h2>
+
+<ul>
+<li>Attracts prosperity and abundance.</li>
+<li>Enhances positive financial vibrations.</li>
+<li>Supports wealth retention.</li>
+<li>Ideal for homes and businesses.</li>
+<li>Promotes positivity and confidence.</li>
+<li>Can be placed in lockers and cash boxes.</li>
+<li>A sacred gift for family and friends.</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>How To Use</h2>
+
+<ul>
+<li>Place in Puja Room.</li>
+<li>Place inside cash locker.</li>
+<li>Keep at business cash counter.</li>
+<li>Do not open the potli.</li>
+<li>Offer prayer regularly.</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Specifications</h2>
+
+<table class="spec-table">
+
+<tr>
+<td>Product Name</td>
+<td>Kuber Potli</td>
+</tr>
+
+<tr>
+<td>Purpose</td>
+<td>Prosperity & Wealth Attraction</td>
+</tr>
+
+<tr>
+<td>Category</td>
+<td>Spiritual Product</td>
+</tr>
+
+<tr>
+<td>Packaging</td>
+<td>Premium Sacred Potli</td>
+</tr>
+
+<tr>
+<td>Suitable For</td>
+<td>Home, Office, Shop, Locker</td>
+</tr>
+
+<tr>
+<td>Shipping</td>
+<td>Pan India</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section">
+
+<h2>Important Note</h2>
+
+<p>
+This product is intended for spiritual and devotional purposes.
+Results may vary depending upon individual faith and spiritual practices.
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+function changeImage(src){
+    document.getElementById("mainImage").src = src;
+}
+
+function changeQty(change){
+
+    let qty =
+    parseInt(document.getElementById("qty").innerText);
+
+    qty = Math.max(1, qty + change);
+
+    document.getElementById("qty").innerText = qty;
+}
+
+function buyNow(){
+
+    let qty =
+    document.getElementById("qty").innerText;
+
+    alert(
+        "Proceeding to checkout\n\n" +
+        "Product: Kuber Potli\n" +
+        "Quantity: " + qty
+    );
+
+    /* redirect to checkout page */
+
+    // window.location.href="payment.html";
+}
+
+</script>
+
+</body>
+</html>
+```
