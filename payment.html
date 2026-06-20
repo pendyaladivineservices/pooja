@@ -31,10 +31,15 @@ img{
 }
 
 .amount{
-    color:#cc0000;
-    font-size:28px;
-    font-weight:bold;
+    background:#fff3cd;
+    border:3px solid #ff6600;
+    border-radius:12px;
+    padding:15px;
     margin:15px 0;
+    color:#cc0000;
+    font-size:32px;
+    font-weight:bold;
+    text-align:center;
 }
 
 button{
@@ -113,6 +118,13 @@ button:hover{
 
 <h2>Complete Payment</h2>
 
+<div class="amount">
+    <div style="font-size:16px;color:#333;">
+        Amount to Pay
+    </div>
+    ₹ <span id="amount"></span>
+</div>
+
 <p>Please scan QR code and complete payment</p>
 
 <img src="upi-qr-2.jpeg">
@@ -156,9 +168,9 @@ button:hover{
     <input type="file" id="paymentSlip" accept="image/*">
 </div>
 
-<div class="amount">
+<!-- <div class="amount">
 ₹ <span id="amount"></span>
-</div>
+</div> -->
 
 <p>After payment click below button</p>
 
