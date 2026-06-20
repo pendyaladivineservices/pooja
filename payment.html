@@ -77,6 +77,33 @@ button:hover{
     text-align:center;
 }
 
+.bank-details{
+    margin-top:20px;
+    padding:15px;
+    background:#fff8f0;
+    border:1px solid #ffcc99;
+    border-radius:10px;
+    text-align:left;
+}
+
+.bank-details h3{
+    text-align:center;
+    color:#cc0000;
+    margin-top:0;
+}
+
+.bank-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+.bank-table td{
+    border:1px solid #ddd;
+    padding:8px;
+    word-break:break-word;
+}
+    
 </style>
 </head>
 
@@ -90,6 +117,40 @@ button:hover{
 
 <img src="upi-qr-2.jpeg">
 
+<div class="bank-details">
+
+    <h3>Alternative Payment Method</h3>
+
+    <p>If QR code payment is not working, you can transfer directly to the bank account below and upload the payment screenshot.</p>
+
+    <table class="bank-table">
+        <tr>
+            <td><strong>Account Name</strong></td>
+            <td>Ravi Kumar Pendyala</td>
+        </tr>
+
+        <tr>
+            <td><strong>Bank</strong></td>
+            <td>Karur Vysya Bank</td>
+        </tr>
+
+        <tr>
+            <td><strong>Account Number</strong></td>
+            <td>4894152000000036</td>
+        </tr>
+
+        <tr>
+            <td><strong>IFSC Code</strong></td>
+            <td>KVBL0004894</td>
+        </tr>
+    </table>
+
+    <p style="color:#cc0000;font-weight:bold;">
+        After payment, please upload the payment screenshot below.
+    </p>
+
+</div>
+    
 <div class="upload-box">
     <p>Upload Payment Screenshot</p>
     <input type="file" id="paymentSlip" accept="image/*">
