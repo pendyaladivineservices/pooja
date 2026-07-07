@@ -184,11 +184,56 @@ I Have Paid
 
 // ================= SHOW PRICE =================
 
-document.getElementById("amount").innerText =
-localStorage.getItem("temp_price") ||
-localStorage.getItem("learning_price") ||
-"";
+//document.getElementById("amount").innerText =
+//localStorage.getItem("temp_price") ||
+//localStorage.getItem("learning_price") ||
+//"";
 
+let originalPrice =
+parseFloat(localStorage.getItem("original_price") || 0);
+
+let finalPrice =
+parseFloat(localStorage.getItem("temp_price") || 0);
+
+let discount =
+parseInt(localStorage.getItem("discount_percent") || 0);
+
+if(discount > 0){
+
+    document.querySelector(".amount").innerHTML = `
+        <div style="font-size:15px;color:#444;">
+            Original Price
+        </div>
+
+        <div style="
+            text-decoration:line-through;
+            color:#888;
+            font-size:22px;
+            margin-bottom:8px;">
+            ₹${originalPrice}
+        </div>
+
+        <div style="
+            color:green;
+            font-size:18px;
+            margin-bottom:8px;">
+            🎉 Returning Devotee Discount (15%)
+        </div>
+
+        <div style="
+            color:#cc0000;
+            font-size:34px;
+            font-weight:bold;">
+            ₹${finalPrice}
+        </div>
+    `;
+
+}else{
+
+    document.getElementById("amount").innerText = finalPrice;
+
+}
+    
 // ================= PAYMENT =================
 
 function paymentDone(){
