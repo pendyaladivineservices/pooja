@@ -755,16 +755,20 @@ function normalizePhone(phone){
 
 }
 
-function isReturningDevotee(phone,email){
+function isReturningDevotee(phone, email) {
 
     const cleanPhone = normalizePhone(phone);
-
     const cleanEmail = email.trim().toLowerCase();
 
-    return RETURNING_PHONES.some(p=>normalizePhone(p)===cleanPhone)
-        ||
-        RETURNING_EMAILS.includes(cleanEmail);
+    const phoneFound = RETURNING_PHONES.some(p =>
+        normalizePhone(p) === cleanPhone
+    );
 
+    const emailFound = RETURNING_EMAILS.some(e =>
+        e.trim().toLowerCase() === cleanEmail
+    );
+
+    return phoneFound || emailFound;
 }
 
     
