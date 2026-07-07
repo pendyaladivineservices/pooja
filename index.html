@@ -512,6 +512,39 @@ let selectedPoojaType = "";
 let selectedPoojaName = "";
 let selectedPrice = "";
 
+// ================= RETURNING DEVOTEES =================
+
+const RETURNING_PHONES = [
+    "9912153538",
+    "919533393174",
+    // ADD MORE PHONE NUMBERS HERE
+];
+
+const RETURNING_EMAILS = [
+    "ayyappakolla38558@gmail.com",
+    "sravanm93174@gmail.com",
+    // ADD MORE EMAIL IDS HERE
+];
+
+function normalizePhone(phone){
+
+    return phone.replace(/\D/g,"");
+
+}
+
+function isReturningDevotee(phone,email){
+
+    const cleanPhone = normalizePhone(phone);
+
+    const cleanEmail = email.trim().toLowerCase();
+
+    return RETURNING_PHONES.some(p=>normalizePhone(p)===cleanPhone)
+        ||
+        RETURNING_EMAILS.includes(cleanEmail);
+
+}
+
+    
 // 🔒 CONTROL SWITCH
 let BOOKING_ENABLED = true;
 
@@ -682,11 +715,6 @@ function submitPoojaBooking(){
     );
 
     localStorage.setItem(
-        "temp_price",
-        selectedPrice
-    );
-
-    localStorage.setItem(
         "temp_gothram",
         data.gothram
     );
@@ -731,6 +759,28 @@ function submitPoojaBooking(){
         data.email
     );
 
+// ================= DISCOUNT =================
+
+let originalPrice = parseFloat(selectedPrice);
+
+let finalPrice = originalPrice;
+
+if(isReturningDevotee(data.phone,data.email)){
+
+    finalPrice = Math.round(originalPrice * 0.85);
+
+    localStorage.setItem("discount_percent","15");
+
+}else{
+
+    localStorage.setItem("discount_percent","0");
+
+}
+
+localStorage.setItem("original_price",originalPrice);
+
+localStorage.setItem("temp_price",finalPrice);
+    
     // REDIRECT
 
     window.location.href = "payment.html";
