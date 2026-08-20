@@ -582,6 +582,30 @@ onclick="buyDigital(this, 'Shiva Puranam Telugu Soft Copy', 69, 'downloads/shiva
 Buy Now (Digital)
 </button>
 </div>
+
+    <div class="card" data-is-digital="true">
+
+    <div class="slider">
+        <img src="Images/products/varalakshmi-vratam.png"
+             class="active"
+             alt="Varalakshmi Vratham">
+    </div>
+
+    <h3>Varalakshmi Vratham Pooja & Katha</h3>
+
+    <p class="desc">
+        Complete Telugu Varalakshmi Vratham Pooja Vidhanam and Katha PDF.
+    </p>
+
+    <div class="price" style="color:green;">FREE</div>
+
+    <button class="btn"
+    onclick="freeDownload('downloads/varalakshmi-vratam/varalakshmi-vratam-telugu.pdf')">
+        📥 Free Download
+    </button>
+
+</div>
+
     
 </div>
 </div>
@@ -845,6 +869,11 @@ function buyDigital(btn,name,price,file){
     localStorage.setItem("temp_file",file);
 
     window.location.href="payment.html";
+}
+
+
+function freeDownload(file){
+    window.open(file, "_blank");
 }
     
 </script>
