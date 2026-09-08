@@ -1128,16 +1128,22 @@ function isReturningDevotee(phone, email) {
 }
 
     
-// 🔒 CONTROL SWITCH
-let BOOKING_ENABLED = true;
+// ================= BOOKING CONTROL =================
+// true  = Booking enabled
+// false = Booking disabled
+// Change only these values when needed.
+const BOOKING_STATUS = {
+    "Masa Shivaratri Rudrabhishekam": true,
+    "Nandi Abhishekam": false
+};
 
 // OPEN POPUP
 function openPoojaPopup(btn, type, poojaName){
 
-    // 🚫 BLOCK IF DISABLED
-    if(!BOOKING_ENABLED){
+    // 🚫 CHECK BOOKING STATUS FOR THIS POOJA
+    if(BOOKING_STATUS[poojaName] === false){
 
-        showBookingClosedMessage();
+        showBookingClosedMessage(poojaName);
 
         return;
     }
@@ -1371,13 +1377,13 @@ localStorage.setItem("temp_price",finalPrice);
 }
 
 // 🔔 MESSAGE
-function showBookingClosedMessage(){
+function showBookingClosedMessage(poojaName){
 
-    alert("🙏 Booking is closed for this Pooja.");
+    alert(poojaName + " booking is currently closed.");
 }
 
-// 🔒 DISABLE BUTTONS UI
-function disableBookingButtons(){
+// 🔒 UPDATE BUTTONS UI BASED ON EACH POOJA'S BOOKING STATUS
+function updateBookingButtons(){
 
     const buttons = document.querySelectorAll(
         ".service-card .card-footer .btn"
@@ -1385,19 +1391,30 @@ function disableBookingButtons(){
 
     buttons.forEach(btn => {
 
-        btn.innerText = "Booking Closed";
+        const onclickText = btn.getAttribute("onclick") || "";
+        const match = onclickText.match(/openPoojaPopup\(this,'[^']+','([^']+)'\)/);
 
-        btn.style.background = "#999";
+        if(!match) return;
 
-        btn.style.cursor = "not-allowed";
+        const poojaName = match[1];
+        const isEnabled = BOOKING_STATUS[poojaName] !== false;
+
+        if(isEnabled){
+            btn.innerText = "Book";
+            btn.style.background = "#ff6600";
+            btn.style.cursor = "pointer";
+            btn.disabled = false;
+        }else{
+            btn.innerText = "Booking Closed";
+            btn.style.background = "#999";
+            btn.style.cursor = "not-allowed";
+            btn.disabled = false;
+        }
     });
 }
 
-// APPLY
-if(!BOOKING_ENABLED){
-
-    disableBookingButtons();
-}
+// APPLY BOOKING STATUS TO BUTTONS
+updateBookingButtons();
 
 </script>
 </body>
