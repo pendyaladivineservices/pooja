@@ -578,7 +578,7 @@ const RETURNING_PHONES = [
 ];
 
 // ================= OFFER EMAILS =================
-// Add/remove offer emails in offer-emails.txt.
+// Offer emails are maintained in offer-emails.txt.
 // One email per line. The file is loaded automatically.
 
 let OFFER_EMAILS = [];
@@ -596,7 +596,7 @@ async function loadOfferEmails() {
         const text = await response.text();
 
         OFFER_EMAILS = text
-            .split(/\\r?\\n/)
+            .split(/\r?\n/)
             .map(email => email.trim().toLowerCase())
             .filter(email => email && !email.startsWith("#"));
 
