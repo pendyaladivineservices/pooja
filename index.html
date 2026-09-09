@@ -571,157 +571,93 @@ let selectedPrice = "";
 
 // ================= RETURNING DEVOTEES =================
 
-const RETURNING_PHONES = [
-    // "9912153538",
-    // "919533393174",
-    // ADD MORE PHONE NUMBERS HERE
-];
-
-// ================= OFFER EMAILS =================
-// Email list is maintained in offer-emails.txt.
-// Discount percentages are controlled HERE in OFFER_DISCOUNTS below.
-
-let OFFER_EMAILS = [];
-
-// ================= OFFER DISCOUNTS =================
-// Set the discount percentage for each Pooja ID here.
-// 0 = no discount, 10 = 10%, 15 = 15%, 50 = 50%, etc.
-//
-// Keep these IDs permanent even when the Pooja Name changes.
+/* =========================================================
+   POORJA / OFFER SETTINGS
+   Pooja IDs are permanent. Pooja names can be changed anytime.
+   ========================================================= */
 
 const OFFER_DISCOUNTS = {
     "POOJA_001": 15,
-    "POOJA_002": 15,
+    "POOJA_002": 10,
     "POOJA_003": 0
 };
 
+const BOOKING_STATUS = {
+    "POOJA_001": false,
+    "POOJA_002": true,
+    "POOJA_003": false
+};
+
+let selectedPoojaId = "";
+let offerEmails = new Set();
+
+function normalizePhone(phone) {
+    return String(phone || "").replace(/\D/g, "").slice(-10);
+}
+
+function normalizeEmail(email) {
+    return String(email || "").trim().toLowerCase();
+}
+
+/* Load eligible offer emails from offer-emails.txt.
+   The file must contain one email per line and NO percentages. */
 async function loadOfferEmails() {
     try {
         const response = await fetch("offer-emails.txt", { cache: "no-store" });
-
-        if (!response.ok) {
-            console.warn("offer-emails.txt could not be loaded.");
-            OFFER_EMAILS = [];
-            return;
-        }
+        if (!response.ok) throw new Error("offer-emails.txt could not be loaded");
 
         const text = await response.text();
 
-        OFFER_EMAILS = text
-            .split(/\r?\n/)
-            .map(email => email.trim().toLowerCase())
-            .filter(email => email && !email.startsWith("#"));
+        offerEmails = new Set(
+            text
+                .split(/\r?\n/)
+                .map(normalizeEmail)
+                .filter(email => email && email.includes("@"))
+        );
 
+        console.log(`Loaded ${offerEmails.size} offer emails.`);
     } catch (error) {
-        console.error("Error loading offer-emails.txt:", error);
-        OFFER_EMAILS = [];
+        console.error("Offer email list error:", error);
+        offerEmails = new Set();
     }
 }
 
 function getOfferDiscount(poojaId, email) {
+    const cleanEmail = normalizeEmail(email);
+    const configuredDiscount = Number(OFFER_DISCOUNTS[poojaId] || 0);
 
-    const cleanEmail = email.trim().toLowerCase();
+    if (!configuredDiscount) return 0;
+    if (!offerEmails.has(cleanEmail)) return 0;
 
-    const emailFound = OFFER_EMAILS.includes(cleanEmail);
-
-    if (!emailFound) {
-        return 0;
-    }
-
-    return Math.max(
-        0,
-        Math.min(
-            100,
-            Number(OFFER_DISCOUNTS[poojaId] || 0)
-        )
-    );
+    return configuredDiscount;
 }
 
-
-function normalizePhone(phone){
-
-    return phone.replace(/\D/g,"");
-
+function isBookingOpen(poojaId) {
+    return BOOKING_STATUS[poojaId] === true;
 }
 
-function isReturningDevotee(phone, email) {
-
-    const cleanPhone = normalizePhone(phone);
-    const cleanEmail = email.trim().toLowerCase();
-
-    const phoneFound = RETURNING_PHONES.some(p =>
-        normalizePhone(p) === cleanPhone
-    );
-
-    const emailFound = RETURNING_EMAILS.some(e =>
-        e.trim().toLowerCase() === cleanEmail
-    );
-
-    return phoneFound || emailFound;
+function showBookingClosedMessage(poojaName) {
+    alert(`${poojaName} booking is currently closed.`);
 }
 
-    
-// ================= BOOKING CONTROL =================
-// true  = Booking enabled
-// false = Booking disabled
-// Change only these values when needed.
-const BOOKING_STATUS = {
-    "Masa Shivaratri Rudrabhishekam": false,
-    "Nandi Abhishekam": false
-};
-
-// OPEN POPUP
-function openPoojaPopup(btn, type, poojaName, poojaId){
-
-    // 🚫 CHECK BOOKING STATUS FOR THIS POOJA
-    if(BOOKING_STATUS[poojaName] === false){
-
+function openPoojaPopup(btn, type, poojaName, poojaId) {
+    if (!isBookingOpen(poojaId)) {
         showBookingClosedMessage(poojaName);
-
         return;
     }
 
-    selectedPoojaType = type;
-
-    selectedPoojaName = poojaName;
     selectedPoojaId = poojaId;
+    selectedPooja = poojaName;
+    selectedType = type;
 
-    // AUTO GET PRICE FROM CARD
-    selectedPrice = btn
-        .closest('.service-card')
-        .querySelector('.price')
-        .innerText
-        .replace('₹','')
-        .trim();
-
-    document.getElementById("popupTitle").innerText =
-        poojaName + " - " + type;
-
-    // HIDE OPTIONAL FIELDS
-    document.getElementById("name2").style.display = "none";
-    document.getElementById("name3").style.display = "none";
-    document.getElementById("name4").style.display = "none";
-    document.getElementById("name5").style.display = "none";
-
-    // COUPLE
-    if(type == "Couple"){
-
-        document.getElementById("name2").style.display = "block";
-    }
-
-    // FAMILY
-    if(type == "Family"){
-
-        document.getElementById("name2").style.display = "block";
-        document.getElementById("name3").style.display = "block";
-        document.getElementById("name4").style.display = "block";
-        document.getElementById("name5").style.display = "block";
+    const priceText = btn.innerText.match(/₹\s*[\d,]+/);
+    if (priceText) {
+        selectedPrice = priceText[0].replace(/[₹,\s]/g, "");
     }
 
     document.getElementById("poojaPopup").style.display = "flex";
 }
 
-// CLOSE POPUP
 function closePoojaPopup(){
 
     document.getElementById("poojaPopup").style.display = "none";
@@ -886,23 +822,21 @@ function submitPoojaBooking(){
     // Percentage comes from OFFER_DISCOUNTS in this code.
 
     let originalPrice = parseFloat(selectedPrice);
+    let finalPrice = originalPrice;
 
-    let discountPercent = getOfferDiscount(
-        selectedPoojaId,
-        data.email
-    );
+    const discountPercent = getOfferDiscount(selectedPoojaId, data.email);
 
-    let finalPrice = Math.round(
-        originalPrice * (1 - discountPercent / 100)
-    );
+    if (discountPercent > 0) {
+        finalPrice = Math.round(
+            originalPrice * (1 - discountPercent / 100)
+        );
+    }
 
-    localStorage.setItem("discount_percent", discountPercent);
-    localStorage.setItem("original_price", originalPrice);
-    localStorage.setItem("temp_price", finalPrice);
-    
-    // REDIRECT
+    localStorage.setItem("discount_percent", String(discountPercent));
+    localStorage.setItem("original_price", String(originalPrice));
+    localStorage.setItem("temp_price", String(finalPrice));
+    localStorage.setItem("selected_pooja_id", selectedPoojaId);
 
-   // window.location.href = "bookingclose.html";
     window.location.href = "payment.html";
 }
 
@@ -913,42 +847,36 @@ function showBookingClosedMessage(poojaName){
 }
 
 // 🔒 UPDATE BUTTONS UI BASED ON EACH POOJA'S BOOKING STATUS
-function updateBookingButtons(){
-
-    const buttons = document.querySelectorAll(
-        ".service-card .card-footer .btn"
-    );
-
-    buttons.forEach(btn => {
-
+function updateBookingButtons() {
+    document.querySelectorAll(".pooja-card button, .pooja-card a").forEach(btn => {
         const onclickText = btn.getAttribute("onclick") || "";
-        const match = onclickText.match(/openPoojaPopup\(this,'[^']+','([^']+)','([^']+)'\)/);
 
-        if(!match) return;
+        const match = onclickText.match(
+            /openPoojaPopup\(this,'[^']*','([^']*)','([^']*)'\)/
+        );
+
+        if (!match) return;
 
         const poojaName = match[1];
-        const isEnabled = BOOKING_STATUS[poojaName] !== false;
+        const poojaId = match[2];
 
-        if(isEnabled){
-            btn.innerText = "Book";
-            btn.style.background = "#ff6600";
-            btn.style.cursor = "pointer";
+        if (isBookingOpen(poojaId)) {
+            btn.textContent = btn.dataset.originalText || "Book";
             btn.disabled = false;
-        }else{
-            btn.innerText = "Booking Closed";
-            btn.style.background = "#999";
-            btn.style.cursor = "not-allowed";
-            btn.disabled = false;
+            btn.style.pointerEvents = "auto";
+            btn.style.opacity = "1";
+        } else {
+            btn.dataset.originalText = btn.textContent;
+            btn.textContent = "Booking Closed";
+            btn.disabled = true;
+            btn.style.pointerEvents = "none";
+            btn.style.opacity = "0.6";
         }
     });
 }
 
-// APPLY BOOKING STATUS TO BUTTONS
-updateBookingButtons();
-
-// LOAD OFFER EMAILS FROM EXTERNAL FILE
 loadOfferEmails();
-
+updateBookingButtons();
 </script>
 </body>
 </html>
