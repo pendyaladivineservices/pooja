@@ -566,7 +566,7 @@ let selectedPoojaType = "";
 let selectedPoojaName = "";
 let selectedPoojaId = "";
 let selectedPrice = "";
-let offerEmails = new Set();
+let offerEmails = new Map();
 
 /* =========================================================
    POORJA / OFFER SETTINGS
@@ -595,35 +595,46 @@ function normalizeEmail(email) {
     return String(email || "").trim().toLowerCase();
 }
 
-/* Load eligible offer emails from offer-emails.txt. */
+/* Load booking history from offer-emails.txt.
+   Each email appears once for every previous booking.
+   Example: 5 occurrences = 20% discount. */
 async function loadOfferEmails() {
     try {
         const response = await fetch("offer-emails.txt", { cache: "no-store" });
         if (!response.ok) throw new Error("offer-emails.txt could not be loaded");
 
         const text = await response.text();
-        offerEmails = new Set(
-            text
-                .split(/\r?\n/)
-                .map(normalizeEmail)
-                .filter(email => email && email.includes("@"))
-        );
+        offerEmails = new Map();
 
-        console.log(`Loaded ${offerEmails.size} offer emails.`);
+        text
+            .split(/\r?\n/)
+            .map(normalizeEmail)
+            .filter(email => email && email.includes("@"))
+            .forEach(email => {
+                offerEmails.set(email, (offerEmails.get(email) || 0) + 1);
+            });
+
+        console.log(`Loaded ${offerEmails.size} unique offer emails.`);
     } catch (error) {
         console.error("Offer email list error:", error);
-        offerEmails = new Set();
+        offerEmails = new Map();
     }
 }
 
 function getOfferDiscount(poojaId, email) {
     const cleanEmail = normalizeEmail(email);
-    const configuredDiscount = Number(OFFER_DISCOUNTS[poojaId] || 0);
 
-    if (!configuredDiscount) return 0;
-    if (!offerEmails.has(cleanEmail)) return 0;
+    if (!cleanEmail || !cleanEmail.includes("@")) return 0;
 
-    return configuredDiscount;
+    const bookingCount = offerEmails.get(cleanEmail) || 0;
+
+    if (bookingCount >= 5) return 20;
+    if (bookingCount === 4) return 15;
+    if (bookingCount === 3) return 12;
+    if (bookingCount === 2) return 8;
+    if (bookingCount === 1) return 5;
+
+    return 0;
 }
 
 function isBookingOpen(poojaId) {
