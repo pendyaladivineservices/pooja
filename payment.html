@@ -280,8 +280,8 @@ function paymentDone(){
             poojaType:
             localStorage.getItem("temp_pooja"),
 
-            price:
-            localStorage.getItem("temp_price"),
+            price: 
+            parseFloat(localStorage.getItem("temp_price") || "0"),
 
             gothram:
             localStorage.getItem("temp_gothram"),
