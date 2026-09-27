@@ -4,190 +4,377 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Payment</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Complete Payment</title>
 
 <style>
+
+/* =====================================================
+   PAGE
+===================================================== */
 
 body{
     font-family:Arial,sans-serif;
     background:#fff5e6;
     text-align:center;
     padding:20px;
+    margin:0;
 }
+
+
+/* =====================================================
+   MAIN BOX
+===================================================== */
 
 .box{
     background:white;
-    max-width:420px;
+    max-width:430px;
     margin:auto;
     padding:20px;
-    border-radius:12px;
-    box-shadow:0 0 10px rgba(0,0,0,0.12);
+    border-radius:14px;
+    box-shadow:0 0 12px rgba(0,0,0,0.12);
 }
 
-/* ================= AMOUNT ================= */
+
+/* =====================================================
+   HEADINGS
+===================================================== */
+
+h2{
+    margin-top:5px;
+    margin-bottom:15px;
+    color:#333;
+}
+
+
+/* =====================================================
+   AMOUNT
+===================================================== */
 
 .amount{
     background:#fff3cd;
     border:3px solid #ff6600;
     border-radius:12px;
     padding:15px;
-    margin:15px 0;
+    margin:15px 0 20px;
     color:#cc0000;
     font-size:32px;
     font-weight:bold;
     text-align:center;
 }
 
+.original-price{
+    text-decoration:line-through;
+    color:#888;
+    font-size:22px;
+    margin-bottom:8px;
+}
 
-/* ================= UPI ================= */
+.discount-text{
+    color:green;
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.final-price{
+    color:#cc0000;
+    font-size:34px;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   UPI SECTION
+===================================================== */
 
 .upi-section{
-    margin-top:20px;
+    margin-top:10px;
     padding:18px;
-    background:#faf7ff;
-    border:2px solid #ddd0f2;
+    background:#f7f1ff;
+    border:1px solid #d9c5ef;
     border-radius:12px;
 }
 
 .upi-section h3{
     margin:0 0 8px;
     color:#5f259f;
+    font-size:21px;
 }
 
 .upi-section p{
+    margin:7px 0;
     color:#555;
     font-size:14px;
     line-height:1.5;
 }
 
+.upi-id{
+    margin:12px 0;
+    padding:10px;
+    background:white;
+    border:1px dashed #aaa;
+    border-radius:8px;
+    font-size:14px;
+    color:#333;
+    word-break:break-all;
+}
 
-/* ================= BUTTONS ================= */
 
-.upi-btn{
+/* =====================================================
+   UPI BUTTON
+===================================================== */
+
+#upiPayBtn{
+
     width:100%;
+
     padding:15px;
-    border:none;
-    border-radius:9px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    margin-top:10px;
-}
 
-.phonepe-btn{
     background:#5f259f;
+
     color:white;
-}
 
-.gpay-btn{
-    background:#4285f4;
-    color:white;
-}
+    border:none;
 
-.other-upi-btn{
-    background:#444;
-    color:white;
-}
+    border-radius:9px;
 
-.upi-btn:hover{
-    opacity:0.9;
-}
+    font-size:17px;
 
-
-/* ================= DIVIDER ================= */
-
-.payment-divider{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin:25px 0;
-    color:#777;
-    font-size:13px;
     font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:8px;
 }
 
-.payment-divider::before,
-.payment-divider::after{
+#upiPayBtn:hover{
+    background:#4d1f80;
+}
+
+#upiPayBtn:disabled{
+    background:#aaa;
+    cursor:not-allowed;
+}
+
+
+/* =====================================================
+   UPI NOTE
+===================================================== */
+
+.upi-note{
+
+    margin-top:12px;
+
+    font-size:12px;
+
+    color:#666;
+
+    line-height:1.5;
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.divider{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:22px 0;
+
+    color:#777;
+
+    font-size:14px;
+}
+
+.divider::before,
+.divider::after{
+
     content:"";
+
     flex:1;
+
     height:1px;
+
     background:#ddd;
 }
 
 
-/* ================= BANK ================= */
+/* =====================================================
+   BANK DETAILS
+===================================================== */
 
 .bank-details{
-    margin-top:10px;
-    padding:15px;
+
+    padding:16px;
+
     background:#fff8f0;
+
     border:1px solid #ffcc99;
+
     border-radius:10px;
+
     text-align:left;
 }
 
 .bank-details h3{
+
     text-align:center;
+
     color:#cc0000;
+
     margin-top:0;
+
+    margin-bottom:8px;
 }
 
 .bank-details p{
+
     font-size:14px;
+
     line-height:1.5;
+
+    color:#555;
 }
 
+
+/* =====================================================
+   BANK TABLE
+===================================================== */
+
 .bank-table{
+
     width:100%;
+
     border-collapse:collapse;
-    margin-top:10px;
+
+    margin-top:12px;
 }
 
 .bank-table td{
+
     border:1px solid #ddd;
-    padding:8px;
+
+    padding:9px;
+
     word-break:break-word;
+
+    font-size:14px;
+}
+
+.bank-table td:first-child{
+
+    width:38%;
+
+    background:#fafafa;
 }
 
 
-/* ================= UPLOAD ================= */
+/* =====================================================
+   UPLOAD
+===================================================== */
 
 .upload-box{
+
     margin-top:20px;
+
     text-align:center;
 }
 
 .upload-box p{
+
     font-weight:bold;
+
     margin-bottom:10px;
+
     color:#333;
 }
 
 #paymentSlip{
+
     width:100%;
+
     max-width:300px;
+
     padding:12px;
+
     border:2px dashed #ff6600;
+
     border-radius:10px;
+
     background:#fff;
+
     cursor:pointer;
+
     display:block;
+
     margin:auto;
-    text-align:center;
+
+    box-sizing:border-box;
 }
 
-.bank-pay-btn{
+
+/* =====================================================
+   PAID BUTTON
+===================================================== */
+
+#payBtn{
+
     width:100%;
+
     padding:14px;
+
     background:#ff6600;
+
     color:white;
+
     border:none;
+
     border-radius:8px;
+
     font-size:16px;
+
+    font-weight:bold;
+
     margin-top:15px;
+
     cursor:pointer;
+}
+
+#payBtn:hover{
+
+    background:#e65c00;
+}
+
+#payBtn:disabled{
+
+    background:#aaa;
+
+    cursor:not-allowed;
+}
+
+
+/* =====================================================
+   SMALL NOTE
+===================================================== */
+
+.bottom-note{
+
+    margin-top:15px;
+
+    font-size:12px;
+
+    color:#777;
+
+    line-height:1.5;
 }
 
 </style>
@@ -204,134 +391,163 @@ body{
 <h2>Complete Payment</h2>
 
 
-<!-- ================================================= -->
-<!-- AMOUNT -->
-<!-- ================================================= -->
+<!-- =====================================================
+     AMOUNT
+===================================================== -->
 
-<div class="amount">
+<div class="amount" id="amountBox">
 
     <div style="font-size:16px;color:#333;">
         Amount to Pay
     </div>
 
-    <span id="amount"></span>
+    ₹ <span id="amount"></span>
 
 </div>
 
 
-
-<!-- ================================================= -->
-<!-- UPI PAYMENT -->
-<!-- ================================================= -->
+<!-- =====================================================
+     UPI PAYMENT
+===================================================== -->
 
 <div class="upi-section">
 
     <h3>Pay Online with UPI</h3>
 
     <p>
-        Choose your preferred UPI app.
-        The payment amount will be filled automatically.
+        Tap the button below to open your phone's
+        UPI payment option.
     </p>
 
 
-    <button
-        type="button"
-        class="upi-btn phonepe-btn"
-        onclick="startPhonePe()">
+    <div class="upi-id">
 
-        Pay with PhonePe
+        UPI ID:
+        <strong>9705049693@ybl</strong>
 
-    </button>
+    </div>
 
 
     <button
         type="button"
-        class="upi-btn gpay-btn"
-        onclick="startGooglePay()">
+        id="upiPayBtn"
+        onclick="startUPIPayment()">
 
-        Pay with Google Pay
-
-    </button>
-
-
-    <button
-        type="button"
-        class="upi-btn other-upi-btn"
-        onclick="startOtherUPI()">
-
-        Other UPI Apps
+        Pay ₹<span id="upiAmount"></span> with UPI
 
     </button>
 
+
+    <div class="upi-note">
+
+        If your phone does not open a UPI app automatically,
+        use the Bank Transfer option below.
+
+    </div>
 
 </div>
 
 
+<!-- =====================================================
+     DIVIDER
+===================================================== -->
 
-<!-- ================================================= -->
-<!-- DIVIDER -->
-<!-- ================================================= -->
+<div class="divider">
 
-<div class="payment-divider">
     OR
+
 </div>
 
 
-
-<!-- ================================================= -->
-<!-- BANK TRANSFER -->
-<!-- ================================================= -->
+<!-- =====================================================
+     BANK TRANSFER
+===================================================== -->
 
 <div class="bank-details">
 
-    <h3>Alternative Payment Method</h3>
+    <h3>Bank Transfer</h3>
 
     <p>
-        You can also transfer the amount directly to the
-        bank account below and upload the payment screenshot.
+        You can also transfer the exact amount directly
+        to the bank account below.
     </p>
 
 
     <table class="bank-table">
 
         <tr>
-            <td><strong>Account Name</strong></td>
-            <td>Ravi Kumar Pendyala</td>
+
+            <td>
+                <strong>Account Name</strong>
+            </td>
+
+            <td>
+                Ravi Kumar Pendyala
+            </td>
+
         </tr>
 
-        <tr>
-            <td><strong>Bank</strong></td>
-            <td>Karur Vysya Bank</td>
-        </tr>
 
         <tr>
-            <td><strong>Account Number</strong></td>
-            <td>4894152000000036</td>
+
+            <td>
+                <strong>Bank</strong>
+            </td>
+
+            <td>
+                Karur Vysya Bank
+            </td>
+
         </tr>
 
+
         <tr>
-            <td><strong>IFSC Code</strong></td>
-            <td>KVBL0004894</td>
+
+            <td>
+                <strong>Account Number</strong>
+            </td>
+
+            <td>
+                4894152000000036
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                <strong>IFSC Code</strong>
+            </td>
+
+            <td>
+                KVBL0004894
+            </td>
+
         </tr>
 
     </table>
 
 
-    <p style="color:#cc0000;font-weight:bold;text-align:center;">
-        After bank transfer, upload the payment screenshot below.
+    <p style="color:#cc0000;font-weight:bold;">
+
+        After bank transfer, upload your payment
+        screenshot below.
+
     </p>
 
 </div>
 
 
-
-<!-- ================================================= -->
-<!-- BANK SCREENSHOT -->
-<!-- ================================================= -->
+<!-- =====================================================
+     SCREENSHOT
+===================================================== -->
 
 <div class="upload-box">
 
-    <p>Upload Bank Payment Screenshot</p>
+    <p>
+        Payment Screenshot
+    </p>
 
     <input
         type="file"
@@ -341,14 +557,33 @@ body{
 </div>
 
 
+<p style="font-size:14px;color:#555;">
+
+    After completing payment,
+    click the button below.
+
+</p>
+
+
+<!-- =====================================================
+     FINAL SUBMIT
+===================================================== -->
+
 <button
     id="payBtn"
-    class="bank-pay-btn"
     onclick="paymentDone()">
 
-    Submit Bank Payment
+    I Have Paid
 
 </button>
+
+
+<div class="bottom-note">
+
+    Your booking details will be submitted after
+    you complete the payment.
+
+</div>
 
 
 </div>
@@ -357,86 +592,120 @@ body{
 
 <script>
 
+
 /* =====================================================
    PRICE
 ===================================================== */
 
 let originalPrice =
     parseFloat(
-        localStorage.getItem("original_price") || 0
+        localStorage.getItem("original_price") || "0"
     );
+
 
 let finalPrice =
     parseFloat(
-        localStorage.getItem("temp_price") || 0
+        localStorage.getItem("temp_price") || "0"
     );
+
 
 let discount =
     parseInt(
-        localStorage.getItem("discount_percent") || 0
+        localStorage.getItem("discount_percent") || "0"
     );
 
 
-if(discount > 0){
+/* =====================================================
+   VALIDATE PRICE
+===================================================== */
 
-    document.querySelector(".amount").innerHTML = `
+if(!finalPrice || finalPrice <= 0){
 
-        <div style="font-size:15px;color:#444;">
-            Original Price
-        </div>
-
-        <div style="
-            text-decoration:line-through;
-            color:#888;
-            font-size:22px;
-            margin-bottom:8px;">
-
-            ₹${originalPrice}
-
-        </div>
-
-        <div style="
-            color:green;
-            font-size:18px;
-            margin-bottom:8px;">
-
-            🎉 Returning Devotee Discount (${discount}%)
-
-        </div>
+    document.getElementById("amountBox").innerHTML = `
 
         <div style="
             color:#cc0000;
-            font-size:34px;
-            font-weight:bold;">
+            font-size:18px;
+            font-weight:bold;
+        ">
 
-            ₹${finalPrice}
+            Payment amount unavailable.
+
+        </div>
+
+    `;
+
+    document.getElementById("upiPayBtn").disabled = true;
+
+}
+
+
+/* =====================================================
+   DISPLAY PRICE
+===================================================== */
+
+else if(discount > 0){
+
+    document.getElementById("amountBox").innerHTML = `
+
+        <div style="
+            font-size:15px;
+            color:#444;
+        ">
+
+            Original Price
+
+        </div>
+
+
+        <div class="original-price">
+
+            ₹${originalPrice.toFixed(2)}
+
+        </div>
+
+
+        <div class="discount-text">
+
+            Returning Devotee Discount
+            (${discount}%)
+
+        </div>
+
+
+        <div class="final-price">
+
+            ₹${finalPrice.toFixed(2)}
 
         </div>
 
     `;
 
 }
+
+
 else{
 
     document.getElementById("amount").innerText =
-        "₹" + finalPrice;
+        finalPrice.toFixed(2);
 
 }
 
 
-
 /* =====================================================
-   UPI DETAILS
+   SHOW UPI AMOUNT
 ===================================================== */
 
-const UPI_ID = "9705049693@ybl";
+if(finalPrice > 0){
 
-const UPI_NAME = "Pendyala Divine Services";
+    document.getElementById("upiAmount").innerText =
+        finalPrice.toFixed(2);
 
+}
 
 
 /* =====================================================
-   CREATE UPI URL
+   UPI PAYMENT URL
 ===================================================== */
 
 function createUPIUrl(){
@@ -449,13 +718,22 @@ function createUPIUrl(){
     }
 
 
-    return "upi://pay" +
+    let transactionNote =
+        "Pendyala Divine Services Payment";
+
+
+    let url =
+        "upi://pay" +
 
         "?pa=" +
-        encodeURIComponent(UPI_ID) +
+        encodeURIComponent(
+            "9705049693@ybl"
+        ) +
 
         "&pn=" +
-        encodeURIComponent(UPI_NAME) +
+        encodeURIComponent(
+            "Pendyala Divine Services"
+        ) +
 
         "&am=" +
         encodeURIComponent(
@@ -466,157 +744,109 @@ function createUPIUrl(){
 
         "&tn=" +
         encodeURIComponent(
-            "Pendyala Divine Services Payment"
+            transactionNote
         );
+
+
+    return url;
 }
 
 
-
 /* =====================================================
-   PHONEPE
+   UPI PAYMENT
 ===================================================== */
 
-function startPhonePe(){
+function startUPIPayment(){
 
     let upiUrl =
         createUPIUrl();
 
+
     if(!upiUrl){
+
         return;
     }
+
+
+    let btn =
+        document.getElementById("upiPayBtn");
+
+
+    btn.disabled = true;
+
+    btn.innerText =
+        "Opening UPI...";
 
 
     /*
        IMPORTANT:
 
-       We do NOT use intent:// here.
-       That was causing Safari "invalid address".
+       We intentionally use ONLY the standard UPI
+       payment URI.
 
-       On Android, try normal UPI deep link.
-       On iPhone, use the same standard UPI link
-       instead of sending an Android intent.
+       We do NOT use:
+
+       intent://
+       phonepe://
+       gpay://
+
+       because those are not guaranteed across
+       iPhone/Safari/Chrome/Android browsers.
     */
 
-    openUPILink(
-        upiUrl,
-        "PhonePe"
-    );
 
-}
+    try{
 
+        window.location.href =
+            upiUrl;
 
-
-/* =====================================================
-   GOOGLE PAY
-===================================================== */
-
-function startGooglePay(){
-
-    if(!finalPrice || finalPrice <= 0){
-
-        alert("Invalid payment amount.");
-
-        return;
     }
 
+    catch(error){
 
-    /*
-       Google Pay documented UPI deep-link format.
-    */
-
-    const gpayUrl =
-        "gpay://upi/pay" +
-
-        "?pa=" +
-        encodeURIComponent(UPI_ID) +
-
-        "&pn=" +
-        encodeURIComponent(UPI_NAME) +
-
-        "&am=" +
-        encodeURIComponent(
-            finalPrice.toFixed(2)
-        ) +
-
-        "&cu=INR" +
-
-        "&tn=" +
-        encodeURIComponent(
-            "Pendyala Divine Services Payment"
+        console.error(
+            "UPI launch error:",
+            error
         );
-
-
-    openUPILink(
-        gpayUrl,
-        "Google Pay"
-    );
-
-}
-
-
-
-/* =====================================================
-   OTHER UPI
-===================================================== */
-
-function startOtherUPI(){
-
-    let upiUrl =
-        createUPIUrl();
-
-    if(!upiUrl){
-        return;
-    }
-
-
-    window.location.href =
-        upiUrl;
-
-}
-
-
-
-/* =====================================================
-   OPEN UPI
-===================================================== */
-
-function openUPILink(url, appName){
-
-    const isMobile =
-        /Android|iPhone|iPad|iPod/i.test(
-            navigator.userAgent
-        );
-
-
-    if(!isMobile){
 
         alert(
-            "Please open this payment page on your mobile phone " +
-            "to use UPI payment."
+            "Unable to open UPI app. " +
+            "Please use the Bank Transfer option below."
         );
 
-        return;
+        btn.disabled = false;
+
+        btn.innerText =
+            "Pay ₹" +
+            finalPrice.toFixed(2) +
+            " with UPI";
     }
 
 
     /*
-       Directly attempt the selected payment URL.
+       Re-enable button after a few seconds.
+
+       If the UPI app opened, the browser page normally
+       goes into background. If it did not open, the user
+       can try again or use bank transfer.
     */
 
-    window.location.href = url;
+    setTimeout(function(){
 
+        btn.disabled = false;
 
-    /*
-       We intentionally DO NOT redirect to WhatsApp
-       or another app if it fails.
-    */
+        btn.innerText =
+            "Pay ₹" +
+            finalPrice.toFixed(2) +
+            " with UPI";
+
+    },5000);
 
 }
 
 
-
 /* =====================================================
-   BANK PAYMENT
+   PAYMENT / BOOKING SUBMISSION
 ===================================================== */
 
 function paymentDone(){
@@ -632,55 +862,67 @@ function paymentDone(){
 
 
     let file =
-        document
-        .getElementById("paymentSlip")
-        .files[0];
+        document.getElementById(
+            "paymentSlip"
+        ).files[0];
 
+
+    /*
+       Bank transfer remains the fallback method.
+
+       Screenshot is still required before submitting
+       the booking.
+    */
 
     if(!file){
 
         alert(
-            "Please upload payment screenshot"
+            "Please upload payment screenshot."
         );
 
 
         btn.disabled = false;
 
         btn.innerText =
-            "Submit Bank Payment";
+            "I Have Paid";
+
 
         return;
     }
 
 
-    submitBooking("bank");
-
-}
-
-
-
-/* =====================================================
-   COMMON BOOKING SUBMISSION
-===================================================== */
-
-function submitBooking(paymentMethod){
+    /* =================================================
+       TYPE
+    ================================================= */
 
     let type =
-        localStorage.getItem("temp_type");
+        localStorage.getItem(
+            "temp_type"
+        );
 
 
-    if(!type &&
-       localStorage.getItem("temp_course")){
+    /* =================================================
+       LEARNING FALLBACK
+    ================================================= */
+
+    if(
+        !type &&
+        localStorage.getItem(
+            "temp_course"
+        )
+    ){
 
         type = "learning";
+
     }
 
 
     let payload = {};
 
 
-
-    /* ================= POOJA ================= */
+    /* =================================================
+       POOJA
+    ================================================= */
 
     if(type === "pooja"){
 
@@ -689,7 +931,9 @@ function submitBooking(paymentMethod){
             type:"pooja",
 
             poojaType:
-                localStorage.getItem("temp_pooja"),
+                localStorage.getItem(
+                    "temp_pooja"
+                ),
 
             price:
                 parseFloat(
@@ -741,17 +985,15 @@ function submitBooking(paymentMethod){
             email:
                 localStorage.getItem(
                     "temp_email"
-                ),
-
-            paymentMethod:
-                paymentMethod
+                )
         };
 
     }
 
 
-
-    /* ================= ASTROLOGY ================= */
+    /* =================================================
+       ASTROLOGY
+    ================================================= */
 
     else if(type === "astrology"){
 
@@ -832,17 +1074,15 @@ function submitBooking(paymentMethod){
             email:
                 localStorage.getItem(
                     "temp_email"
-                ),
-
-            paymentMethod:
-                paymentMethod
+                )
         };
 
     }
 
 
-
-    /* ================= MUHURTHAM ================= */
+    /* =================================================
+       MUHURTHAM
+    ================================================= */
 
     else if(
         type === "muhurtha" ||
@@ -901,17 +1141,15 @@ function submitBooking(paymentMethod){
             email:
                 localStorage.getItem(
                     "temp_email"
-                ),
-
-            paymentMethod:
-                paymentMethod
+                )
         };
 
     }
 
 
-
-    /* ================= PRODUCT ================= */
+    /* =================================================
+       PRODUCT
+    ================================================= */
 
     else if(type === "product"){
 
@@ -973,17 +1211,16 @@ function submitBooking(paymentMethod){
                 localStorage.getItem(
                     "temp_file"
                 ) ||
-                "https://pendyaladivine.com/downloads/shivapuranam/sri-shiva-maha-puranamu.pdf",
+                "https://pendyaladivine.com/downloads/shivapuranam/sri-shiva-maha-puranamu.pdf"
 
-            paymentMethod:
-                paymentMethod
         };
 
     }
 
 
-
-    /* ================= LEARNING ================= */
+    /* =================================================
+       LEARNING
+    ================================================= */
 
     else if(type === "learning"){
 
@@ -1029,24 +1266,62 @@ function submitBooking(paymentMethod){
             notes:
                 localStorage.getItem(
                     "temp_notes"
-                ),
-
-            paymentMethod:
-                paymentMethod
+                )
         };
 
     }
 
 
+    /* =================================================
+       INVALID TYPE
+    ================================================= */
+
     else{
 
         alert(
-            "Booking data missing"
+            "Booking data missing."
         );
+
+
+        btn.disabled = false;
+
+        btn.innerText =
+            "I Have Paid";
+
 
         return;
     }
 
+
+    /* =================================================
+       ADD PAYMENT INFORMATION
+    =================================================
+
+       These fields are added without changing your
+       existing booking fields.
+
+       Your Apps Script can ignore them if it does not
+       currently use them.
+    */
+
+    payload.paymentMethod =
+        "UPI / Bank Transfer";
+
+
+    payload.paidAmount =
+        finalPrice;
+
+
+    payload.discountPercent =
+        discount;
+
+
+    payload.originalPrice =
+        originalPrice;
+
+
+    payload.paymentScreenshot =
+        file.name;
 
 
     /* =================================================
@@ -1058,77 +1333,342 @@ function submitBooking(paymentMethod){
         "https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec",
 
         {
+
             method:"POST",
-            body:JSON.stringify(payload)
+
+            body:JSON.stringify(
+                payload
+            )
+
         }
 
     )
 
-    .then(res => res.text())
 
-    .then(text => {
+    .then(
 
-        let response =
-            JSON.parse(text);
+        res =>
+            res.text()
 
-
-        let id =
-            response.bookingId ||
-            response.orderId;
+    )
 
 
-        if(!id){
+    .then(
 
-            alert(
-                "Booking saved but ID missing"
-            );
+        text => {
 
-            return;
+            let response;
+
+
+            try{
+
+                response =
+                    JSON.parse(text);
+
+            }
+
+            catch(error){
+
+                console.error(
+                    "Invalid API response:",
+                    text
+                );
+
+                alert(
+                    "Payment submitted, but the booking response could not be read."
+                );
+
+                btn.disabled = false;
+
+                btn.innerText =
+                    "I Have Paid";
+
+                return;
+            }
+
+
+            let id =
+                response.bookingId ||
+                response.orderId;
+
+
+            if(!id){
+
+                alert(
+                    "Booking saved but ID missing."
+                );
+
+                btn.disabled = false;
+
+                btn.innerText =
+                    "I Have Paid";
+
+                return;
+            }
+
+
+            /* =========================================
+               SUCCESS MESSAGE
+            ========================================= */
+
+            let message = "";
+
+
+            /* =========================================
+               POOJA
+            ========================================= */
+
+            if(type === "pooja"){
+
+                message =
+
+                    "🪔 Jai Shree Ram 🙏\n\n" +
+
+                    "Pooja Booking Confirmed\n" +
+
+                    "Booking ID: " +
+                    id +
+                    "\n\n" +
+
+                    "We will perform your pooja with full devotion.\n" +
+
+                    "You will receive full pooja video with in 2 days after pooja.\n\n" +
+
+                    "Har Har Mahadev 🔱";
+
+            }
+
+
+            /* =========================================
+               ASTROLOGY
+            ========================================= */
+
+            else if(type === "astrology"){
+
+                message =
+
+                    "🔯 Jai Shree Ram 🙏\n\n" +
+
+                    "Astrology Consultation Booked\n" +
+
+                    "Booking ID: " +
+                    id +
+                    "\n\n" +
+
+                    "I/Our astrologer will contact you soon with guidance.\n\n" +
+
+                    "Har Har Mahadev 🔱";
+
+            }
+
+
+            /* =========================================
+               MUHURTHAM
+            ========================================= */
+
+            else if(type === "muhurtham"){
+
+                message =
+
+                    "📅 Jai Shree Ram 🙏\n\n" +
+
+                    "Muhurtham Booking Confirmed\n" +
+
+                    "Booking ID: " +
+                    id +
+                    "\n\n" +
+
+                    "We will help you select the most auspicious timing.\n\n" +
+
+                    "Har Har Mahadev 🔱";
+
+            }
+
+
+            /* =========================================
+               PRODUCT
+            ========================================= */
+
+            else if(type === "product"){
+
+                message =
+
+                    "🛍️ Jai Shree Ram 🙏\n\n" +
+
+                    "Product Order Placed Successfully\n" +
+
+                    "Order ID: " +
+                    id +
+                    "\n\n" +
+
+                    "Your spiritual product will be packed and shipped soon.\n\n" +
+
+                    "Har Har Mahadev 🔱";
+
+            }
+
+
+            /* =========================================
+               LEARNING
+            ========================================= */
+
+            else if(type === "learning"){
+
+                message =
+
+                    "📚 Jai Shree Ram 🙏\n\n" +
+
+                    "Learning Program Enrolled Successfully\n" +
+
+                    "Registration ID: " +
+                    id +
+                    "\n\n" +
+
+                    "Welcome to your spiritual learning journey.\n" +
+
+                    "We will contact you with class details soon.\n\n" +
+
+                    "Har Har Mahadev 🔱";
+
+            }
+
+
+            /* =========================================
+               DEFAULT
+            ========================================= */
+
+            else{
+
+                message =
+
+                    "🙏 Jai Shree Ram\n\n" +
+
+                    "Booking Successful\n" +
+
+                    "ID: " +
+                    id +
+                    "\n\n" +
+
+                    "Thank you for choosing Pendyala Divine Services.";
+
+            }
+
+
+            alert(message);
+
+
+            /* =========================================
+               DIGITAL PRODUCT
+            ========================================= */
+
+            if(type === "product"){
+
+                let isDigital =
+                    localStorage.getItem(
+                        "temp_digital"
+                    );
+
+
+                let file =
+                    localStorage.getItem(
+                        "temp_file"
+                    ) ||
+
+                    "https://pendyaladivine.com/downloads/shivapuranam/sri-shiva-maha-puranamu.pdf";
+
+
+                if(
+                    isDigital === "true" &&
+                    file
+                ){
+
+                    localStorage.setItem(
+                        "download_file",
+                        file
+                    );
+
+
+                    localStorage.setItem(
+
+                        "download_product",
+
+                        localStorage.getItem(
+                            "temp_product"
+                        )
+
+                    );
+
+
+                    setTimeout(
+
+                        () => {
+
+                            window.location.href =
+                                "download.html";
+
+                        },
+
+                        800
+
+                    );
+
+
+                    return;
+                }
+
+            }
+
+
+            /* =========================================
+               CLEAR DATA
+            ========================================= */
+
+            localStorage.clear();
+
+
+            /* =========================================
+               HOME
+            ========================================= */
+
+            window.location.href =
+                "index.html";
+
         }
 
-
-        alert(
-            "Booking Submitted Successfully\n\n" +
-            "Booking ID: " + id
-        );
+    )
 
 
-        localStorage.clear();
+    /* =================================================
+       ERROR
+    ================================================= */
+
+    .catch(
+
+        err => {
+
+            console.error(err);
 
 
-        window.location.href =
-            "index.html";
+            alert(
+                "Error saving booking. Please try again."
+            );
 
-    })
-
-
-    .catch(err => {
-
-        console.error(err);
-
-
-        alert(
-            "Error saving booking"
-        );
-
-
-        let btn =
-            document.getElementById("payBtn");
-
-
-        if(btn){
 
             btn.disabled = false;
 
+
             btn.innerText =
-                "Submit Bank Payment";
+                "I Have Paid";
+
         }
 
-    });
+    );
 
 }
 
+
 </script>
+
 
 </body>
 
