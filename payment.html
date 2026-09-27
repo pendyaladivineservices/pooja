@@ -118,48 +118,58 @@ h2{
 
 
 /* =========================
-   UPI ID
+   UPI ID OPTION
 ========================= */
 
 .upi-id-box{
     background:#f7f1ff;
     border:1px solid #d9c5ef;
+    padding:9px 10px;
+}
+
+.upi-id-box h3{
+    margin:0 0 7px;
+    font-size:16px;
+}
+
+.upi-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    width:100%;
 }
 
 .upi-id{
-    margin:7px auto;
-    padding:8px 10px;
+    padding:7px 9px;
     background:white;
     border:1px dashed #999;
     border-radius:7px;
-    font-size:16px;
+    font-size:15px;
     font-weight:bold;
     color:#333;
-    word-break:break-all;
-    max-width:280px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    flex:1;
+    min-width:0;
 }
 
 .copy-upi-btn{
-    width:auto;
-    min-width:150px;
-    padding:8px 14px;
+    flex:0 0 auto;
+    padding:7px 11px;
     background:#5f259f;
     color:white;
     border:none;
-    border-radius:7px;
-    font-size:14px;
+    border-radius:6px;
+    font-size:12px;
     font-weight:bold;
     cursor:pointer;
+    min-width:55px;
 }
 
 .copy-upi-btn:hover{
     background:#4d1f80;
-}
-
-.small-note{
-    font-size:11px !important;
-    color:#777 !important;
-    margin-top:5px !important;
 }
 
 
@@ -341,33 +351,27 @@ h2{
 
 <div class="payment-option upi-id-box">
 
-    <h3>Option 2: Pay using UPI ID</h3>
+    <h3>
+        Option 2: Pay using UPI ID
+    </h3>
 
-    <p>
-        Pay directly using the UPI ID below.
-    </p>
+    <div class="upi-row">
 
-    <div class="upi-id">
+        <div class="upi-id">
+            pendyaladivine@axl
+        </div>
 
-        pendyaladivine@axl
+        <button
+            type="button"
+            class="copy-upi-btn"
+            id="copyUpiBtn"
+            onclick="copyUPIId()">
+
+            Copy
+
+        </button>
 
     </div>
-
-    <button
-        type="button"
-        class="copy-upi-btn"
-        onclick="copyUPIId()">
-
-        Copy UPI ID
-
-    </button>
-
-    <p class="small-note">
-
-        Copy and paste this UPI ID into your
-        preferred UPI app.
-
-    </p>
 
 </div>
 
@@ -576,12 +580,16 @@ else{
 
 /* =====================================================
    COPY UPI ID
+   NO POPUP
 ===================================================== */
 
 function copyUPIId(){
 
     const upiId =
         "pendyaladivine@axl";
+
+    const button =
+        document.getElementById("copyUpiBtn");
 
 
     if(
@@ -594,20 +602,19 @@ function copyUPIId(){
 
         .then(function(){
 
-            alert(
-                "UPI ID copied successfully:\n\n" +
-                upiId
-            );
+            button.innerText = "Copied";
+
+            setTimeout(function(){
+
+                button.innerText = "Copy";
+
+            },1500);
 
         })
 
         .catch(function(){
 
-            alert(
-                "UPI ID:\n\n" +
-                upiId +
-                "\n\nPlease copy it manually."
-            );
+            fallbackCopyUPI(button, upiId);
 
         });
 
@@ -615,13 +622,53 @@ function copyUPIId(){
 
     else{
 
-        alert(
-            "UPI ID:\n\n" +
-            upiId +
-            "\n\nPlease copy it manually."
-        );
+        fallbackCopyUPI(button, upiId);
 
     }
+
+}
+
+
+/* =====================================================
+   FALLBACK COPY
+===================================================== */
+
+function fallbackCopyUPI(button, upiId){
+
+    const textarea =
+        document.createElement("textarea");
+
+    textarea.value = upiId;
+
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+
+    document.body.appendChild(textarea);
+
+    textarea.focus();
+    textarea.select();
+
+    try{
+
+        document.execCommand("copy");
+
+        button.innerText = "Copied";
+
+        setTimeout(function(){
+
+            button.innerText = "Copy";
+
+        },1500);
+
+    }
+
+    catch(error){
+
+        button.innerText = "Copy";
+
+    }
+
+    document.body.removeChild(textarea);
 
 }
 
