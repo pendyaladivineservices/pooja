@@ -41,19 +41,19 @@ body{
 }
 
 
-/* ================= UPI SECTION ================= */
+/* ================= UPI ================= */
 
 .upi-section{
     margin-top:20px;
     padding:18px;
     background:#faf7ff;
-    border:2px solid #e0d5ef;
+    border:2px solid #ddd0f2;
     border-radius:12px;
 }
 
 .upi-section h3{
-    margin:0 0 8px 0;
-    color:#4b227d;
+    margin:0 0 8px;
+    color:#5f259f;
 }
 
 .upi-section p{
@@ -63,7 +63,7 @@ body{
 }
 
 
-/* ================= UPI BUTTONS ================= */
+/* ================= BUTTONS ================= */
 
 .upi-btn{
     width:100%;
@@ -81,17 +81,9 @@ body{
     color:white;
 }
 
-.phonepe-btn:hover{
-    background:#4c1d82;
-}
-
 .gpay-btn{
-    background:#1a73e8;
+    background:#4285f4;
     color:white;
-}
-
-.gpay-btn:hover{
-    background:#1557b0;
 }
 
 .other-upi-btn{
@@ -99,17 +91,8 @@ body{
     color:white;
 }
 
-.other-upi-btn:hover{
-    background:#333;
-}
-
-
-/* ================= NOTE ================= */
-
-.upi-note{
-    font-size:12px !important;
-    color:#777 !important;
-    margin-top:12px;
+.upi-btn:hover{
+    opacity:0.9;
 }
 
 
@@ -207,10 +190,6 @@ body{
     cursor:pointer;
 }
 
-.bank-pay-btn:hover{
-    background:#e65c00;
-}
-
 </style>
 
 </head>
@@ -250,49 +229,40 @@ body{
     <h3>Pay Online with UPI</h3>
 
     <p>
-        Choose your preferred UPI app to complete the payment.
+        Choose your preferred UPI app.
+        The payment amount will be filled automatically.
     </p>
 
-
-    <!-- PHONEPE -->
 
     <button
         type="button"
         class="upi-btn phonepe-btn"
-        onclick="payWithPhonePe()">
+        onclick="startPhonePe()">
 
         Pay with PhonePe
 
     </button>
 
 
-    <!-- GOOGLE PAY -->
-
     <button
         type="button"
         class="upi-btn gpay-btn"
-        onclick="payWithGooglePay()">
+        onclick="startGooglePay()">
 
         Pay with Google Pay
 
     </button>
 
 
-    <!-- OTHER UPI -->
-
     <button
         type="button"
         class="upi-btn other-upi-btn"
-        onclick="payWithOtherUPI()">
+        onclick="startOtherUPI()">
 
         Other UPI Apps
 
     </button>
 
-
-    <p class="upi-note">
-        The payment amount will be automatically filled.
-    </p>
 
 </div>
 
@@ -303,9 +273,7 @@ body{
 <!-- ================================================= -->
 
 <div class="payment-divider">
-
     OR
-
 </div>
 
 
@@ -319,8 +287,8 @@ body{
     <h3>Alternative Payment Method</h3>
 
     <p>
-        You can also transfer the amount directly to the bank
-        account below and upload the payment screenshot.
+        You can also transfer the amount directly to the
+        bank account below and upload the payment screenshot.
     </p>
 
 
@@ -350,9 +318,7 @@ body{
 
 
     <p style="color:#cc0000;font-weight:bold;text-align:center;">
-
         After bank transfer, upload the payment screenshot below.
-
     </p>
 
 </div>
@@ -391,7 +357,6 @@ body{
 
 <script>
 
-
 /* =====================================================
    PRICE
 ===================================================== */
@@ -401,12 +366,10 @@ let originalPrice =
         localStorage.getItem("original_price") || 0
     );
 
-
 let finalPrice =
     parseFloat(
         localStorage.getItem("temp_price") || 0
     );
-
 
 let discount =
     parseInt(
@@ -463,84 +426,36 @@ else{
 
 
 /* =====================================================
-   CREATE UPI PARAMETERS
+   UPI DETAILS
 ===================================================== */
 
-function createUPIParams(){
+const UPI_ID = "9705049693@ybl";
 
-    return {
-
-        pa: "9705049693@ybl",
-
-        pn: "Pendyala Divine Services",
-
-        am: finalPrice.toFixed(2),
-
-        cu: "INR",
-
-        tn: "Pendyala Divine Services Payment"
-
-    };
-
-}
+const UPI_NAME = "Pendyala Divine Services";
 
 
 
 /* =====================================================
-   GENERATE GENERIC UPI URL
+   CREATE UPI URL
 ===================================================== */
 
-function createGenericUPI(){
+function createUPIUrl(){
 
-    let p = createUPIParams();
-
-    return "upi://pay" +
-
-        "?pa=" + encodeURIComponent(p.pa) +
-
-        "&pn=" + encodeURIComponent(p.pn) +
-
-        "&am=" + encodeURIComponent(p.am) +
-
-        "&cu=" + encodeURIComponent(p.cu) +
-
-        "&tn=" + encodeURIComponent(p.tn);
-
-}
-
-
-
-/* =====================================================
-   PHONEPE
-===================================================== */
-
-function payWithPhonePe(){
-
-    if(finalPrice <= 0){
+    if(!finalPrice || finalPrice <= 0){
 
         alert("Invalid payment amount.");
 
-        return;
+        return null;
     }
 
 
-    /*
-       Android PhonePe package-specific intent.
+    return "upi://pay" +
 
-       This prevents the normal UPI chooser from
-       selecting WhatsApp or another random handler.
-    */
-
-    let phonePeIntent =
-
-        "intent://pay" +
-
-        "?pa=" + encodeURIComponent("9705049693@ybl") +
+        "?pa=" +
+        encodeURIComponent(UPI_ID) +
 
         "&pn=" +
-        encodeURIComponent(
-            "Pendyala Divine Services"
-        ) +
+        encodeURIComponent(UPI_NAME) +
 
         "&am=" +
         encodeURIComponent(
@@ -552,19 +467,38 @@ function payWithPhonePe(){
         "&tn=" +
         encodeURIComponent(
             "Pendyala Divine Services Payment"
-        ) +
-
-        "#Intent;" +
-
-        "scheme=upi;" +
-
-        "package=com.phonepe.app;" +
-
-        "end";
+        );
+}
 
 
-    openSelectedUPI(
-        phonePeIntent,
+
+/* =====================================================
+   PHONEPE
+===================================================== */
+
+function startPhonePe(){
+
+    let upiUrl =
+        createUPIUrl();
+
+    if(!upiUrl){
+        return;
+    }
+
+
+    /*
+       IMPORTANT:
+
+       We do NOT use intent:// here.
+       That was causing Safari "invalid address".
+
+       On Android, try normal UPI deep link.
+       On iPhone, use the same standard UPI link
+       instead of sending an Android intent.
+    */
+
+    openUPILink(
+        upiUrl,
         "PhonePe"
     );
 
@@ -576,9 +510,9 @@ function payWithPhonePe(){
    GOOGLE PAY
 ===================================================== */
 
-function payWithGooglePay(){
+function startGooglePay(){
 
-    if(finalPrice <= 0){
+    if(!finalPrice || finalPrice <= 0){
 
         alert("Invalid payment amount.");
 
@@ -587,23 +521,17 @@ function payWithGooglePay(){
 
 
     /*
-       Google Pay's documented iOS/web-style
-       deep-link format.
+       Google Pay documented UPI deep-link format.
     */
 
-    let gpayURL =
-
+    const gpayUrl =
         "gpay://upi/pay" +
 
         "?pa=" +
-        encodeURIComponent(
-            "9705049693@ybl"
-        ) +
+        encodeURIComponent(UPI_ID) +
 
         "&pn=" +
-        encodeURIComponent(
-            "Pendyala Divine Services"
-        ) +
+        encodeURIComponent(UPI_NAME) +
 
         "&am=" +
         encodeURIComponent(
@@ -618,8 +546,8 @@ function payWithGooglePay(){
         );
 
 
-    openSelectedUPI(
-        gpayURL,
+    openUPILink(
+        gpayUrl,
         "Google Pay"
     );
 
@@ -631,34 +559,30 @@ function payWithGooglePay(){
    OTHER UPI
 ===================================================== */
 
-function payWithOtherUPI(){
+function startOtherUPI(){
 
-    if(finalPrice <= 0){
+    let upiUrl =
+        createUPIUrl();
 
-        alert("Invalid payment amount.");
-
+    if(!upiUrl){
         return;
     }
 
 
-    /*
-       Generic UPI link.
-    */
-
     window.location.href =
-        createGenericUPI();
+        upiUrl;
 
 }
 
 
 
 /* =====================================================
-   OPEN SELECTED APP
+   OPEN UPI
 ===================================================== */
 
-function openSelectedUPI(url, appName){
+function openUPILink(url, appName){
 
-    let isMobile =
+    const isMobile =
         /Android|iPhone|iPad|iPod/i.test(
             navigator.userAgent
         );
@@ -668,7 +592,7 @@ function openSelectedUPI(url, appName){
 
         alert(
             "Please open this payment page on your mobile phone " +
-            "to use " + appName + "."
+            "to use UPI payment."
         );
 
         return;
@@ -676,33 +600,16 @@ function openSelectedUPI(url, appName){
 
 
     /*
-       Try selected application only.
+       Directly attempt the selected payment URL.
     */
 
     window.location.href = url;
 
 
     /*
-       Do NOT automatically fall back to generic
-       UPI here.
-
-       This is important because generic UPI
-       may open WhatsApp or another handler.
-
-       Instead show a message if app does not open.
+       We intentionally DO NOT redirect to WhatsApp
+       or another app if it fails.
     */
-
-    setTimeout(function(){
-
-        alert(
-            appName +
-            " could not be opened automatically. " +
-            "Please make sure the " +
-            appName +
-            " app is installed and try again."
-        );
-
-    },2500);
 
 }
 
@@ -746,7 +653,7 @@ function paymentDone(){
     }
 
 
-    submitBooking("bank", null);
+    submitBooking("bank");
 
 }
 
@@ -756,7 +663,7 @@ function paymentDone(){
    COMMON BOOKING SUBMISSION
 ===================================================== */
 
-function submitBooking(paymentMethod, upiUrl){
+function submitBooking(paymentMethod){
 
     let type =
         localStorage.getItem("temp_type");
@@ -766,7 +673,6 @@ function submitBooking(paymentMethod, upiUrl){
        localStorage.getItem("temp_course")){
 
         type = "learning";
-
     }
 
 
@@ -774,9 +680,7 @@ function submitBooking(paymentMethod, upiUrl){
 
 
 
-    /* =================================================
-       POOJA
-    ================================================= */
+    /* ================= POOJA ================= */
 
     if(type === "pooja"){
 
@@ -785,9 +689,7 @@ function submitBooking(paymentMethod, upiUrl){
             type:"pooja",
 
             poojaType:
-                localStorage.getItem(
-                    "temp_pooja"
-                ),
+                localStorage.getItem("temp_pooja"),
 
             price:
                 parseFloat(
@@ -843,16 +745,13 @@ function submitBooking(paymentMethod, upiUrl){
 
             paymentMethod:
                 paymentMethod
-
         };
 
     }
 
 
 
-    /* =================================================
-       ASTROLOGY
-    ================================================= */
+    /* ================= ASTROLOGY ================= */
 
     else if(type === "astrology"){
 
@@ -937,16 +836,13 @@ function submitBooking(paymentMethod, upiUrl){
 
             paymentMethod:
                 paymentMethod
-
         };
 
     }
 
 
 
-    /* =================================================
-       MUHURTHAM
-    ================================================= */
+    /* ================= MUHURTHAM ================= */
 
     else if(
         type === "muhurtha" ||
@@ -1009,16 +905,13 @@ function submitBooking(paymentMethod, upiUrl){
 
             paymentMethod:
                 paymentMethod
-
         };
 
     }
 
 
 
-    /* =================================================
-       PRODUCT
-    ================================================= */
+    /* ================= PRODUCT ================= */
 
     else if(type === "product"){
 
@@ -1084,16 +977,13 @@ function submitBooking(paymentMethod, upiUrl){
 
             paymentMethod:
                 paymentMethod
-
         };
 
     }
 
 
 
-    /* =================================================
-       LEARNING
-    ================================================= */
+    /* ================= LEARNING ================= */
 
     else if(type === "learning"){
 
@@ -1143,7 +1033,6 @@ function submitBooking(paymentMethod, upiUrl){
 
             paymentMethod:
                 paymentMethod
-
         };
 
     }
@@ -1169,19 +1058,13 @@ function submitBooking(paymentMethod, upiUrl){
         "https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec",
 
         {
-
             method:"POST",
-
-            body:
-                JSON.stringify(payload)
-
+            body:JSON.stringify(payload)
         }
 
     )
 
-
     .then(res => res.text())
-
 
     .then(text => {
 
@@ -1204,173 +1087,10 @@ function submitBooking(paymentMethod, upiUrl){
         }
 
 
-        /*
-           IMPORTANT:
-
-           For PhonePe / GPay we open the app
-           only AFTER the booking is saved.
-        */
-
-        if(
-            paymentMethod === "phonepe" ||
-            paymentMethod === "gpay"
-        ){
-
-            localStorage.setItem(
-                "last_booking_id",
-                id
-            );
-
-
-            setTimeout(function(){
-
-                if(upiUrl){
-
-                    window.location.href =
-                        upiUrl;
-
-                }
-
-            },500);
-
-
-            return;
-        }
-
-
-
-        /* =================================================
-           BANK SUCCESS MESSAGE
-        ================================================= */
-
-        let message = "";
-
-
-        if(type === "pooja"){
-
-            message =
-                "🪔 Jai Shree Ram 🙏\n\n" +
-                "Pooja Booking Submitted\n" +
-                "Booking ID: " + id + "\n\n" +
-                "We will process your booking.\n\n" +
-                "Har Har Mahadev 🔱";
-
-        }
-
-
-        else if(type === "astrology"){
-
-            message =
-                "🔯 Jai Shree Ram 🙏\n\n" +
-                "Astrology Consultation Submitted\n" +
-                "Booking ID: " + id + "\n\n" +
-                "We will contact you soon.\n\n" +
-                "Har Har Mahadev 🔱";
-
-        }
-
-
-        else if(type === "muhurtham"){
-
-            message =
-                "📅 Jai Shree Ram 🙏\n\n" +
-                "Muhurtham Booking Submitted\n" +
-                "Booking ID: " + id + "\n\n" +
-                "We will contact you soon.\n\n" +
-                "Har Har Mahadev 🔱";
-
-        }
-
-
-        else if(type === "product"){
-
-            message =
-                "🛍️ Jai Shree Ram 🙏\n\n" +
-                "Product Order Submitted Successfully\n" +
-                "Order ID: " + id + "\n\n" +
-                "Your order will be processed soon.\n\n" +
-                "Har Har Mahadev 🔱";
-
-        }
-
-
-        else if(type === "learning"){
-
-            message =
-                "📚 Jai Shree Ram 🙏\n\n" +
-                "Learning Program Submitted Successfully\n" +
-                "Registration ID: " + id + "\n\n" +
-                "We will contact you with class details soon.\n\n" +
-                "Har Har Mahadev 🔱";
-
-        }
-
-
-        else{
-
-            message =
-                "🙏 Jai Shree Ram\n\n" +
-                "Booking Successful\n" +
-                "ID: " + id + "\n\n" +
-                "Thank you for choosing Pendyala Divine Services.";
-
-        }
-
-
-        alert(message);
-
-
-
-        /* =================================================
-           DIGITAL PRODUCT
-        ================================================= */
-
-        if(type === "product"){
-
-            let isDigital =
-                localStorage.getItem(
-                    "temp_digital"
-                );
-
-
-            let file =
-                localStorage.getItem(
-                    "temp_file"
-                ) ||
-                "https://pendyaladivine.com/downloads/shivapuranam/sri-shiva-maha-puranamu.pdf";
-
-
-            if(
-                isDigital === "true" &&
-                file
-            ){
-
-                localStorage.setItem(
-                    "download_file",
-                    file
-                );
-
-
-                localStorage.setItem(
-                    "download_product",
-                    localStorage.getItem(
-                        "temp_product"
-                    )
-                );
-
-
-                setTimeout(function(){
-
-                    window.location.href =
-                        "download.html";
-
-                },800);
-
-
-                return;
-            }
-
-        }
+        alert(
+            "Booking Submitted Successfully\n\n" +
+            "Booking ID: " + id
+        );
 
 
         localStorage.clear();
@@ -1392,22 +1112,8 @@ function submitBooking(paymentMethod, upiUrl){
         );
 
 
-        if(
-            paymentMethod === "phonepe"
-        ){
-
-            alert(
-                "Booking could not be saved. " +
-                "Payment was not started."
-            );
-
-        }
-
-
         let btn =
-            document.getElementById(
-                "payBtn"
-            );
+            document.getElementById("payBtn");
 
 
         if(btn){
@@ -1416,7 +1122,6 @@ function submitBooking(paymentMethod, upiUrl){
 
             btn.innerText =
                 "Submit Bank Payment";
-
         }
 
     });
