@@ -8,13 +8,9 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>Complete Payment</title>
+<title>Payment</title>
 
 <style>
-
-/* =====================================================
-   PAGE
-===================================================== */
 
 body{
     font-family:Arial,sans-serif;
@@ -24,42 +20,26 @@ body{
     margin:0;
 }
 
-
-/* =====================================================
-   MAIN BOX
-===================================================== */
-
 .box{
     background:white;
-    max-width:430px;
+    max-width:420px;
     margin:auto;
     padding:20px;
-    border-radius:14px;
-    box-shadow:0 0 12px rgba(0,0,0,0.12);
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.12);
 }
-
-
-/* =====================================================
-   HEADINGS
-===================================================== */
 
 h2{
     margin-top:5px;
-    margin-bottom:15px;
     color:#333;
 }
-
-
-/* =====================================================
-   AMOUNT
-===================================================== */
 
 .amount{
     background:#fff3cd;
     border:3px solid #ff6600;
     border-radius:12px;
     padding:15px;
-    margin:15px 0 20px;
+    margin:15px 0;
     color:#cc0000;
     font-size:32px;
     font-weight:bold;
@@ -75,7 +55,7 @@ h2{
 
 .discount-text{
     color:green;
-    font-size:17px;
+    font-size:18px;
     margin-bottom:8px;
 }
 
@@ -85,296 +65,144 @@ h2{
     font-weight:bold;
 }
 
-
-/* =====================================================
-   UPI SECTION
-===================================================== */
-
-.upi-section{
-    margin-top:10px;
-    padding:18px;
-    background:#f7f1ff;
-    border:1px solid #d9c5ef;
-    border-radius:12px;
+.payment-option{
+    margin-top:18px;
+    padding:15px;
+    background:#fafafa;
+    border:1px solid #ddd;
+    border-radius:10px;
 }
 
-.upi-section h3{
-    margin:0 0 8px;
-    color:#5f259f;
-    font-size:21px;
+.payment-option h3{
+    margin-top:0;
+    color:#333;
 }
 
-.upi-section p{
-    margin:7px 0;
-    color:#555;
+.payment-option p{
     font-size:14px;
     line-height:1.5;
+    color:#555;
+}
+
+.upi-qr{
+    width:250px;
+    max-width:100%;
+    border-radius:10px;
+}
+
+.upi-id-box{
+    background:#f7f1ff;
+    border:1px solid #d9c5ef;
 }
 
 .upi-id{
     margin:12px 0;
-    padding:10px;
+    padding:12px;
     background:white;
-    border:1px dashed #aaa;
+    border:1px dashed #999;
     border-radius:8px;
-    font-size:14px;
+    font-size:18px;
+    font-weight:bold;
     color:#333;
     word-break:break-all;
 }
 
-
-/* =====================================================
-   UPI BUTTON
-===================================================== */
-
-#upiPayBtn{
-
+.copy-upi-btn{
     width:100%;
-
-    padding:15px;
-
+    padding:12px;
     background:#5f259f;
-
     color:white;
-
     border:none;
-
-    border-radius:9px;
-
-    font-size:17px;
-
+    border-radius:8px;
+    font-size:15px;
     font-weight:bold;
-
     cursor:pointer;
-
-    margin-top:8px;
 }
 
-#upiPayBtn:hover{
+.copy-upi-btn:hover{
     background:#4d1f80;
 }
 
-#upiPayBtn:disabled{
-    background:#aaa;
-    cursor:not-allowed;
+.small-note{
+    font-size:12px !important;
+    color:#777 !important;
 }
-
-
-/* =====================================================
-   UPI NOTE
-===================================================== */
-
-.upi-note{
-
-    margin-top:12px;
-
-    font-size:12px;
-
-    color:#666;
-
-    line-height:1.5;
-}
-
-
-/* =====================================================
-   DIVIDER
-===================================================== */
-
-.divider{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin:22px 0;
-
-    color:#777;
-
-    font-size:14px;
-}
-
-.divider::before,
-.divider::after{
-
-    content:"";
-
-    flex:1;
-
-    height:1px;
-
-    background:#ddd;
-}
-
-
-/* =====================================================
-   BANK DETAILS
-===================================================== */
 
 .bank-details{
-
-    padding:16px;
-
+    margin-top:18px;
+    padding:15px;
     background:#fff8f0;
-
     border:1px solid #ffcc99;
-
     border-radius:10px;
-
     text-align:left;
 }
 
 .bank-details h3{
-
     text-align:center;
-
     color:#cc0000;
-
     margin-top:0;
-
-    margin-bottom:8px;
 }
-
-.bank-details p{
-
-    font-size:14px;
-
-    line-height:1.5;
-
-    color:#555;
-}
-
-
-/* =====================================================
-   BANK TABLE
-===================================================== */
 
 .bank-table{
-
     width:100%;
-
     border-collapse:collapse;
-
-    margin-top:12px;
+    margin-top:10px;
 }
 
 .bank-table td{
-
     border:1px solid #ddd;
-
-    padding:9px;
-
+    padding:8px;
     word-break:break-word;
-
-    font-size:14px;
 }
-
-.bank-table td:first-child{
-
-    width:38%;
-
-    background:#fafafa;
-}
-
-
-/* =====================================================
-   UPLOAD
-===================================================== */
 
 .upload-box{
-
     margin-top:20px;
-
     text-align:center;
 }
 
 .upload-box p{
-
     font-weight:bold;
-
     margin-bottom:10px;
-
     color:#333;
 }
 
 #paymentSlip{
-
     width:100%;
-
     max-width:300px;
-
     padding:12px;
-
     border:2px dashed #ff6600;
-
     border-radius:10px;
-
     background:#fff;
-
     cursor:pointer;
-
     display:block;
-
     margin:auto;
-
     box-sizing:border-box;
 }
 
-
-/* =====================================================
-   PAID BUTTON
-===================================================== */
-
 #payBtn{
-
     width:100%;
-
     padding:14px;
-
     background:#ff6600;
-
     color:white;
-
     border:none;
-
     border-radius:8px;
-
     font-size:16px;
-
-    font-weight:bold;
-
     margin-top:15px;
-
     cursor:pointer;
 }
 
 #payBtn:hover{
-
     background:#e65c00;
 }
 
 #payBtn:disabled{
-
     background:#aaa;
-
-    cursor:not-allowed;
 }
 
-
-/* =====================================================
-   SMALL NOTE
-===================================================== */
-
-.bottom-note{
-
-    margin-top:15px;
-
-    font-size:12px;
-
+.divider{
+    margin:22px 0;
+    font-weight:bold;
     color:#777;
-
-    line-height:1.5;
 }
 
 </style>
@@ -391,9 +219,7 @@ h2{
 <h2>Complete Payment</h2>
 
 
-<!-- =====================================================
-     AMOUNT
-===================================================== -->
+<!-- ================= AMOUNT ================= -->
 
 <div class="amount" id="amountBox">
 
@@ -407,50 +233,63 @@ h2{
 
 
 <!-- =====================================================
-     UPI PAYMENT
+     OPTION 1 - QR CODE
 ===================================================== -->
 
-<div class="upi-section">
+<div class="payment-option">
 
-    <h3>Pay Online with UPI</h3>
+    <h3>Option 1: Scan QR Code</h3>
 
     <p>
-        Tap the button below to open your phone's
-        UPI payment option.
+        Scan the QR code using any UPI app
+        and complete the payment.
     </p>
 
-
-    <div class="upi-id">
-
-        UPI ID:
-        <strong>9705049693@ybl</strong>
-
-    </div>
-
-
-    <button
-        type="button"
-        id="upiPayBtn"
-        onclick="startUPIPayment()">
-
-        Pay ₹<span id="upiAmount"></span> with UPI
-
-    </button>
-
-
-    <div class="upi-note">
-
-        If your phone does not open a UPI app automatically,
-        use the Bank Transfer option below.
-
-    </div>
+    <img
+        src="upi-qr-2.jpeg"
+        class="upi-qr"
+        alt="UPI QR Code">
 
 </div>
 
 
 <!-- =====================================================
-     DIVIDER
+     OPTION 2 - UPI ID
 ===================================================== -->
+
+<div class="payment-option upi-id-box">
+
+    <h3>Option 2: Pay using UPI ID</h3>
+
+    <p>
+        You can also pay directly using the
+        UPI ID below.
+    </p>
+
+    <div class="upi-id">
+
+        pendyaladivine@axl
+
+    </div>
+
+    <button
+        type="button"
+        class="copy-upi-btn"
+        onclick="copyUPIId()">
+
+        Copy UPI ID
+
+    </button>
+
+    <p class="small-note">
+
+        Copy the UPI ID and paste it into
+        your preferred UPI app.
+
+    </p>
+
+</div>
+
 
 <div class="divider">
 
@@ -460,16 +299,16 @@ h2{
 
 
 <!-- =====================================================
-     BANK TRANSFER
+     OPTION 3 - BANK TRANSFER
 ===================================================== -->
 
 <div class="bank-details">
 
-    <h3>Bank Transfer</h3>
+    <h3>Option 3: Bank Transfer</h3>
 
     <p>
-        You can also transfer the exact amount directly
-        to the bank account below.
+        If you prefer bank transfer, please transfer
+        the exact amount to the account below.
     </p>
 
 
@@ -531,8 +370,8 @@ h2{
 
     <p style="color:#cc0000;font-weight:bold;">
 
-        After bank transfer, upload your payment
-        screenshot below.
+        After payment, please upload the
+        payment screenshot below.
 
     </p>
 
@@ -546,7 +385,7 @@ h2{
 <div class="upload-box">
 
     <p>
-        Payment Screenshot
+        Upload Payment Screenshot
     </p>
 
     <input
@@ -557,17 +396,12 @@ h2{
 </div>
 
 
-<p style="font-size:14px;color:#555;">
+<p>
 
-    After completing payment,
-    click the button below.
+    After payment click below button.
 
 </p>
 
-
-<!-- =====================================================
-     FINAL SUBMIT
-===================================================== -->
 
 <button
     id="payBtn"
@@ -578,14 +412,6 @@ h2{
 </button>
 
 
-<div class="bottom-note">
-
-    Your booking details will be submitted after
-    you complete the payment.
-
-</div>
-
-
 </div>
 
 
@@ -594,7 +420,7 @@ h2{
 
 
 /* =====================================================
-   PRICE
+   SHOW PRICE
 ===================================================== */
 
 let originalPrice =
@@ -616,35 +442,10 @@ let discount =
 
 
 /* =====================================================
-   VALIDATE PRICE
-===================================================== */
-
-if(!finalPrice || finalPrice <= 0){
-
-    document.getElementById("amountBox").innerHTML = `
-
-        <div style="
-            color:#cc0000;
-            font-size:18px;
-            font-weight:bold;
-        ">
-
-            Payment amount unavailable.
-
-        </div>
-
-    `;
-
-    document.getElementById("upiPayBtn").disabled = true;
-
-}
-
-
-/* =====================================================
    DISPLAY PRICE
 ===================================================== */
 
-else if(discount > 0){
+if(discount > 0){
 
     document.getElementById("amountBox").innerHTML = `
 
@@ -660,7 +461,7 @@ else if(discount > 0){
 
         <div class="original-price">
 
-            ₹${originalPrice.toFixed(2)}
+            ₹${originalPrice}
 
         </div>
 
@@ -675,7 +476,7 @@ else if(discount > 0){
 
         <div class="final-price">
 
-            ₹${finalPrice.toFixed(2)}
+            ₹${finalPrice}
 
         </div>
 
@@ -683,170 +484,66 @@ else if(discount > 0){
 
 }
 
-
 else{
 
     document.getElementById("amount").innerText =
-        finalPrice.toFixed(2);
+        finalPrice;
 
 }
 
 
 /* =====================================================
-   SHOW UPI AMOUNT
+   COPY UPI ID
 ===================================================== */
 
-if(finalPrice > 0){
+function copyUPIId(){
 
-    document.getElementById("upiAmount").innerText =
-        finalPrice.toFixed(2);
-
-}
+    const upiId =
+        "pendyaladivine@axl";
 
 
-/* =====================================================
-   UPI PAYMENT URL
-===================================================== */
+    if(
+        navigator.clipboard &&
+        window.isSecureContext
+    ){
 
-function createUPIUrl(){
+        navigator.clipboard
+        .writeText(upiId)
+        .then(function(){
 
-    if(!finalPrice || finalPrice <= 0){
+            alert(
+                "UPI ID copied successfully:\n\n" +
+                upiId
+            );
 
-        alert("Invalid payment amount.");
+        })
+        .catch(function(){
 
-        return null;
-    }
+            alert(
+                "UPI ID:\n\n" +
+                upiId +
+                "\n\nPlease copy it manually."
+            );
 
-
-    let transactionNote =
-        "Pendyala Divine Services Payment";
-
-
-    let url =
-        "upi://pay" +
-
-        "?pa=" +
-        encodeURIComponent(
-            "9705049693@ybl"
-        ) +
-
-        "&pn=" +
-        encodeURIComponent(
-            "Pendyala Divine Services"
-        ) +
-
-        "&am=" +
-        encodeURIComponent(
-            finalPrice.toFixed(2)
-        ) +
-
-        "&cu=INR" +
-
-        "&tn=" +
-        encodeURIComponent(
-            transactionNote
-        );
-
-
-    return url;
-}
-
-
-/* =====================================================
-   UPI PAYMENT
-===================================================== */
-
-function startUPIPayment(){
-
-    let upiUrl =
-        createUPIUrl();
-
-
-    if(!upiUrl){
-
-        return;
-    }
-
-
-    let btn =
-        document.getElementById("upiPayBtn");
-
-
-    btn.disabled = true;
-
-    btn.innerText =
-        "Opening UPI...";
-
-
-    /*
-       IMPORTANT:
-
-       We intentionally use ONLY the standard UPI
-       payment URI.
-
-       We do NOT use:
-
-       intent://
-       phonepe://
-       gpay://
-
-       because those are not guaranteed across
-       iPhone/Safari/Chrome/Android browsers.
-    */
-
-
-    try{
-
-        window.location.href =
-            upiUrl;
+        });
 
     }
 
-    catch(error){
-
-        console.error(
-            "UPI launch error:",
-            error
-        );
+    else{
 
         alert(
-            "Unable to open UPI app. " +
-            "Please use the Bank Transfer option below."
+            "UPI ID:\n\n" +
+            upiId +
+            "\n\nPlease copy it manually."
         );
 
-        btn.disabled = false;
-
-        btn.innerText =
-            "Pay ₹" +
-            finalPrice.toFixed(2) +
-            " with UPI";
     }
-
-
-    /*
-       Re-enable button after a few seconds.
-
-       If the UPI app opened, the browser page normally
-       goes into background. If it did not open, the user
-       can try again or use bank transfer.
-    */
-
-    setTimeout(function(){
-
-        btn.disabled = false;
-
-        btn.innerText =
-            "Pay ₹" +
-            finalPrice.toFixed(2) +
-            " with UPI";
-
-    },5000);
 
 }
 
 
 /* =====================================================
-   PAYMENT / BOOKING SUBMISSION
+   PAYMENT SUBMISSION
 ===================================================== */
 
 function paymentDone(){
@@ -867,13 +564,6 @@ function paymentDone(){
         ).files[0];
 
 
-    /*
-       Bank transfer remains the fallback method.
-
-       Screenshot is still required before submitting
-       the booking.
-    */
-
     if(!file){
 
         alert(
@@ -888,11 +578,12 @@ function paymentDone(){
 
 
         return;
+
     }
 
 
     /* =================================================
-       TYPE
+       GET TYPE
     ================================================= */
 
     let type =
@@ -900,10 +591,6 @@ function paymentDone(){
             "temp_type"
         );
 
-
-    /* =================================================
-       LEARNING FALLBACK
-    ================================================= */
 
     if(
         !type &&
@@ -986,6 +673,7 @@ function paymentDone(){
                 localStorage.getItem(
                     "temp_email"
                 )
+
         };
 
     }
@@ -1075,6 +763,7 @@ function paymentDone(){
                 localStorage.getItem(
                     "temp_email"
                 )
+
         };
 
     }
@@ -1142,6 +831,7 @@ function paymentDone(){
                 localStorage.getItem(
                     "temp_email"
                 )
+
         };
 
     }
@@ -1267,14 +957,11 @@ function paymentDone(){
                 localStorage.getItem(
                     "temp_notes"
                 )
+
         };
 
     }
 
-
-    /* =================================================
-       INVALID TYPE
-    ================================================= */
 
     else{
 
@@ -1290,38 +977,8 @@ function paymentDone(){
 
 
         return;
+
     }
-
-
-    /* =================================================
-       ADD PAYMENT INFORMATION
-    =================================================
-
-       These fields are added without changing your
-       existing booking fields.
-
-       Your Apps Script can ignore them if it does not
-       currently use them.
-    */
-
-    payload.paymentMethod =
-        "UPI / Bank Transfer";
-
-
-    payload.paidAmount =
-        finalPrice;
-
-
-    payload.discountPercent =
-        discount;
-
-
-    payload.originalPrice =
-        originalPrice;
-
-
-    payload.paymentScreenshot =
-        file.name;
 
 
     /* =================================================
@@ -1336,55 +993,25 @@ function paymentDone(){
 
             method:"POST",
 
-            body:JSON.stringify(
-                payload
-            )
+            body:
+                JSON.stringify(
+                    payload
+                )
 
         }
 
     )
 
-
     .then(
-
-        res =>
-            res.text()
-
+        res => res.text()
     )
-
 
     .then(
 
         text => {
 
-            let response;
-
-
-            try{
-
-                response =
-                    JSON.parse(text);
-
-            }
-
-            catch(error){
-
-                console.error(
-                    "Invalid API response:",
-                    text
-                );
-
-                alert(
-                    "Payment submitted, but the booking response could not be read."
-                );
-
-                btn.disabled = false;
-
-                btn.innerText =
-                    "I Have Paid";
-
-                return;
-            }
+            let response =
+                JSON.parse(text);
 
 
             let id =
@@ -1404,24 +1031,16 @@ function paymentDone(){
                     "I Have Paid";
 
                 return;
+
             }
 
-
-            /* =========================================
-               SUCCESS MESSAGE
-            ========================================= */
 
             let message = "";
 
 
-            /* =========================================
-               POOJA
-            ========================================= */
-
             if(type === "pooja"){
 
                 message =
-
                     "🪔 Jai Shree Ram 🙏\n\n" +
 
                     "Pooja Booking Confirmed\n" +
@@ -1439,14 +1058,9 @@ function paymentDone(){
             }
 
 
-            /* =========================================
-               ASTROLOGY
-            ========================================= */
-
             else if(type === "astrology"){
 
                 message =
-
                     "🔯 Jai Shree Ram 🙏\n\n" +
 
                     "Astrology Consultation Booked\n" +
@@ -1462,14 +1076,9 @@ function paymentDone(){
             }
 
 
-            /* =========================================
-               MUHURTHAM
-            ========================================= */
-
             else if(type === "muhurtham"){
 
                 message =
-
                     "📅 Jai Shree Ram 🙏\n\n" +
 
                     "Muhurtham Booking Confirmed\n" +
@@ -1485,14 +1094,9 @@ function paymentDone(){
             }
 
 
-            /* =========================================
-               PRODUCT
-            ========================================= */
-
             else if(type === "product"){
 
                 message =
-
                     "🛍️ Jai Shree Ram 🙏\n\n" +
 
                     "Product Order Placed Successfully\n" +
@@ -1508,14 +1112,9 @@ function paymentDone(){
             }
 
 
-            /* =========================================
-               LEARNING
-            ========================================= */
-
             else if(type === "learning"){
 
                 message =
-
                     "📚 Jai Shree Ram 🙏\n\n" +
 
                     "Learning Program Enrolled Successfully\n" +
@@ -1533,14 +1132,9 @@ function paymentDone(){
             }
 
 
-            /* =========================================
-               DEFAULT
-            ========================================= */
-
             else{
 
                 message =
-
                     "🙏 Jai Shree Ram\n\n" +
 
                     "Booking Successful\n" +
@@ -1569,7 +1163,7 @@ function paymentDone(){
                     );
 
 
-                let file =
+                let downloadFile =
                     localStorage.getItem(
                         "temp_file"
                     ) ||
@@ -1579,29 +1173,26 @@ function paymentDone(){
 
                 if(
                     isDigital === "true" &&
-                    file
+                    downloadFile
                 ){
 
                     localStorage.setItem(
                         "download_file",
-                        file
+                        downloadFile
                     );
 
 
                     localStorage.setItem(
-
                         "download_product",
-
                         localStorage.getItem(
                             "temp_product"
                         )
-
                     );
 
 
                     setTimeout(
 
-                        () => {
+                        function(){
 
                             window.location.href =
                                 "download.html";
@@ -1614,21 +1205,14 @@ function paymentDone(){
 
 
                     return;
+
                 }
 
             }
 
 
-            /* =========================================
-               CLEAR DATA
-            ========================================= */
-
             localStorage.clear();
 
-
-            /* =========================================
-               HOME
-            ========================================= */
 
             window.location.href =
                 "index.html";
@@ -1638,10 +1222,6 @@ function paymentDone(){
     )
 
 
-    /* =================================================
-       ERROR
-    ================================================= */
-
     .catch(
 
         err => {
@@ -1650,12 +1230,11 @@ function paymentDone(){
 
 
             alert(
-                "Error saving booking. Please try again."
+                "Error saving booking."
             );
 
 
             btn.disabled = false;
-
 
             btn.innerText =
                 "I Have Paid";
@@ -1668,7 +1247,6 @@ function paymentDone(){
 
 
 </script>
-
 
 </body>
 
