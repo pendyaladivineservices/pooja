@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +25,6 @@ body{
     box-shadow:0 0 10px rgba(0,0,0,0.12);
 }
 
-img{
-    width:250px;
-    max-width:100%;
-    border-radius:10px;
-}
-
 .amount{
     background:#fff3cd;
     border:3px solid #ff6600;
@@ -42,21 +37,106 @@ img{
     text-align:center;
 }
 
-button{
+/* ================= PHONEPE ================= */
+
+.phonepe-section{
+    margin-top:20px;
+    padding:18px;
+    background:#faf5ff;
+    border:2px solid #ddd0f2;
+    border-radius:12px;
+}
+
+.phonepe-section h3{
+    margin-top:0;
+    color:#5f259f;
+    font-size:20px;
+}
+
+.phonepe-section p{
+    color:#555;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.phonepe-btn{
     width:100%;
-    padding:14px;
-    background:#ff6600;
+    padding:15px;
+    background:#5f259f;
     color:white;
     border:none;
     border-radius:8px;
-    font-size:16px;
-    margin-top:15px;
+    font-size:17px;
+    font-weight:bold;
     cursor:pointer;
+    margin-top:10px;
 }
 
-button:hover{
-    background:#e65c00;
+.phonepe-btn:hover{
+    background:#4d1d82;
 }
+
+.phonepe-note{
+    font-size:12px !important;
+    color:#777 !important;
+    margin-top:10px;
+}
+
+/* ================= DIVIDER ================= */
+
+.payment-divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:25px 0;
+    color:#777;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.payment-divider::before,
+.payment-divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:#ddd;
+}
+
+/* ================= BANK ================= */
+
+.bank-details{
+    margin-top:10px;
+    padding:15px;
+    background:#fff8f0;
+    border:1px solid #ffcc99;
+    border-radius:10px;
+    text-align:left;
+}
+
+.bank-details h3{
+    text-align:center;
+    color:#cc0000;
+    margin-top:0;
+}
+
+.bank-details p{
+    font-size:14px;
+    line-height:1.5;
+}
+
+.bank-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+.bank-table td{
+    border:1px solid #ddd;
+    padding:8px;
+    word-break:break-word;
+}
+
+/* ================= UPLOAD ================= */
 
 .upload-box{
     margin-top:20px;
@@ -82,34 +162,30 @@ button:hover{
     text-align:center;
 }
 
-.bank-details{
-    margin-top:20px;
-    padding:15px;
-    background:#fff8f0;
-    border:1px solid #ffcc99;
-    border-radius:10px;
-    text-align:left;
-}
-
-.bank-details h3{
-    text-align:center;
-    color:#cc0000;
-    margin-top:0;
-}
-
-.bank-table{
+.bank-pay-btn{
     width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
+    padding:14px;
+    background:#ff6600;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    margin-top:15px;
+    cursor:pointer;
 }
 
-.bank-table td{
-    border:1px solid #ddd;
-    padding:8px;
-    word-break:break-word;
+.bank-pay-btn:hover{
+    background:#e65c00;
 }
-    
+
+.bank-pay-btn:disabled,
+.phonepe-btn:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
+}
+
 </style>
+
 </head>
 
 <body>
@@ -118,24 +194,72 @@ button:hover{
 
 <h2>Complete Payment</h2>
 
+
+<!-- ================= AMOUNT ================= -->
+
 <div class="amount">
+
     <div style="font-size:16px;color:#333;">
         Amount to Pay
     </div>
-    ₹ <span id="amount"></span>
+
+    <span id="amount"></span>
+
 </div>
 
-<p>Please scan QR code and complete payment</p>
 
-<img src="upi-qr-2.jpeg">
+<!-- ================================================= -->
+<!-- OPTION 1 : PHONEPE / UPI -->
+<!-- ================================================= -->
+
+<div class="phonepe-section">
+
+    <h3>Pay Online with UPI</h3>
+
+    <p>
+        Pay securely using PhonePe or any UPI app.
+        Your payment amount will be automatically filled.
+    </p>
+
+    <button
+        type="button"
+        id="phonePeBtn"
+        class="phonepe-btn"
+        onclick="payWithPhonePe()">
+
+        Pay with PhonePe
+
+    </button>
+
+    <p class="phonepe-note">
+        Tap the button to open your UPI app and complete the payment.
+    </p>
+
+</div>
+
+
+<!-- ================= DIVIDER ================= -->
+
+<div class="payment-divider">
+    OR
+</div>
+
+
+<!-- ================================================= -->
+<!-- OPTION 2 : BANK TRANSFER -->
+<!-- ================================================= -->
 
 <div class="bank-details">
 
     <h3>Alternative Payment Method</h3>
 
-    <p>If QR code payment is not working, you can transfer directly to the bank account below and upload the payment screenshot.</p>
+    <p>
+        You can also transfer the amount directly to the bank account below
+        and upload the payment screenshot.
+    </p>
 
     <table class="bank-table">
+
         <tr>
             <td><strong>Account Name</strong></td>
             <td>Ravi Kumar Pendyala</td>
@@ -155,52 +279,63 @@ button:hover{
             <td><strong>IFSC Code</strong></td>
             <td>KVBL0004894</td>
         </tr>
+
     </table>
 
-    <p style="color:#cc0000;font-weight:bold;">
-        After payment, please upload the payment screenshot below.
+    <p style="color:#cc0000;font-weight:bold;text-align:center;">
+        After bank transfer, upload the payment screenshot below.
     </p>
 
 </div>
-    
+
+
+<!-- ================= SCREENSHOT ================= -->
+
 <div class="upload-box">
-    <p>Upload Payment Screenshot</p>
-    <input type="file" id="paymentSlip" accept="image/*">
+
+    <p>Upload Bank Payment Screenshot</p>
+
+    <input
+        type="file"
+        id="paymentSlip"
+        accept="image/*">
+
 </div>
 
-<!-- <div class="amount">
-₹ <span id="amount"></span>
-</div> -->
 
-<p>After payment click below button</p>
+<button
+    id="payBtn"
+    class="bank-pay-btn"
+    onclick="paymentDone()">
 
-<button id="payBtn" onclick="paymentDone()">
-I Have Paid
+    Submit Bank Payment
+
 </button>
 
+
 </div>
+
 
 <script>
 
-// ================= SHOW PRICE =================
-
-//document.getElementById("amount").innerText =
-//localStorage.getItem("temp_price") ||
-//localStorage.getItem("learning_price") ||
-//"";
+/* =====================================================
+   SHOW PRICE
+===================================================== */
 
 let originalPrice =
-parseFloat(localStorage.getItem("original_price") || 0);
+    parseFloat(localStorage.getItem("original_price") || 0);
 
 let finalPrice =
-parseFloat(localStorage.getItem("temp_price") || 0);
+    parseFloat(localStorage.getItem("temp_price") || 0);
 
 let discount =
-parseInt(localStorage.getItem("discount_percent") || 0);
+    parseInt(localStorage.getItem("discount_percent") || 0);
+
 
 if(discount > 0){
 
     document.querySelector(".amount").innerHTML = `
+
         <div style="font-size:15px;color:#444;">
             Original Price
         </div>
@@ -210,66 +345,157 @@ if(discount > 0){
             color:#888;
             font-size:22px;
             margin-bottom:8px;">
+
             ₹${originalPrice}
+
         </div>
 
         <div style="
             color:green;
             font-size:18px;
             margin-bottom:8px;">
-           🎉 Returning Devotee Discount (${discount}%)
+
+            🎉 Returning Devotee Discount (${discount}%)
+
         </div>
+
         <div style="
             color:#cc0000;
             font-size:34px;
             font-weight:bold;">
+
             ₹${finalPrice}
+
         </div>
+
     `;
 
-}else{
+}
+else{
 
-    document.getElementById("amount").innerText = finalPrice;
+    document.getElementById("amount").innerText =
+        "₹" + finalPrice;
 
 }
-    
-// ================= PAYMENT =================
+
+
+/* =====================================================
+   PHONEPE PAYMENT
+===================================================== */
+
+function payWithPhonePe(){
+
+    let btn =
+        document.getElementById("phonePeBtn");
+
+    if(!finalPrice || finalPrice <= 0){
+
+        alert("Payment amount is missing.");
+
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "Preparing Payment...";
+
+
+    /*
+       Personal UPI ID
+    */
+
+    const upiId =
+        "9705049693@ybl";
+
+
+    const merchantName =
+        "Pendyala Divine Services";
+
+
+    const transactionNote =
+        "Pendyala Divine Services Payment";
+
+
+    /*
+       Dynamic amount after discount
+    */
+
+    const upiUrl =
+        "upi://pay" +
+        "?pa=" + encodeURIComponent(upiId) +
+        "&pn=" + encodeURIComponent(merchantName) +
+        "&am=" + encodeURIComponent(finalPrice.toFixed(2)) +
+        "&cu=INR" +
+        "&tn=" + encodeURIComponent(transactionNote);
+
+
+    /*
+       Save booking first.
+       After successful save, open PhonePe/UPI app.
+    */
+
+    submitBooking("phonepe", upiUrl);
+
+}
+
+
+/* =====================================================
+   BANK PAYMENT
+===================================================== */
 
 function paymentDone(){
 
-    let btn = document.getElementById("payBtn");
+    let btn =
+        document.getElementById("payBtn");
 
     btn.disabled = true;
     btn.innerText = "Processing...";
 
+
     let file =
-    document.getElementById("paymentSlip").files[0];
+        document.getElementById("paymentSlip").files[0];
+
 
     if(!file){
 
         alert("Please upload payment screenshot");
 
         btn.disabled = false;
-        btn.innerText = "I Have Paid";
+        btn.innerText = "Submit Bank Payment";
 
         return;
     }
 
-    // ================= TYPE =================
+
+    submitBooking("bank", null);
+
+}
+
+
+/* =====================================================
+   COMMON BOOKING SUBMISSION
+===================================================== */
+
+function submitBooking(paymentMethod, upiUrl){
 
     let type =
-    localStorage.getItem("temp_type");
+        localStorage.getItem("temp_type");
 
-    // LEARNING FALLBACK ONLY
+
+    /* LEARNING FALLBACK */
+
     if(!type &&
        localStorage.getItem("temp_course")){
-    
+
         type = "learning";
     }
 
+
     let payload = {};
 
-    // ================= POOJA =================
+
+    /* =================================================
+       POOJA
+    ================================================= */
 
     if(type === "pooja"){
 
@@ -278,41 +504,51 @@ function paymentDone(){
             type:"pooja",
 
             poojaType:
-            localStorage.getItem("temp_pooja"),
+                localStorage.getItem("temp_pooja"),
 
-            price: 
-            parseFloat(localStorage.getItem("temp_price") || "0"),
+            price:
+                parseFloat(
+                    localStorage.getItem("temp_price") || "0"
+                ),
 
             gothram:
-            localStorage.getItem("temp_gothram"),
+                localStorage.getItem("temp_gothram"),
 
             name1:
-            localStorage.getItem("temp_name1"),
+                localStorage.getItem("temp_name1"),
 
             name2:
-            localStorage.getItem("temp_name2"),
+                localStorage.getItem("temp_name2"),
 
             name3:
-            localStorage.getItem("temp_name3"),
+                localStorage.getItem("temp_name3"),
 
             name4:
-            localStorage.getItem("temp_name4"),
+                localStorage.getItem("temp_name4"),
 
             name5:
-            localStorage.getItem("temp_name5"),
+                localStorage.getItem("temp_name5"),
 
             wish:
-            localStorage.getItem("temp_wish"),
+                localStorage.getItem("temp_wish"),
 
             phone:
-            localStorage.getItem("temp_phone"),
+                localStorage.getItem("temp_phone"),
 
             email:
-            localStorage.getItem("temp_email")
+                localStorage.getItem("temp_email"),
+
+            paymentMethod:
+                paymentMethod
+
         };
+
     }
 
-    // ================= ASTROLOGY =================
+
+    /* =================================================
+       ASTROLOGY
+    ================================================= */
 
     else if(type === "astrology"){
 
@@ -321,53 +557,61 @@ function paymentDone(){
             type:"astrology",
 
             service:
-            localStorage.getItem("temp_service"),
+                localStorage.getItem("temp_service"),
 
             price:
-            localStorage.getItem("temp_price"),
+                localStorage.getItem("temp_price"),
 
             consultDate:
-            localStorage.getItem("temp_consultDate"),
-            
+                localStorage.getItem("temp_consultDate"),
+
             consultSlot:
-            localStorage.getItem("temp_consultSlot"),
-            
+                localStorage.getItem("temp_consultSlot"),
+
             name1:
-            localStorage.getItem("temp_name1"),
+                localStorage.getItem("temp_name1"),
 
             dob1:
-            localStorage.getItem("temp_dob1"),
+                localStorage.getItem("temp_dob1"),
 
             tob1:
-            localStorage.getItem("temp_tob1"),
+                localStorage.getItem("temp_tob1"),
 
             pob1:
-            localStorage.getItem("temp_pob1"),
+                localStorage.getItem("temp_pob1"),
 
             name2:
-            localStorage.getItem("temp_name2"),
+                localStorage.getItem("temp_name2"),
 
             dob2:
-            localStorage.getItem("temp_dob2"),
+                localStorage.getItem("temp_dob2"),
 
             tob2:
-            localStorage.getItem("temp_tob2"),
+                localStorage.getItem("temp_tob2"),
 
             pob2:
-            localStorage.getItem("temp_pob2"),
+                localStorage.getItem("temp_pob2"),
 
             reason:
-            localStorage.getItem("temp_reason"),
+                localStorage.getItem("temp_reason"),
 
             phone:
-            localStorage.getItem("temp_phone"),
+                localStorage.getItem("temp_phone"),
 
             email:
-            localStorage.getItem("temp_email")
+                localStorage.getItem("temp_email"),
+
+            paymentMethod:
+                paymentMethod
+
         };
+
     }
 
-    // ================= MUHURTHAM =================
+
+    /* =================================================
+       MUHURTHAM
+    ================================================= */
 
     else if(type === "muhurtha" ||
             type === "muhurtham"){
@@ -377,38 +621,46 @@ function paymentDone(){
             type:"muhurtham",
 
             service:
-            localStorage.getItem("temp_muhurtham_type"),
+                localStorage.getItem("temp_muhurtham_type"),
 
             price:
-            localStorage.getItem("temp_price"),
+                localStorage.getItem("temp_price"),
 
             name1:
-            localStorage.getItem("temp_name1"),
+                localStorage.getItem("temp_name1"),
 
             nak1:
-            localStorage.getItem("temp_nak1"),
+                localStorage.getItem("temp_nak1"),
 
             name2:
-            localStorage.getItem("temp_name2"),
+                localStorage.getItem("temp_name2"),
 
             nak2:
-            localStorage.getItem("temp_nak2"),
+                localStorage.getItem("temp_nak2"),
 
             event:
-            localStorage.getItem("temp_event"),
+                localStorage.getItem("temp_event"),
 
             requirement:
-            localStorage.getItem("temp_requirement"),
+                localStorage.getItem("temp_requirement"),
 
             phone:
-            localStorage.getItem("temp_phone"),
+                localStorage.getItem("temp_phone"),
 
             email:
-            localStorage.getItem("temp_email")
+                localStorage.getItem("temp_email"),
+
+            paymentMethod:
+                paymentMethod
+
         };
+
     }
 
-    // ================= PRODUCT =================
+
+    /* =================================================
+       PRODUCT
+    ================================================= */
 
     else if(type === "product"){
 
@@ -417,44 +669,50 @@ function paymentDone(){
             type:"product",
 
             product:
-            localStorage.getItem("temp_product"),
+                localStorage.getItem("temp_product"),
 
             price:
-            localStorage.getItem("temp_price"),
+                localStorage.getItem("temp_price"),
 
             qty:
-            localStorage.getItem("temp_qty"),
+                localStorage.getItem("temp_qty"),
 
             name:
-            localStorage.getItem("temp_name"),
+                localStorage.getItem("temp_name"),
 
             phone:
-            localStorage.getItem("temp_phone"),
+                localStorage.getItem("temp_phone"),
 
             email:
-            localStorage.getItem("temp_email"),
+                localStorage.getItem("temp_email"),
 
             address:
-            localStorage.getItem("temp_address"),
+                localStorage.getItem("temp_address"),
 
             state:
-            localStorage.getItem("temp_state"),
-            
-            pincode:
-            localStorage.getItem("temp_pincode"),
+                localStorage.getItem("temp_state"),
 
-            // ================= DIGITAL SUPPORT =================
+            pincode:
+                localStorage.getItem("temp_pincode"),
 
             digital:
-            localStorage.getItem("temp_digital") || "false",
+                localStorage.getItem("temp_digital") || "false",
 
             file:
-            localStorage.getItem("temp_file") ||
-            "https://pendyaladivine.com/downloads/shivapuranam/sri-shiva-maha-puranamu.pdf"
+                localStorage.getItem("temp_file") ||
+                "https://pendyaladivine.com/downloads/shivapuranam/sri-shiva-maha-puranamu.pdf",
+
+            paymentMethod:
+                paymentMethod
+
         };
+
     }
 
-    // ================= LEARNING =================
+
+    /* =================================================
+       LEARNING
+    ================================================= */
 
     else if(type === "learning"){
 
@@ -463,161 +721,238 @@ function paymentDone(){
             type:"learning",
 
             course:
-            localStorage.getItem("temp_course"),
+                localStorage.getItem("temp_course"),
 
             price:
-            localStorage.getItem("temp_price"),
+                localStorage.getItem("temp_price"),
 
             name:
-            localStorage.getItem("temp_name"),
+                localStorage.getItem("temp_name"),
 
             phone:
-            localStorage.getItem("temp_phone"),
+                localStorage.getItem("temp_phone"),
 
             email:
-            localStorage.getItem("temp_email"),
+                localStorage.getItem("temp_email"),
 
             city:
-            localStorage.getItem("temp_city"),
+                localStorage.getItem("temp_city"),
 
             age:
-            localStorage.getItem("temp_age"),
+                localStorage.getItem("temp_age"),
 
             notes:
-            localStorage.getItem("temp_notes")
+                localStorage.getItem("temp_notes"),
+
+            paymentMethod:
+                paymentMethod
+
         };
+
     }
+
 
     else{
 
         alert("Booking data missing");
 
-        btn.disabled = false;
-        btn.innerText = "I Have Paid";
+        location.reload();
 
         return;
     }
 
-    // ================= API =================
+
+    /* =================================================
+       API
+    ================================================= */
 
     fetch(
-    "https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec",
-    {
-        method:"POST",
-        body:JSON.stringify(payload)
-    })
+        "https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec",
+        {
+            method:"POST",
+            body:JSON.stringify(payload)
+        }
+    )
 
     .then(res => res.text())
 
     .then(text => {
 
-        let response = JSON.parse(text);
+        let response =
+            JSON.parse(text);
+
 
         let id =
-        response.bookingId ||
-        response.orderId;
+            response.bookingId ||
+            response.orderId;
+
 
         if(!id){
 
             alert("Booking saved but ID missing");
+
             return;
         }
 
+
+        /* =================================================
+           PHONEPE FLOW
+        ================================================= */
+
+        if(paymentMethod === "phonepe"){
+
+            /*
+               Open PhonePe / UPI app
+               with dynamic final amount.
+            */
+
+            localStorage.setItem(
+                "last_booking_id",
+                id
+            );
+
+
+            /*
+               Small delay so booking request completes.
+            */
+
+            setTimeout(function(){
+
+                window.location.href =
+                    upiUrl;
+
+            },500);
+
+
+            return;
+        }
+
+
+        /* =================================================
+           BANK PAYMENT FLOW
+        ================================================= */
+
         let message = "";
 
+
         if(type === "pooja"){
+
             message =
-            "🪔 Jai Shree Ram 🙏\n\n" +
-            "Pooja Booking Confirmed\n" +
-            "Booking ID: " + id + "\n\n" +
-            "We will perform your pooja with full devotion.\n" +
-            "You will receive full pooja video with in 2 days after pooja.\n\n" +
-            "Har Har Mahadev 🔱";
+                "🪔 Jai Shree Ram 🙏\n\n" +
+                "Pooja Booking Submitted\n" +
+                "Booking ID: " + id + "\n\n" +
+                "We will process your booking.\n\n" +
+                "Har Har Mahadev 🔱";
         }
+
 
         else if(type === "astrology"){
+
             message =
-            "🔯 Jai Shree Ram 🙏\n\n" +
-            "Astrology Consultation Booked\n" +
-            "Booking ID: " + id + "\n\n" +
-            "I/Our astrologer will contact you soon with guidance.\n\n" +
-            "Har Har Mahadev 🔱";
+                "🔯 Jai Shree Ram 🙏\n\n" +
+                "Astrology Consultation Submitted\n" +
+                "Booking ID: " + id + "\n\n" +
+                "We will contact you soon.\n\n" +
+                "Har Har Mahadev 🔱";
         }
+
 
         else if(type === "muhurtham"){
+
             message =
-            "📅 Jai Shree Ram 🙏\n\n" +
-            "Muhurtham Booking Confirmed\n" +
-            "Booking ID: " + id + "\n\n" +
-            "We will help you select the most auspicious timing.\n\n" +
-            "Har Har Mahadev 🔱";
+                "📅 Jai Shree Ram 🙏\n\n" +
+                "Muhurtham Booking Submitted\n" +
+                "Booking ID: " + id + "\n\n" +
+                "We will contact you soon.\n\n" +
+                "Har Har Mahadev 🔱";
         }
+
 
         else if(type === "product"){
+
             message =
-            "🛍️ Jai Shree Ram 🙏\n\n" +
-            "Product Order Placed Successfully\n" +
-            "Order ID: " + id + "\n\n" +
-            "Your spiritual product will be packed and shipped soon.\n\n" +
-            "Har Har Mahadev 🔱";
+                "🛍️ Jai Shree Ram 🙏\n\n" +
+                "Product Order Submitted Successfully\n" +
+                "Order ID: " + id + "\n\n" +
+                "Your order will be processed soon.\n\n" +
+                "Har Har Mahadev 🔱";
         }
+
 
         else if(type === "learning"){
+
             message =
-            "📚 Jai Shree Ram 🙏\n\n" +
-            "Learning Program Enrolled Successfully\n" +
-            "Registration ID: " + id + "\n\n" +
-            "Welcome to your spiritual learning journey.\n" +
-            "We will contact you with class details soon.\n\n" +
-            "Har Har Mahadev 🔱";
+                "📚 Jai Shree Ram 🙏\n\n" +
+                "Learning Program Submitted Successfully\n" +
+                "Registration ID: " + id + "\n\n" +
+                "We will contact you with class details soon.\n\n" +
+                "Har Har Mahadev 🔱";
         }
 
+
         else{
+
             message =
-            "🙏 Jai Shree Ram\n\n" +
-            "Booking Successful\n" +
-            "ID: " + id + "\n\n" +
-            "Thank you for choosing Pendyala Divine Services.";
+                "🙏 Jai Shree Ram\n\n" +
+                "Booking Successful\n" +
+                "ID: " + id + "\n\n" +
+                "Thank you for choosing Pendyala Divine Services.";
         }
+
 
         alert(message);
 
-        // ================= DIGITAL DOWNLOAD REDIRECT =================
+
+        /* =================================================
+           DIGITAL DOWNLOAD
+        ================================================= */
 
         if(type === "product"){
 
             let isDigital =
-            localStorage.getItem("temp_digital");
+                localStorage.getItem("temp_digital");
+
 
             let file =
-            localStorage.getItem("temp_file") ||
-            "https://pendyaladivine.com/downloads/shivapuranam/sri-shiva-maha-puranamu.pdf";
+                localStorage.getItem("temp_file") ||
+                "https://pendyaladivine.com/downloads/shivapuranam/sri-shiva-maha-puranamu.pdf";
+
 
             if(isDigital === "true" && file){
 
-                // SAVE FOR DOWNLOAD PAGE
-                localStorage.setItem("download_file", file);
+                localStorage.setItem(
+                    "download_file",
+                    file
+                );
 
-                // KEEP PRODUCT INFO
+
                 localStorage.setItem(
                     "download_product",
                     localStorage.getItem("temp_product")
                 );
 
-                // REDIRECT
+
                 setTimeout(()=>{
-                    window.location.href = "download.html";
-                }, 800);
+
+                    window.location.href =
+                        "download.html";
+
+                },800);
+
 
                 return;
             }
         }
 
+
         localStorage.clear();
 
+
         window.location.href =
-        "index.html";
+            "index.html";
+
     })
+
 
     .catch(err => {
 
@@ -625,11 +960,35 @@ function paymentDone(){
 
         alert("Error saving booking");
 
-        btn.disabled = false;
-        btn.innerText = "I Have Paid";
+
+        if(paymentMethod === "phonepe"){
+
+            let btn =
+                document.getElementById("phonePeBtn");
+
+            btn.disabled = false;
+
+            btn.innerText =
+                "Pay with PhonePe";
+
+        }
+        else{
+
+            let btn =
+                document.getElementById("payBtn");
+
+            btn.disabled = false;
+
+            btn.innerText =
+                "Submit Bank Payment";
+
+        }
+
     });
+
 }
 
 </script>
+
 </body>
 </html>
