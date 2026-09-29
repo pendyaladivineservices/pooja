@@ -874,6 +874,20 @@ let offerEmails = new Map();
    POOJA / OFFER SETTINGS
 ===================================================== */
 
+/*
+   TEMPORARY DISCOUNT SWITCH
+
+   false = All Pooja discounts OFF
+   true  = Existing discount system ON
+
+   To enable discounts again later, change:
+   ENABLE_POOJA_DISCOUNTS = false;
+   to:
+   ENABLE_POOJA_DISCOUNTS = true;
+*/
+
+const ENABLE_POOJA_DISCOUNTS = false;
+
 const OFFER_DISCOUNTS = {
 
     "POOJA_001": 15,
@@ -1005,6 +1019,12 @@ async function loadOfferEmails(){
 ===================================================== */
 
 function getOfferDiscount(poojaId,email){
+
+    /* TEMPORARILY DISABLED */
+    if(!ENABLE_POOJA_DISCOUNTS)
+
+        return 0;
+
 
     const cleanEmail =
         normalizeEmail(email);
