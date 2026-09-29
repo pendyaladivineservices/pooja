@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PENDYALA DIVINE SERVICES</title>
 
-
 <style>
+
 html{
     scroll-behavior:smooth;
 }
@@ -19,6 +21,7 @@ body{
 }
 
 /* HEADER */
+
 header{
     background:#ff6600;
     color:white;
@@ -52,7 +55,9 @@ header{
     margin-top:5px;
 }
 
+
 /* MENU */
+
 .menu{
     background:white;
     padding:10px;
@@ -60,8 +65,8 @@ header{
 
     display:flex;
     justify-content:center;
-    flex-wrap:wrap;   /* 👈 IMPORTANT */
-    gap:10px;         /* spacing between items */
+    flex-wrap:wrap;
+    gap:10px;
 }
 
 .menu a{
@@ -73,8 +78,11 @@ header{
     border-radius:6px;
 }
 
-/* MOBILE FIX */
+
+/* MOBILE MENU */
+
 @media (max-width:600px){
+
     .menu{
         justify-content:space-around;
     }
@@ -83,19 +91,27 @@ header{
         font-size:13px;
         padding:6px 8px;
     }
+
 }
+
+
 /* BANNER */
+
 .header-img{
     width:100%;
     height:auto;
 }
 
+
 /* CONTAINER */
+
 .container{
     padding:15px;
 }
 
+
 /* SECTION */
+
 .section-card{
     background:white;
     margin:20px auto;
@@ -111,12 +127,16 @@ header{
     font-size:22px;
 }
 
+
 /* SLIDER WRAPPER */
+
 .slider-wrapper{
     position:relative;
 }
 
+
 /* SLIDER */
+
 .slider{
     display:flex;
     overflow-x:auto;
@@ -130,7 +150,9 @@ header{
     display:none;
 }
 
+
 /* ARROWS */
+
 .arrow{
     position:absolute;
     top:50%;
@@ -145,10 +167,17 @@ header{
     z-index:5;
 }
 
-.arrow.left{ left:-10px; }
-.arrow.right{ right:-10px; }
+.arrow.left{
+    left:-10px;
+}
+
+.arrow.right{
+    right:-10px;
+}
+
 
 /* CARD */
+
 .service-card{
     min-width:260px;
     max-width:260px;
@@ -184,7 +213,9 @@ header{
     margin:8px 0;
 }
 
-/* QR */
+
+/* CARD IMAGE */
+
 .service-card img{
     width:100%;
     max-width:170px;
@@ -194,7 +225,9 @@ header{
     border-radius:8px;
 }
 
-/* FOOTER FIX */
+
+/* CARD FOOTER */
+
 .card-footer{
     margin-top:auto;
     display:flex;
@@ -202,6 +235,9 @@ header{
     align-items:center;
     gap:10px;
 }
+
+
+/* BUTTON */
 
 .btn{
     background:#ff6600;
@@ -220,622 +256,1464 @@ header{
     background:#e65c00;
 }
 
-/* MOBILE */
+
+/* MOBILE CARD */
+
 @media (max-width:600px){
+
     .service-card{
         min-width:220px;
         max-width:220px;
     }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
 <div class="header-content">
+
 <img src="icon.PNG" class="logo">
+
 <div>
-<p class="title-main">PENDYALA</p>
-<p class="title-sub">DIVINE SERVICES</p>
+
+<p class="title-main">
+PENDYALA
+</p>
+
+<p class="title-sub">
+DIVINE SERVICES
+</p>
+
 </div>
+
 </div>
+
 </header>
 
-<!-- <div class="menu">
-<a href="#poojas">Poojas</a>
-<a href="#astrology">Astrology</a>
-<a href="#muhurthas">Muhurthas</a>
-</div> -->
+
 
 <div class="menu">
-<a href="#poojas">Poojas</a>
-<a href="astrology.html">Astrology</a>
-<a href="muhurthas.html">Muhurthas</a>
-<a href="products.html">Products</a>
-<!-- <a href="learnings.html">Learnings</a> -->
+
+<a href="#poojas">
+Poojas
+</a>
+
+<a href="astrology.html">
+Astrology
+</a>
+
+<a href="muhurthas.html">
+Muhurthas
+</a>
+
+<a href="products.html">
+Products
+</a>
+
 </div>
-    
-<!-- <img src="62E052F9-D2E4-4258-B5E9-ED331929742B.jpeg" class="header-img"> -->
+
+
 
 <div class="container">
 
-<!-- ================= POOJAS ================= -->
+
+<!-- =====================================================
+     POOJA SERVICES
+===================================================== -->
+
 <div id="poojas" class="section-card">
-<h2 class="section-title">Pooja Services</h2>
+
+<h2 class="section-title">
+Pooja Services
+</h2>
+
+
+<!-- =====================================================
+     1st POOJA ROW
+     RUDRABHISHEKAM & ANNADANAM
+===================================================== -->
 
 <div class="slider-wrapper">
-<button class="arrow left" onclick="scrollSlider(this, -1)">&#10094;</button>
-<button class="arrow right" onclick="scrollSlider(this, 1)">&#10095;</button>
+
+<button
+class="arrow left"
+onclick="scrollSlider(this, -1)">
+&#10094;
+</button>
+
+
+<button
+class="arrow right"
+onclick="scrollSlider(this, 1)">
+&#10095;
+</button>
+
 
 <div class="slider">
 
+
+<!-- ================= SINGLE ================= -->
+
 <div class="service-card">
+
 <div class="card-content">
-<h3>Nandi Abhishekam (Single)</h3>
-<p class="desc">Nandi Abhishekam with special pooja and sankalpam Someswara Swamy near Draksharamam</p>
-<p class="desc"><b>Benefits:</b> Nandi Anugraham and Shiva Kataksham</p>
-<p class="desc"><b>Date:</b> 24/09/2026</p>
-<div class="price">₹801</div>
+
+<h3>
+Rudrabhishekam & Annadanam (Single)
+</h3>
+
+
+<p class="desc">
+
+Rudrabhishekam and Annadanam will be performed
+with your Gotra Nama Sankalpam at Ayodhya,
+Bhati Ghat, Bhati Ghat Ashram.
+
+</p>
+
+
+<p class="desc">
+
+<b>Benefits:</b>
+
+Pitru Dosha Nivarana, Pitru Devata Shanti,
+Arogya, Aishwarya and Runa Badha Mukti.
+
+</p>
+
+
+<p class="desc">
+
+<b>Date:</b> 10/10/2026
+
+</p>
+
+
+<div class="price">
+₹801
 </div>
+
+</div>
+
+
 <div class="card-footer">
+
 <img src="Images/poojas/nandi.jpg">
-<button class="btn"
-onclick="openPoojaPopup(this,'Single','Nandi Abhishekam','POOJA_001')">
+
+
+<button
+class="btn"
+onclick="openPoojaPopup(
+this,
+'Single',
+'Rudrabhishekam & Annadanam',
+'POOJA_001'
+)">
+
 Book
+
 </button>
-</div>
+
 </div>
 
-<div class="service-card">
-<div class="card-content">
-<h3>Nandi Abhishekam (Couple)</h3>
-<p class="desc">Nandi Abhishekam with special pooja and sankalpam Someswara Swamy near Draksharamam</p>
-<p class="desc"><b>Benefits:</b> Nandi Anugraham and Shiva Kataksham</p>
-<p class="desc"><b>Date:</b> 24/09/2026</p>
-<div class="price">₹1116</div>
 </div>
+
+
+
+<!-- ================= COUPLE ================= -->
+
+<div class="service-card">
+
+<div class="card-content">
+
+<h3>
+Rudrabhishekam & Annadanam (Couple)
+</h3>
+
+
+<p class="desc">
+
+Rudrabhishekam and Annadanam will be performed
+with your Gotra Nama Sankalpam at Ayodhya,
+Bhati Ghat, Bhati Ghat Ashram.
+
+</p>
+
+
+<p class="desc">
+
+<b>Benefits:</b>
+
+Pitru Dosha Nivarana, Pitru Devata Shanti,
+Arogya, Aishwarya and Runa Badha Mukti.
+
+</p>
+
+
+<p class="desc">
+
+<b>Date:</b> 10/10/2026
+
+</p>
+
+
+<div class="price">
+₹1116
+</div>
+
+</div>
+
+
 <div class="card-footer">
+
 <img src="Images/poojas/nandi.jpg">
-<button class="btn"
-onclick="openPoojaPopup(this,'Couple','Nandi Abhishekam','POOJA_001')">
+
+
+<button
+class="btn"
+onclick="openPoojaPopup(
+this,
+'Couple',
+'Rudrabhishekam & Annadanam',
+'POOJA_001'
+)">
+
 Book
+
 </button>
-</div>
+
 </div>
 
-<div class="service-card">
-<div class="card-content">
-<h3>Nandi Abhishekam (Family)</h3>
-<p class="desc">Nandi Abhishekam with special pooja and sankalpam Someswara Swamy near Draksharamam</p>
-<p class="desc"><b>Benefits:</b> Nandi Anugraham and Shiva Kataksham</p>
-<p class="desc"><b>Date:</b> 24/09/2026</p>
-<div class="price">₹1401</div>    
 </div>
+
+
+
+<!-- ================= FAMILY ================= -->
+
+<div class="service-card">
+
+<div class="card-content">
+
+<h3>
+Rudrabhishekam & Annadanam (Family)
+</h3>
+
+
+<p class="desc">
+
+Rudrabhishekam and Annadanam will be performed
+with your Gotra Nama Sankalpam at Ayodhya,
+Bhati Ghat, Bhati Ghat Ashram.
+
+</p>
+
+
+<p class="desc">
+
+<b>Benefits:</b>
+
+Pitru Dosha Nivarana, Pitru Devata Shanti,
+Arogya, Aishwarya and Runa Badha Mukti.
+
+</p>
+
+
+<p class="desc">
+
+<b>Date:</b> 10/10/2026
+
+</p>
+
+
+<div class="price">
+₹1401
+</div>
+
+</div>
+
+
 <div class="card-footer">
+
 <img src="Images/poojas/nandi.jpg">
-<button class="btn"
-onclick="openPoojaPopup(this,'Family','Nandi Abhishekam','POOJA_001')">
+
+
+<button
+class="btn"
+onclick="openPoojaPopup(
+this,
+'Family',
+'Rudrabhishekam & Annadanam',
+'POOJA_001'
+)">
+
 Book
+
 </button>
-</div>
+
 </div>
 
-<!-- <!-- <div class="slider"> -->
-<!-- <div class="service-card">
-<div class="card-content">
-<h3>Toli Ekadasi Venkateswara Swamy Pooja (Single)</h3>
-<p class="desc">Toli Ekadasi sandarbamga Draksharamam Bhimeswara swamy aalaya pranganam lo Venkateswara Swamy Pooja </p>
-<p class="desc"><b>Location:</b> Draksharamam Bhimeswara swamy aalaya pranganam</p>
-<p class="desc"><b>Benefits:</b> Aiswaryam and Sahani Graha dosha shanthi mariyu Venkateswara kataksham </p>
-<p class="desc"><b>Date:</b> 25/07/2026</p>
-<div class="price">₹801</div>
-</div>
-<div class="card-footer">
-<img src="Images/poojas/yamuna.png">
-<button class="btn"
-onclick="openPoojaPopup(this,'Single','Toli Ekadasi Venkateswara Swamy Pooja')">
-Book
-</button>
-</div>
 </div>
 
-<div class="service-card">
-<div class="card-content">
-<h3>Toli Ekadasi Venkateswara Swamy Pooja (Couple)</h3>
-<p class="desc">Toli Ekadasi sandarbamga Draksharamam Bhimeswara swamy aalaya pranganam lo Venkateswara Swamy Pooja </p>
-<p class="desc"><b>Location:</b> Draksharamam Bhimeswara swamy aalaya pranganam</p>
-<p class="desc"><b>Benefits:</b> Aiswaryam and Sahani Graha dosha shanthi mariyu Venkateswara kataksham </p>
-<p class="desc"><b>Date:</b> 25/07/2026</p>
-<div class="price">₹1116</div>
-</div>
-<div class="card-footer">
-<img src="Images/poojas/yamuna.png">
-<button class="btn"
-onclick="openPoojaPopup(this,'Couple','Toli Ekadasi Venkateswara Swamy Pooja')">
-Book
-</button>
-</div>
+
 </div>
 
-<div class="service-card">
-<div class="card-content">
-<h3>Toli Ekadasi Venkateswara Swamy Pooja (Family)</h3>
-<p class="desc">Toli Ekadasi sandarbamga Draksharamam Bhimeswara swamy aalaya pranganam lo Venkateswara Swamy Pooja </p>
-<p class="desc"><b>Location:</b> Draksharamam Bhimeswara swamy aalaya pranganam</p>
-<p class="desc"><b>Benefits:</b> Aiswaryam and Sahani Graha dosha shanthi mariyu Venkateswara kataksham </p>
-<p class="desc"><b>Date:</b> 25/07/2026</p>
-<div class="price">₹1401</div>    
-</div>
-<div class="card-footer">
-<img src="Images/poojas/yamuna.png">
-<button class="btn"
-onclick="openPoojaPopup(this,'Family','Toli Ekadasi Venkateswara Swamy Pooja')">
-Book
-</button>
-</div>
-</div> -->
-
-<!-- 
-<div class="service-card">
-<div class="card-content">
-<h3>Yamuna Pushkara Pooja (Single)</h3>
-<p class="desc">Yamuna nadi pooja with Sankalpam, Yamunashtakam and offering pasupu kunkuma vastram puvvulu palu .. </p>
-<p class="desc"><b>Location:</b> Yamuna Nadi, Vrindavan</p>
-<p class="desc"><b>Benefits:</b> Navagraha and Pitru doshala effects ni tagginchi Career growth, Financial stability, mental strength, protection from negativity labhsithai.</p>
-<p class="desc"><b>Date:</b> 03/06/2026</p>
-<div class="price">₹1201</div>
-</div>
-<div class="card-footer">
-<img src="Images/poojas/yamuna.jpeg">
-<button class="btn"
-onclick="openPoojaPopup(this,'Single','Yamuna Pushkara Pooja')">
-Book
-</button>
-</div>
 </div>
 
-<div class="service-card">
-<div class="card-content">
-<h3>Yamuna Pushkara Pooja (Couple)</h3>
-<p class="desc">Yamuna nadi pooja with Sankalpam, Yamunashtakam and offering pasupu kunkuma vastram puvvulu palu ..</p>
-<p class="desc"><b>Location:</b> Yamuna Nadi, Vrindavan</p>
-<p class="desc"><b>Benefits:</b> Navagraha and Pitru doshala effects ni tagginchi Career growth, Financial stability, mental strength, protection from negativity labhsithai.</p>
-<p class="desc"><b>Date:</b> 03/06/2026</p>
-<div class="price">₹1501</div>
-</div>
-<div class="card-footer">
-<img src="Images/poojas/yamuna.jpeg">
-<button class="btn"
-onclick="openPoojaPopup(this,'Couple','Yamuna Pushkara Pooja')">
-Book
-</button>
-</div>
-</div>
 
-<div class="service-card">
-<div class="card-content">
-<h3>Yamuna Pushkara Pooja (Family)</h3>
-<p class="desc">Yamuna nadi pooja with Sankalpam, Yamunashtakam and offering pasupu kunkuma vastram puvvulu palu ..</p>
-<p class="desc"><b>Location:</b> Yamuna Nadi, Vrindavan</p>
-<p class="desc"><b>Benefits:</b> Navagraha and Pitru doshala effects ni tagginchi Career growth, Financial stability, mental strength, protection from negativity labhsithai.</p>
-<p class="desc"><b>Date:</b> 03/06/2026</p>
-<div class="price">₹1801</div>    
-</div>
-<div class="card-footer">
-<img src="Images/poojas/yamuna.jpeg">
-<button class="btn"
-onclick="openPoojaPopup(this,'Family','Yamuna Pushkara Pooja')">
-Book
-</button>
-</div>
-</div> -->
-    
-    
-</div>
-</div>
 
-<!-- <!-- 2nd pooja Row --------------------------------------------------------------------------------->
-<!-- <div class="slider-wrapper">
-<button class="arrow left" onclick="scrollSlider(this, -1)">&#10094;</button>
-<button class="arrow right" onclick="scrollSlider(this, 1)">&#10095;</button>
+<!-- =====================================================
+     2nd POOJA ROW
+     GO SEVA / GO FEEDING
+===================================================== -->
+
+<div class="slider-wrapper">
+
+<button
+class="arrow left"
+onclick="scrollSlider(this, -1)">
+&#10094;
+</button>
+
+
+<button
+class="arrow right"
+onclick="scrollSlider(this, 1)">
+&#10095;
+</button>
+
 
 <div class="slider">
-<div class="service-card">
-<div class="card-content">
-<h3>Nandi Abhishekam (Single)</h3>
-<p class="desc">Nandi Abhishekam with special pooja and sankalpam Someswara Swamy near Draksharamam</p>
-<p class="desc"><b>Benefits:</b> Nandi Anugraham and Shiva Kataksham</p>
-<p class="desc"><b>Date:</b> 08/09/2026</p>
-<div class="price">₹701</div>
-</div>
-<div class="card-footer">
-<img src="Images/poojas/nandi.jpg">
-<button class="btn" onclick="openPoojaPopup(this,'Single','Nandi Abhishekam','POOJA_002')">
-Book
-</button>
-</div>
-</div>
+
+
+<!-- ================= GO SEVA ================= -->
 
 <div class="service-card">
+
 <div class="card-content">
-<h3>Nandi Abhishekam (Couple)</h3>
-<p class="desc">Nandi Abhishekam with special pooja and sankalpam to Someswara Swamy near Draksharamam</p>
-<p class="desc"><b>Benefits:</b> Nandi Anugraham and Shiva Kataksham</p>
-<p class="desc"><b>Date:</b> 08/09/2026</p>
-<div class="price">₹1001</div>
+
+<h3>
+Go Seva (Go Feeding)
+</h3>
+
+
+<p class="desc">
+
+Go Seva and Go Feeding will be performed at
+Ayodhya, Bhati Ghat, Bhati Ghat Ashram.
+Your contribution will support Go Feeding
+and the care and protection of cows.
+
+</p>
+
+
+<p class="desc">
+
+<b>Benefits:</b>
+
+Pitru Dosha Nivarana, Pitru Devata Shanti,
+Arogya, Aishwarya and Runa Badha Mukti.
+
+</p>
+
+
+<p class="desc">
+
+<b>Date:</b> 10/10/2026
+
+</p>
+
+
+<div class="price">
+₹516
 </div>
+
+</div>
+
+
 <div class="card-footer">
+
 <img src="Images/poojas/nandi.jpg">
-<button class="btn" onclick="openPoojaPopup(this,'Couple','Nandi Abhishekam','POOJA_002')">
+
+
+<button
+class="btn"
+onclick="openPoojaPopup(
+this,
+'Single',
+'Go Seva (Go Feeding)',
+'POOJA_002'
+)">
+
 Book
+
 </button>
-</div>
-</div>
-
-<div class="service-card">
-<div class="card-content">
-<h3>Nandi Abhishekam (Family)</h3>
-<p class="desc">Nandi Abhishekam with special pooja and sankalpam Someswara Swamy near Draksharamam</p>
-<p class="desc"><b>Benefits:</b> Nandi Anugraham and Shiva Kataksham</p>
-<p class="desc"><b>Date:</b> 08/09/2026</p>
-<div class="price">₹1251</div>
-</div>
-<div class="card-footer">
-<img src="Images/poojas/nandi.jpg">
-<button class="btn" onclick="openPoojaPopup(this,'Family','Nandi Abhishekam','POOJA_002')">
-Book
-</button>
-</div>
-</div> -->
 
 </div>
+
 </div>
+
+
 </div>
 
-<!-- POOJA POPUP -->
+</div>
 
-<div id="poojaPopup"
-style="display:none;position:fixed;top:0;left:0;
-width:100%;height:100%;background:rgba(0,0,0,0.6);
-justify-content:center;align-items:center;z-index:999;">
 
-<div style="background:white;padding:20px;border-radius:10px;
-width:90%;max-width:420px;max-height:90vh;overflow:auto;">
+</div>
 
-<h3 id="popupTitle">Book Pooja</h3>
 
-<input id="gothram" placeholder="Gothram"
-style="width:100%;padding:8px;margin:6px 0;">
 
-<input id="name1" placeholder="Name 1"
-style="width:100%;padding:8px;margin:6px 0;">
+<!-- =====================================================
+     POOJA POPUP
+===================================================== -->
 
-<input id="name2" placeholder="Name 2 (Optional)"
-style="width:100%;padding:8px;margin:6px 0;display:none;">
+<div
+id="poojaPopup"
+style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+z-index:999;
+">
 
-<input id="name3" placeholder="Name 3 (Optional)"
-style="width:100%;padding:8px;margin:6px 0;display:none;">
 
-<input id="name4" placeholder="Name 4 (Optional)"
-style="width:100%;padding:8px;margin:6px 0;display:none;">
+<div
+style="
+background:white;
+padding:20px;
+border-radius:10px;
+width:90%;
+max-width:420px;
+max-height:90vh;
+overflow:auto;
+">
 
-<input id="name5" placeholder="Name 5 (Optional)"
-style="width:100%;padding:8px;margin:6px 0;display:none;">
 
-<textarea id="wish"
+<h3 id="popupTitle">
+Book Pooja
+</h3>
+
+
+<input
+id="gothram"
+placeholder="Gothram"
+style="
+width:100%;
+padding:8px;
+margin:6px 0;
+">
+
+
+<input
+id="name1"
+placeholder="Name 1"
+style="
+width:100%;
+padding:8px;
+margin:6px 0;
+">
+
+
+<input
+id="name2"
+placeholder="Name 2 (Optional)"
+style="
+width:100%;
+padding:8px;
+margin:6px 0;
+display:none;
+">
+
+
+<input
+id="name3"
+placeholder="Name 3 (Optional)"
+style="
+width:100%;
+padding:8px;
+margin:6px 0;
+display:none;
+">
+
+
+<input
+id="name4"
+placeholder="Name 4 (Optional)"
+style="
+width:100%;
+padding:8px;
+margin:6px 0;
+display:none;
+">
+
+
+<input
+id="name5"
+placeholder="Name 5 (Optional)"
+style="
+width:100%;
+padding:8px;
+margin:6px 0;
+display:none;
+">
+
+
+<textarea
+id="wish"
 placeholder="Your Wish / Sankalpam"
-style="width:100%;padding:8px;margin:6px 0;"></textarea>
+style="
+width:100%;
+padding:8px;
+margin:6px 0;
+"></textarea>
 
-<input id="phone"
+
+<input
+id="phone"
 placeholder="Phone Number"
-style="width:100%;padding:8px;margin:6px 0;">
+style="
+width:100%;
+padding:8px;
+margin:6px 0;
+">
 
-<input id="email"
+
+<input
+id="email"
 placeholder="Email ID"
-style="width:100%;padding:8px;margin:6px 0;">
+style="
+width:100%;
+padding:8px;
+margin:6px 0;
+">
 
-<button class="btn" onclick="submitPoojaBooking()">
+
+<button
+class="btn"
+onclick="submitPoojaBooking()">
+
 Proceed to Payment
+
 </button>
 
-<button class="btn"
-style="background:#777;margin-top:10px;"
+
+<button
+class="btn"
+style="
+background:#777;
+margin-top:10px;
+"
 onclick="closePoojaPopup()">
+
 Cancel
+
 </button>
 
+
 </div>
+
 </div>
-    
+
+
+
 <script>
 
+
+/* =====================================================
+   SLIDER
+===================================================== */
+
 function scrollSlider(btn, dir){
-    const wrapper = btn.parentElement;
-    const slider = wrapper.querySelector('.slider');
+
+    const wrapper =
+        btn.parentElement;
+
+    const slider =
+        wrapper.querySelector('.slider');
+
     slider.scrollBy({
+
         left: dir * 300,
-        behavior: 'smooth'
+
+        behavior:'smooth'
+
     });
+
 }
+
+
+/* =====================================================
+   SELECTED POOJA
+===================================================== */
 
 let selectedPoojaType = "";
+
 let selectedPoojaName = "";
+
 let selectedPoojaId = "";
+
 let selectedPrice = "";
+
 let offerEmails = new Map();
 
-/* =========================================================
-   POORJA / OFFER SETTINGS
-   Pooja IDs are permanent. Change ONLY true/false below.
-   true  = booking enabled
-   false = booking closed
-   ========================================================= */
+
+/* =====================================================
+   POOJA / OFFER SETTINGS
+===================================================== */
 
 const OFFER_DISCOUNTS = {
+
     "POOJA_001": 15,
+
     "POOJA_002": 10,
+
     "POOJA_003": 0
+
 };
+
 
 const BOOKING_STATUS = {
+
     "POOJA_001": true,
-    "POOJA_002": false,
+
+    "POOJA_002": true,
+
     "POOJA_003": false
+
 };
 
-function normalizePhone(phone) {
-    return String(phone || "").replace(/\D/g, "").slice(-10);
+
+/* =====================================================
+   NORMALIZE PHONE
+===================================================== */
+
+function normalizePhone(phone){
+
+    return String(phone || "")
+        .replace(/\D/g,"")
+        .slice(-10);
+
 }
 
-function normalizeEmail(email) {
-    return String(email || "").trim().toLowerCase();
+
+/* =====================================================
+   NORMALIZE EMAIL
+===================================================== */
+
+function normalizeEmail(email){
+
+    return String(email || "")
+        .trim()
+        .toLowerCase();
+
 }
 
-/* Load booking history from offer-emails.txt.
-   Each email appears once for every previous booking.
-   Example: 5 occurrences = 20% discount. */
-async function loadOfferEmails() {
-    try {
-        const response = await fetch("offer-emails.txt", { cache: "no-store" });
-        if (!response.ok) throw new Error("offer-emails.txt could not be loaded");
 
-        const text = await response.text();
-        offerEmails = new Map();
+/* =====================================================
+   LOAD OFFER EMAILS
+===================================================== */
+
+async function loadOfferEmails(){
+
+    try{
+
+        const response =
+            await fetch(
+                "offer-emails.txt",
+                {
+                    cache:"no-store"
+                }
+            );
+
+
+        if(!response.ok)
+
+            throw new Error(
+                "offer-emails.txt could not be loaded"
+            );
+
+
+        const text =
+            await response.text();
+
+
+        offerEmails =
+            new Map();
+
 
         text
-            .split(/\r?\n/)
-            .map(normalizeEmail)
-            .filter(email => email && email.includes("@"))
-            .forEach(email => {
-                offerEmails.set(email, (offerEmails.get(email) || 0) + 1);
-            });
 
-        console.log(`Loaded ${offerEmails.size} unique offer emails.`);
-    } catch (error) {
-        console.error("Offer email list error:", error);
-        offerEmails = new Map();
+            .split(/\r?\n/)
+
+            .map(normalizeEmail)
+
+            .filter(
+                email =>
+                email &&
+                email.includes("@")
+            )
+
+            .forEach(
+                email => {
+
+                    offerEmails.set(
+                        email,
+                        (offerEmails.get(email) || 0) + 1
+                    );
+
+                }
+            );
+
+
+        console.log(
+            `Loaded ${offerEmails.size} unique offer emails.`
+        );
+
+
     }
+
+    catch(error){
+
+        console.error(
+            "Offer email list error:",
+            error
+        );
+
+        offerEmails =
+            new Map();
+
+    }
+
 }
 
-function getOfferDiscount(poojaId, email) {
-    const cleanEmail = normalizeEmail(email);
 
-    if (!cleanEmail || !cleanEmail.includes("@")) return 0;
+/* =====================================================
+   GET OFFER DISCOUNT
+===================================================== */
 
-    const bookingCount = offerEmails.get(cleanEmail) || 0;
+function getOfferDiscount(poojaId,email){
 
-    if (bookingCount >= 5) return 20;
-    if (bookingCount === 4) return 15;
-    if (bookingCount === 3) return 12;
-    if (bookingCount === 2) return 8;
-    if (bookingCount === 1) return 5;
+    const cleanEmail =
+        normalizeEmail(email);
+
+
+    if(
+        !cleanEmail ||
+        !cleanEmail.includes("@")
+    )
+
+        return 0;
+
+
+    const bookingCount =
+        offerEmails.get(cleanEmail) || 0;
+
+
+    if(bookingCount >= 5)
+
+        return 20;
+
+
+    if(bookingCount === 4)
+
+        return 15;
+
+
+    if(bookingCount === 3)
+
+        return 12;
+
+
+    if(bookingCount === 2)
+
+        return 8;
+
+
+    if(bookingCount === 1)
+
+        return 5;
+
 
     return 0;
+
 }
 
-function isBookingOpen(poojaId) {
+
+/* =====================================================
+   BOOKING STATUS
+===================================================== */
+
+function isBookingOpen(poojaId){
+
     return BOOKING_STATUS[poojaId] === true;
+
 }
 
-function showBookingClosedMessage(poojaName) {
-    alert(poojaName + " booking is currently closed.");
+
+/* =====================================================
+   CLOSED MESSAGE
+===================================================== */
+
+function showBookingClosedMessage(poojaName){
+
+    alert(
+        poojaName +
+        " booking is currently closed."
+    );
+
 }
 
-function openPoojaPopup(btn, type, poojaName, poojaId) {
 
-    // Check booking status for THIS pooja only.
-    if (!isBookingOpen(poojaId)) {
-        showBookingClosedMessage(poojaName);
+/* =====================================================
+   OPEN POOJA POPUP
+===================================================== */
+
+function openPoojaPopup(
+    btn,
+    type,
+    poojaName,
+    poojaId
+){
+
+    /* Check booking status */
+
+    if(!isBookingOpen(poojaId)){
+
+        showBookingClosedMessage(
+            poojaName
+        );
+
         return;
+
     }
 
-    selectedPoojaId = poojaId;
-    selectedPoojaName = poojaName;
-    selectedPoojaType = type;
 
-    // Get price from the card, not from the Book button.
-    const priceElement = btn.closest('.service-card').querySelector('.price');
-    selectedPrice = priceElement
-        ? priceElement.innerText.replace(/[₹,\s]/g, '').trim()
+    selectedPoojaId =
+        poojaId;
+
+
+    selectedPoojaName =
+        poojaName;
+
+
+    selectedPoojaType =
+        type;
+
+
+    /* Get price from card */
+
+    const priceElement =
+        btn
+        .closest('.service-card')
+        .querySelector('.price');
+
+
+    selectedPrice =
+        priceElement
+
+        ? priceElement
+            .innerText
+            .replace(/[₹,\s]/g,"")
+            .trim()
+
         : "";
 
-    document.getElementById("popupTitle").innerText =
-        poojaName + " - " + type;
 
-    // Hide optional fields first.
-    document.getElementById("name2").style.display = "none";
-    document.getElementById("name3").style.display = "none";
-    document.getElementById("name4").style.display = "none";
-    document.getElementById("name5").style.display = "none";
+    document
+        .getElementById("popupTitle")
+        .innerText =
+        poojaName +
+        " - " +
+        type;
 
-    // Couple = Name 1 + Name 2
-    if (type === "Couple") {
-        document.getElementById("name2").style.display = "block";
+
+    /* Hide optional fields */
+
+    document
+        .getElementById("name2")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("name3")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("name4")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("name5")
+        .style.display =
+        "none";
+
+
+    /* Couple */
+
+    if(type === "Couple"){
+
+        document
+            .getElementById("name2")
+            .style.display =
+            "block";
+
     }
 
-    // Family = Name 1 + Name 2 + Name 3 + Name 4 + Name 5
-    if (type === "Family") {
-        document.getElementById("name2").style.display = "block";
-        document.getElementById("name3").style.display = "block";
-        document.getElementById("name4").style.display = "block";
-        document.getElementById("name5").style.display = "block";
+
+    /* Family */
+
+    if(type === "Family"){
+
+        document
+            .getElementById("name2")
+            .style.display =
+            "block";
+
+
+        document
+            .getElementById("name3")
+            .style.display =
+            "block";
+
+
+        document
+            .getElementById("name4")
+            .style.display =
+            "block";
+
+
+        document
+            .getElementById("name5")
+            .style.display =
+            "block";
+
     }
 
-    document.getElementById("poojaPopup").style.display = "flex";
+
+    document
+        .getElementById("poojaPopup")
+        .style.display =
+        "flex";
+
 }
+
+
+/* =====================================================
+   CLOSE POPUP
+===================================================== */
 
 function closePoojaPopup(){
-    document.getElementById("poojaPopup").style.display = "none";
+
+    document
+        .getElementById("poojaPopup")
+        .style.display =
+        "none";
+
 }
+
+
+/* =====================================================
+   SUBMIT POOJA BOOKING
+===================================================== */
 
 function submitPoojaBooking(){
 
-    // Safety check: do not allow payment if booking was disabled.
-    if (!isBookingOpen(selectedPoojaId)) {
-        showBookingClosedMessage(selectedPoojaName);
+
+    /* Safety check */
+
+    if(!isBookingOpen(selectedPoojaId)){
+
+        showBookingClosedMessage(
+            selectedPoojaName
+        );
+
         closePoojaPopup();
+
         return;
+
     }
+
 
     let data = {
-        type: "pooja",
-        poojaType: selectedPoojaType,
-        product: selectedPoojaName,
-        gothram: document.getElementById("gothram").value.trim(),
-        name1: document.getElementById("name1").value.trim(),
-        name2: document.getElementById("name2").value.trim(),
-        name3: document.getElementById("name3").value.trim(),
-        name4: document.getElementById("name4").value.trim(),
-        name5: document.getElementById("name5").value.trim(),
-        wish: document.getElementById("wish").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        email: document.getElementById("email").value.trim()
+
+        type:"pooja",
+
+        poojaType:
+            selectedPoojaType,
+
+        product:
+            selectedPoojaName,
+
+        gothram:
+            document
+            .getElementById("gothram")
+            .value
+            .trim(),
+
+        name1:
+            document
+            .getElementById("name1")
+            .value
+            .trim(),
+
+        name2:
+            document
+            .getElementById("name2")
+            .value
+            .trim(),
+
+        name3:
+            document
+            .getElementById("name3")
+            .value
+            .trim(),
+
+        name4:
+            document
+            .getElementById("name4")
+            .value
+            .trim(),
+
+        name5:
+            document
+            .getElementById("name5")
+            .value
+            .trim(),
+
+        wish:
+            document
+            .getElementById("wish")
+            .value
+            .trim(),
+
+        phone:
+            document
+            .getElementById("phone")
+            .value
+            .trim(),
+
+        email:
+            document
+            .getElementById("email")
+            .value
+            .trim()
+
     };
 
-    const nameRegex = /^[A-Za-z\s]+$/;
-    const phoneRegex = /^[0-9+\-\s()]{7,20}$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(!data.gothram || !data.name1 || !data.phone || !data.email){
-        alert("Please fill all required details");
+    const nameRegex =
+        /^[A-Za-z\s]+$/;
+
+
+    const phoneRegex =
+        /^[0-9+\-\s()]{7,20}$/;
+
+
+    const emailRegex =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    /* Required */
+
+    if(
+        !data.gothram ||
+        !data.name1 ||
+        !data.phone ||
+        !data.email
+    ){
+
+        alert(
+            "Please fill all required details"
+        );
+
         return;
+
     }
+
+
+    /* Name 1 */
 
     if(!nameRegex.test(data.name1)){
-        alert("Name should contain only letters");
+
+        alert(
+            "Name should contain only letters"
+        );
+
         return;
+
     }
 
-    if(data.name2 && !nameRegex.test(data.name2)){
-        alert("Name 2 invalid");
+
+    /* Name 2 */
+
+    if(
+        data.name2 &&
+        !nameRegex.test(data.name2)
+    ){
+
+        alert(
+            "Name 2 invalid"
+        );
+
         return;
+
     }
 
-    if(data.name3 && !nameRegex.test(data.name3)){
-        alert("Name 3 invalid");
+
+    /* Name 3 */
+
+    if(
+        data.name3 &&
+        !nameRegex.test(data.name3)
+    ){
+
+        alert(
+            "Name 3 invalid"
+        );
+
         return;
+
     }
 
-    if(data.name4 && !nameRegex.test(data.name4)){
-        alert("Name 4 invalid");
+
+    /* Name 4 */
+
+    if(
+        data.name4 &&
+        !nameRegex.test(data.name4)
+    ){
+
+        alert(
+            "Name 4 invalid"
+        );
+
         return;
+
     }
 
-    if(data.name5 && !nameRegex.test(data.name5)){
-        alert("Name 5 invalid");
+
+    /* Name 5 */
+
+    if(
+        data.name5 &&
+        !nameRegex.test(data.name5)
+    ){
+
+        alert(
+            "Name 5 invalid"
+        );
+
         return;
+
     }
+
+
+    /* Gothram */
 
     if(!nameRegex.test(data.gothram)){
-        alert("Gothram invalid");
+
+        alert(
+            "Gothram invalid"
+        );
+
         return;
+
     }
+
+
+    /* Phone */
 
     if(!phoneRegex.test(data.phone)){
-        alert("Please enter valid phone number");
+
+        alert(
+            "Please enter valid phone number"
+        );
+
         return;
+
     }
+
+
+    /* Email */
 
     if(!emailRegex.test(data.email)){
-        alert("Please enter valid email");
+
+        alert(
+            "Please enter valid email"
+        );
+
         return;
+
     }
 
-    // Save temporary booking data.
-    localStorage.setItem("temp_type", "pooja");
-    localStorage.setItem("temp_pooja", selectedPoojaName);
-    localStorage.setItem("temp_gothram", data.gothram);
-    localStorage.setItem("temp_name1", data.name1);
-    localStorage.setItem("temp_name2", data.name2);
-    localStorage.setItem("temp_name3", data.name3);
-    localStorage.setItem("temp_name4", data.name4);
-    localStorage.setItem("temp_name5", data.name5);
-    localStorage.setItem("temp_wish", data.wish);
-    localStorage.setItem("temp_phone", data.phone);
-    localStorage.setItem("temp_email", data.email);
 
-    // ================= DISCOUNT =================
-    let originalPrice = parseFloat(selectedPrice);
-    let finalPrice = originalPrice;
+    /* =================================================
+       SAVE TEMPORARY BOOKING DATA
+    ================================================= */
 
-    const discountPercent = getOfferDiscount(selectedPoojaId, data.email);
+    localStorage.setItem(
+        "temp_type",
+        "pooja"
+    );
 
-    if (discountPercent > 0) {
-        finalPrice = Math.round(
-            originalPrice * (1 - discountPercent / 100)
+
+    localStorage.setItem(
+        "temp_pooja",
+        selectedPoojaName
+    );
+
+
+    localStorage.setItem(
+        "temp_gothram",
+        data.gothram
+    );
+
+
+    localStorage.setItem(
+        "temp_name1",
+        data.name1
+    );
+
+
+    localStorage.setItem(
+        "temp_name2",
+        data.name2
+    );
+
+
+    localStorage.setItem(
+        "temp_name3",
+        data.name3
+    );
+
+
+    localStorage.setItem(
+        "temp_name4",
+        data.name4
+    );
+
+
+    localStorage.setItem(
+        "temp_name5",
+        data.name5
+    );
+
+
+    localStorage.setItem(
+        "temp_wish",
+        data.wish
+    );
+
+
+    localStorage.setItem(
+        "temp_phone",
+        data.phone
+    );
+
+
+    localStorage.setItem(
+        "temp_email",
+        data.email
+    );
+
+
+    /* =================================================
+       DISCOUNT
+    ================================================= */
+
+    let originalPrice =
+        parseFloat(selectedPrice);
+
+
+    let finalPrice =
+        originalPrice;
+
+
+    const discountPercent =
+        getOfferDiscount(
+            selectedPoojaId,
+            data.email
         );
+
+
+    if(discountPercent > 0){
+
+        finalPrice =
+            Math.round(
+                originalPrice *
+                (1 - discountPercent / 100)
+            );
+
     }
 
-    localStorage.setItem("discount_percent", String(discountPercent));
-    localStorage.setItem("original_price", String(originalPrice));
-    localStorage.setItem("temp_price", String(finalPrice));
-    localStorage.setItem("selected_pooja_id", selectedPoojaId);
 
-    window.location.href = "payment.html";
+    localStorage.setItem(
+        "discount_percent",
+        String(discountPercent)
+    );
+
+
+    localStorage.setItem(
+        "original_price",
+        String(originalPrice)
+    );
+
+
+    localStorage.setItem(
+        "temp_price",
+        String(finalPrice)
+    );
+
+
+    localStorage.setItem(
+        "selected_pooja_id",
+        selectedPoojaId
+    );
+
+
+    /* =================================================
+       PAYMENT PAGE
+    ================================================= */
+
+    window.location.href =
+        "payment.html";
+
 }
 
-/* =========================================================
+
+/* =====================================================
    BUTTON DISPLAY
-   Only buttons belonging to a Pooja with false status are
-   displayed as Booking Closed. They remain clickable so the
-   user gets a clear message instead of a silent response.
-   ========================================================= */
-function updateBookingButtons() {
-    document.querySelectorAll(".service-card button.btn").forEach(btn => {
-        const onclickText = btn.getAttribute("onclick") || "";
-        const match = onclickText.match(
-            /openPoojaPopup\(this,'[^']*','([^']*)','([^']*)'\)/
+===================================================== */
+
+function updateBookingButtons(){
+
+    document
+        .querySelectorAll(
+            ".service-card button.btn"
+        )
+        .forEach(
+
+            btn => {
+
+                const onclickText =
+                    btn.getAttribute("onclick") ||
+                    "";
+
+
+                const match =
+                    onclickText.match(
+                        /openPoojaPopup\(this,'[^']*','([^']*)','([^']*)'\)/
+                    );
+
+
+                if(!match)
+
+                    return;
+
+
+                const poojaId =
+                    match[2];
+
+
+                if(
+                    isBookingOpen(poojaId)
+                ){
+
+                    btn.textContent =
+                        "Book";
+
+
+                    btn.disabled =
+                        false;
+
+
+                    btn.style.pointerEvents =
+                        "auto";
+
+
+                    btn.style.opacity =
+                        "1";
+
+
+                    btn.style.background =
+                        "#ff6600";
+
+
+                    btn.style.cursor =
+                        "pointer";
+
+                }
+
+                else{
+
+                    btn.textContent =
+                        "Booking Closed";
+
+
+                    btn.disabled =
+                        false;
+
+
+                    btn.style.pointerEvents =
+                        "auto";
+
+
+                    btn.style.opacity =
+                        "0.65";
+
+
+                    btn.style.background =
+                        "#999";
+
+
+                    btn.style.cursor =
+                        "not-allowed";
+
+                }
+
+            }
+
         );
 
-        if (!match) return;
-
-        const poojaId = match[2];
-
-        if (isBookingOpen(poojaId)) {
-            btn.textContent = "Book";
-            btn.disabled = false;
-            btn.style.pointerEvents = "auto";
-            btn.style.opacity = "1";
-            btn.style.background = "#ff6600";
-            btn.style.cursor = "pointer";
-        } else {
-            btn.textContent = "Booking Closed";
-            btn.disabled = false;
-            btn.style.pointerEvents = "auto";
-            btn.style.opacity = "0.65";
-            btn.style.background = "#999";
-            btn.style.cursor = "not-allowed";
-        }
-    });
 }
 
-// Apply button status after the page has loaded.
-document.addEventListener("DOMContentLoaded", function() {
-    updateBookingButtons();
-    loadOfferEmails();
-});
+
+/* =====================================================
+   PAGE LOAD
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateBookingButtons();
+
+        loadOfferEmails();
+
+    }
+);
 
 </script>
+
+
 </body>
+
 </html>
