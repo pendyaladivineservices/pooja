@@ -585,6 +585,224 @@ Book
 
 
 <!-- =====================================================
+     CHANDI HOMAM
+===================================================== -->
+
+<div class="slider-wrapper">
+
+<button
+class="arrow left"
+onclick="scrollSlider(this, -1)">
+&#10094;
+</button>
+
+<button
+class="arrow right"
+onclick="scrollSlider(this, 1)">
+&#10095;
+</button>
+
+<div class="slider">
+
+
+<!-- ================= SINGLE ================= -->
+
+<div class="service-card">
+
+<div class="card-content">
+
+<h3>
+Chandi Homam (Single)
+</h3>
+
+<p class="desc">
+
+Chandi Homam will be performed on
+<b>Durga Ashtami, 18/10/2026</b>,
+during Devi Navaratri at
+<b>Maa Baglamukhi Temple, Ujjain</b>,
+one of the sacred Shakti Peetha temples.
+
+</p>
+
+<p class="desc">
+
+<b>Benefits:</b>
+
+Removal of negative energies, divine protection,
+inner strength, prosperity, success and overall
+well-being in life.
+
+</p>
+
+<p class="desc">
+
+<b>Date:</b> 18/10/2026
+
+</p>
+
+<div class="price">
+₹800
+</div>
+
+</div>
+
+<div class="card-footer">
+
+<img src="Images/poojas/chandi.png">
+
+<button
+class="btn"
+onclick="openPoojaPopup(
+this,
+'Single',
+'Chandi Homam',
+'POOJA_003'
+)">
+
+Book
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= COUPLE ================= -->
+
+<div class="service-card">
+
+<div class="card-content">
+
+<h3>
+Chandi Homam (Couple)
+</h3>
+
+<p class="desc">
+
+Chandi Homam will be performed on
+<b>Durga Ashtami, 18/10/2026</b>,
+during Devi Navaratri at
+<b>Maa Baglamukhi Temple, Ujjain</b>,
+one of the sacred Shakti Peetha temples.
+
+</p>
+
+<p class="desc">
+
+<b>Benefits:</b>
+
+Removal of negative energies, divine protection,
+inner strength, prosperity, success and overall
+well-being in life.
+
+</p>
+
+<p class="desc">
+
+<b>Date:</b> 18/10/2026
+
+</p>
+
+<div class="price">
+₹1116
+</div>
+
+</div>
+
+<div class="card-footer">
+
+<img src="Images/poojas/chandi.png">
+
+<button
+class="btn"
+onclick="openPoojaPopup(
+this,
+'Couple',
+'Chandi Homam',
+'POOJA_003'
+)">
+
+Book
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= FAMILY ================= -->
+
+<div class="service-card">
+
+<div class="card-content">
+
+<h3>
+Chandi Homam (Family)
+</h3>
+
+<p class="desc">
+
+Chandi Homam will be performed on
+<b>Durga Ashtami, 18/10/2026</b>,
+during Devi Navaratri at
+<b>Maa Baglamukhi Temple, Ujjain</b>,
+one of the sacred Shakti Peetha temples.
+
+</p>
+
+<p class="desc">
+
+<b>Benefits:</b>
+
+Removal of negative energies, divine protection,
+inner strength, prosperity, success and overall
+well-being in life.
+
+</p>
+
+<p class="desc">
+
+<b>Date:</b> 18/10/2026
+
+</p>
+
+<div class="price">
+₹1400
+</div>
+
+</div>
+
+<div class="card-footer">
+
+<img src="Images/poojas/chandi.png">
+
+<button
+class="btn"
+onclick="openPoojaPopup(
+this,
+'Family',
+'Chandi Homam',
+'POOJA_003'
+)">
+
+Book
+
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
      POOJA POPUP
 ===================================================== -->
 
@@ -807,7 +1025,7 @@ let selectedPrice = "";
 let offerEmails = new Map();
 
 
-const ENABLE_POOJA_DISCOUNTS = false;
+const ENABLE_POOJA_DISCOUNTS = true; // Eligibility is restricted to POOJA_003 in getOfferDiscount.
 
 
 const BOOKING_STATUS = {
@@ -816,7 +1034,7 @@ const BOOKING_STATUS = {
 
     "POOJA_002": true,
 
-    "POOJA_003": false
+    "POOJA_003": true
 
 };
 
@@ -826,61 +1044,43 @@ function getOfferDiscount(
     email
 ){
 
-    if(!ENABLE_POOJA_DISCOUNTS){
+    // Discounts apply ONLY to Chandi Homam (POOJA_003).
+    // Rudrabhishekam & Annadanam and Go Seva receive NO discount.
 
+    if(poojaId !== "POOJA_003"){
         return 0;
-
     }
 
     if(!email){
-
         return 0;
-
     }
 
-    email =
-        email
-        .trim()
-        .toLowerCase();
+    email = email.trim().toLowerCase();
 
-    let count =
-        offerEmails.get(email) || 0;
+    let count = offerEmails.get(email) || 0;
 
     count++;
 
-    offerEmails.set(
-        email,
-        count
-    );
+    offerEmails.set(email, count);
 
     if(count === 1){
-
         return 5;
-
     }
 
     if(count === 2){
-
         return 8;
-
     }
 
     if(count === 3){
-
         return 12;
-
     }
 
     if(count === 4){
-
         return 15;
-
     }
 
     if(count >= 5){
-
         return 20;
-
     }
 
     return 0;
@@ -1028,12 +1228,24 @@ function openPoojaPopup(
         type;
 
 
-    /* TEMPORARY DEFAULT WISH / SANKALPAM */
+    /* DEFAULT WISH / SANKALPAM */
+
+if(selectedPoojaId === "POOJA_003"){
+
+    document
+        .getElementById("wish")
+        .value =
+        "Negative Energy Removal, Strength and Success";
+
+}
+else{
 
     document
         .getElementById("wish")
         .value =
         "Pitru Devata Shanti, Pitru Dosha Nivarana";
+
+}
 
 
     document
