@@ -581,6 +581,7 @@ Book
 
 </div>
 
+
 <!-- =====================================================
      CHANDI HOMAM
 ===================================================== -->
@@ -895,10 +896,6 @@ display:none;
 ">
 
 
-<!-- =====================================================
-     WISH / SANKALPAM
-===================================================== -->
-
 <label
 for="wish"
 style="
@@ -1016,109 +1013,95 @@ let selectedPoojaId = "";
 
 let selectedPrice = "";
 
+
+/* =====================================================
+   OFFER EMAIL DATA
+===================================================== */
+
 let offerEmails = new Map();
+
 let offerEmailsLoaded = false;
+
 let offerEmailsLoadPromise = null;
 
+
+/* =====================================================
+   DISCOUNT SETTINGS
+===================================================== */
+
 const ENABLE_POOJA_DISCOUNTS = true;
+
+
+/*
+=====================================================
+DISCOUNT RULES
+
+ONLY CHANDI HOMAM GETS DISCOUNT.
+
+POOJA_001 = Rudrabhishekam & Annadanam
+POOJA_002 = Go Seva
+POOJA_003 = Chandi Homam
+
+POOJA_001 = 0%
+POOJA_002 = 0%
+
+For Chandi Homam:
+
+Email appears 0 times
+→ First-time customer
+→ 0%
+
+Email appears 1 time
+→ Existing customer, 1 previous booking
+→ 5%
+
+Email appears 2 times
+→ 8%
+
+Email appears 3 times
+→ 10%
+
+Email appears 4 times
+→ 15%
+
+Email appears 5 or more times
+→ 20%
+
+IMPORTANT:
+The current booking is NOT added to the count.
+
+The count is taken ONLY from offer-emails.txt.
+=====================================================
+*/
+
 
 const BOOKING_STATUS = {
 
     "POOJA_001": true,
+
     "POOJA_002": true,
+
     "POOJA_003": true
 
 };
 
 
-/*
-DISCOUNT RULES
+/* =====================================================
+   NORMALIZE EMAIL
+===================================================== */
 
-Only Chandi Homam (POOJA_003) gets discounts.
+function normalizeEmail(email){
 
-offer-emails.txt contains booking history.
-Every occurrence of the same email counts as one previous booking.
-
-Current booking:
-1st  = 5%
-2nd  = 8%
-3rd  = 12%
-4th  = 15%
-5th+ = 20%
-
-Rudrabhishekam & Annadanam = 0%
-Go Seva = 0%
-*/
-
-function getOfferDiscount(
-    poojaId,
-    email
-){
-
-    if(
-        !ENABLE_POOJA_DISCOUNTS ||
-        poojaId !== "POOJA_003"
-    ){
-
-        return 0;
-
-    }
-
-    if(!email){
-
-        return 0;
-
-    }
-
-    email =
-        email
-            .trim()
-            .toLowerCase();
-
-    // Previous booking count from offer-emails.txt.
-    let count =
-        offerEmails.get(email) || 0;
-
-    // Include this current booking.
-    count++;
-
-    // Preserve the count for another booking in this session.
-    offerEmails.set(email, count);
-
-    if(count === 1){
-
-        return 5;
-
-    }
-
-    if(count === 2){
-
-        return 8;
-
-    }
-
-    if(count === 3){
-
-        return 12;
-
-    }
-
-    if(count === 4){
-
-        return 15;
-
-    }
-
-    if(count >= 5){
-
-        return 20;
-
-    }
-
-    return 0;
+    return String(email || "")
+        .trim()
+        .toLowerCase();
 
 }
 
+
+/* =====================================================
+   LOAD OFFER EMAILS
+===================================================== */
 
 function loadOfferEmails(){
 
@@ -1128,10 +1111,13 @@ function loadOfferEmails(){
 
     }
 
+
     offerEmailsLoadPromise =
         fetch(
             "offer-emails.txt",
-            { cache:"no-store" }
+            {
+                cache:"no-store"
+            }
         )
 
         .then(
@@ -1154,33 +1140,38 @@ function loadOfferEmails(){
             text => {
 
                 /*
-                Do NOT deduplicate the file.
+                IMPORTANT:
+
+                DO NOT DEDUPLICATE EMAILS.
+
+                Every occurrence of an email
+                represents one previous booking.
 
                 Example:
+
                 ravi@gmail.com
                 ravi@gmail.com
                 ravi@gmail.com
 
-                means 3 previous bookings for Ravi.
+                = 3 previous bookings
                 */
+
 
                 offerEmails.clear();
 
+
                 text
                     .split(/\r?\n/)
+                    .map(
+                        normalizeEmail
+                    )
+                    .filter(
+                        email =>
+                            email &&
+                            email.includes("@")
+                    )
                     .forEach(
                         email => {
-
-                            email =
-                                email
-                                    .trim()
-                                    .toLowerCase();
-
-                            if(!email){
-
-                                return;
-
-                            }
 
                             const count =
                                 offerEmails.get(email) || 0;
@@ -1193,7 +1184,15 @@ function loadOfferEmails(){
                         }
                     );
 
+
                 offerEmailsLoaded = true;
+
+
+                console.log(
+                    "Offer email history loaded.",
+                    "Unique emails:",
+                    offerEmails.size
+                );
 
             }
         )
@@ -1201,7 +1200,19 @@ function loadOfferEmails(){
         .catch(
             error => {
 
+                /*
+                If the file cannot be loaded,
+                do NOT give a discount.
+
+                This prevents a new customer
+                from accidentally getting 5%.
+                */
+
+                offerEmails =
+                    new Map();
+
                 offerEmailsLoaded = true;
+
 
                 console.error(
                     "Offer email file not loaded:",
@@ -1211,10 +1222,119 @@ function loadOfferEmails(){
             }
         );
 
+
     return offerEmailsLoadPromise;
 
 }
 
+
+/* =====================================================
+   GET OFFER DISCOUNT
+===================================================== */
+
+function getOfferDiscount(
+    poojaId,
+    email
+){
+
+    /*
+    Discounts are ONLY for Chandi Homam.
+    */
+
+    if(
+        !ENABLE_POOJA_DISCOUNTS ||
+        poojaId !== "POOJA_003"
+    ){
+
+        return 0;
+
+    }
+
+
+    const cleanEmail =
+        normalizeEmail(email);
+
+
+    if(
+        !cleanEmail ||
+        !cleanEmail.includes("@")
+    ){
+
+        return 0;
+
+    }
+
+
+    /*
+    IMPORTANT:
+
+    This is the number of PREVIOUS bookings
+    already present in offer-emails.txt.
+
+    DO NOT increment this count here.
+
+    First-time customer:
+    count = 0 → 0%
+
+    Existing customer with 1 previous:
+    count = 1 → 5%
+    */
+
+    const bookingCount =
+        offerEmails.get(cleanEmail) || 0;
+
+
+    if(bookingCount >= 5){
+
+        return 20;
+
+    }
+
+
+    if(bookingCount === 4){
+
+        return 15;
+
+    }
+
+
+    if(bookingCount === 3){
+
+        return 10;
+
+    }
+
+
+    if(bookingCount === 2){
+
+        return 8;
+
+    }
+
+
+    if(bookingCount === 1){
+
+        return 5;
+
+    }
+
+
+    /*
+    count = 0
+    means the email is NOT in offer-emails.txt.
+
+    Therefore:
+    FIRST-TIME CUSTOMER = NO DISCOUNT.
+    */
+
+    return 0;
+
+}
+
+
+/* =====================================================
+   BOOKING STATUS
+===================================================== */
 
 function isBookingOpen(poojaId){
 
@@ -1224,6 +1344,10 @@ function isBookingOpen(poojaId){
 
 }
 
+
+/* =====================================================
+   CLOSED MESSAGE
+===================================================== */
 
 function showBookingClosedMessage(
     poojaName
@@ -1236,6 +1360,10 @@ function showBookingClosedMessage(
 
 }
 
+
+/* =====================================================
+   OPEN POOJA POPUP
+===================================================== */
 
 function openPoojaPopup(
     btn,
@@ -1292,22 +1420,25 @@ function openPoojaPopup(
 
     /* DEFAULT WISH / SANKALPAM */
 
-if(selectedPoojaId === "POOJA_003"){
+    if(
+        selectedPoojaId ===
+        "POOJA_003"
+    ){
 
-    document
-        .getElementById("wish")
-        .value =
-        "Negative Energy Removal, Strength and Success";
+        document
+            .getElementById("wish")
+            .value =
+            "Negative Energy Removal, Strength and Success";
 
-}
-else{
+    }
+    else{
 
-    document
-        .getElementById("wish")
-        .value =
-        "Pitru Devata Shanti, Pitru Dosha Nivarana";
+        document
+            .getElementById("wish")
+            .value =
+            "Pitru Devata Shanti, Pitru Dosha Nivarana";
 
-}
+    }
 
 
     document
@@ -1377,6 +1508,10 @@ else{
 }
 
 
+/* =====================================================
+   CLOSE POPUP
+===================================================== */
+
 function closePoojaPopup(){
 
     document
@@ -1387,9 +1522,22 @@ function closePoojaPopup(){
 }
 
 
+/* =====================================================
+   SUBMIT POOJA BOOKING
+===================================================== */
+
 function submitPoojaBooking(){
 
-    // Wait until offer-emails.txt has loaded.
+    /*
+    IMPORTANT:
+
+    Wait until offer-emails.txt is loaded.
+
+    Otherwise a returning customer could
+    incorrectly receive 0% because the file
+    has not loaded yet.
+    */
+
     if(!offerEmailsLoaded){
 
         loadOfferEmails().then(
@@ -1616,50 +1764,60 @@ function submitPoojaBooking(){
         "pooja"
     );
 
+
     localStorage.setItem(
         "temp_pooja",
         selectedPoojaName
     );
+
 
     localStorage.setItem(
         "temp_gothram",
         data.gothram
     );
 
+
     localStorage.setItem(
         "temp_name1",
         data.name1
     );
+
 
     localStorage.setItem(
         "temp_name2",
         data.name2
     );
 
+
     localStorage.setItem(
         "temp_name3",
         data.name3
     );
+
 
     localStorage.setItem(
         "temp_name4",
         data.name4
     );
 
+
     localStorage.setItem(
         "temp_name5",
         data.name5
     );
+
 
     localStorage.setItem(
         "temp_wish",
         data.wish
     );
 
+
     localStorage.setItem(
         "temp_phone",
         data.phone
     );
+
 
     localStorage.setItem(
         "temp_email",
@@ -1670,9 +1828,15 @@ function submitPoojaBooking(){
     let originalPrice =
         parseFloat(selectedPrice);
 
+
     let finalPrice =
         originalPrice;
 
+
+    /*
+    Calculate discount based ONLY on
+    previous email occurrences.
+    */
 
     const discountPercent =
         getOfferDiscount(
@@ -1697,15 +1861,18 @@ function submitPoojaBooking(){
         String(discountPercent)
     );
 
+
     localStorage.setItem(
         "original_price",
         String(originalPrice)
     );
 
+
     localStorage.setItem(
         "temp_price",
         String(finalPrice)
     );
+
 
     localStorage.setItem(
         "selected_pooja_id",
@@ -1718,6 +1885,10 @@ function submitPoojaBooking(){
 
 }
 
+
+/* =====================================================
+   UPDATE BOOKING BUTTONS
+===================================================== */
 
 function updateBookingButtons(){
 
@@ -1801,6 +1972,10 @@ function updateBookingButtons(){
 
 }
 
+
+/* =====================================================
+   PAGE LOAD
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
