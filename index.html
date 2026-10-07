@@ -1017,64 +1017,102 @@ let selectedPoojaId = "";
 let selectedPrice = "";
 
 let offerEmails = new Map();
+let offerEmailsLoaded = false;
+let offerEmailsLoadPromise = null;
 
-
-const ENABLE_POOJA_DISCOUNTS = true; // Eligibility is restricted to POOJA_003 in getOfferDiscount.
-
+const ENABLE_POOJA_DISCOUNTS = true;
 
 const BOOKING_STATUS = {
 
     "POOJA_001": true,
-
     "POOJA_002": true,
-
     "POOJA_003": true
 
 };
 
+
+/*
+DISCOUNT RULES
+
+Only Chandi Homam (POOJA_003) gets discounts.
+
+offer-emails.txt contains booking history.
+Every occurrence of the same email counts as one previous booking.
+
+Current booking:
+1st  = 5%
+2nd  = 8%
+3rd  = 12%
+4th  = 15%
+5th+ = 20%
+
+Rudrabhishekam & Annadanam = 0%
+Go Seva = 0%
+*/
 
 function getOfferDiscount(
     poojaId,
     email
 ){
 
-    // Discounts apply ONLY to Chandi Homam (POOJA_003).
-    // Rudrabhishekam & Annadanam and Go Seva receive NO discount.
+    if(
+        !ENABLE_POOJA_DISCOUNTS ||
+        poojaId !== "POOJA_003"
+    ){
 
-    if(poojaId !== "POOJA_003"){
         return 0;
+
     }
 
     if(!email){
+
         return 0;
+
     }
 
-    email = email.trim().toLowerCase();
+    email =
+        email
+            .trim()
+            .toLowerCase();
 
-    let count = offerEmails.get(email) || 0;
+    // Previous booking count from offer-emails.txt.
+    let count =
+        offerEmails.get(email) || 0;
 
+    // Include this current booking.
     count++;
 
+    // Preserve the count for another booking in this session.
     offerEmails.set(email, count);
 
     if(count === 1){
+
         return 5;
+
     }
 
     if(count === 2){
+
         return 8;
+
     }
 
     if(count === 3){
+
         return 12;
+
     }
 
     if(count === 4){
+
         return 15;
+
     }
 
     if(count >= 5){
+
         return 20;
+
     }
 
     return 0;
@@ -1084,66 +1122,96 @@ function getOfferDiscount(
 
 function loadOfferEmails(){
 
-    fetch("offer-emails.txt")
+    if(offerEmailsLoadPromise){
 
-        .then(response => {
+        return offerEmailsLoadPromise;
 
-            if(!response.ok){
+    }
 
-                return;
+    offerEmailsLoadPromise =
+        fetch(
+            "offer-emails.txt",
+            { cache:"no-store" }
+        )
 
-            }
+        .then(
+            response => {
 
-            return response.text();
+                if(!response.ok){
 
-        })
-
-        .then(text => {
-
-            if(!text){
-
-                return;
-
-            }
-
-            text
-            .split(/\r?\n/)
-            .forEach(
-
-                email => {
-
-                    email =
-                        email
-                        .trim()
-                        .toLowerCase();
-
-                    if(email){
-
-                        offerEmails.set(
-                            email,
-                            0
-                        );
-
-                    }
+                    throw new Error(
+                        "offer-emails.txt could not be loaded"
+                    );
 
                 }
 
-            );
+                return response.text();
 
-        })
+            }
+        )
+
+        .then(
+            text => {
+
+                /*
+                Do NOT deduplicate the file.
+
+                Example:
+                ravi@gmail.com
+                ravi@gmail.com
+                ravi@gmail.com
+
+                means 3 previous bookings for Ravi.
+                */
+
+                offerEmails.clear();
+
+                text
+                    .split(/\r?\n/)
+                    .forEach(
+                        email => {
+
+                            email =
+                                email
+                                    .trim()
+                                    .toLowerCase();
+
+                            if(!email){
+
+                                return;
+
+                            }
+
+                            const count =
+                                offerEmails.get(email) || 0;
+
+                            offerEmails.set(
+                                email,
+                                count + 1
+                            );
+
+                        }
+                    );
+
+                offerEmailsLoaded = true;
+
+            }
+        )
 
         .catch(
-
             error => {
 
-                console.log(
+                offerEmailsLoaded = true;
+
+                console.error(
                     "Offer email file not loaded:",
                     error
                 );
 
             }
-
         );
+
+    return offerEmailsLoadPromise;
 
 }
 
@@ -1320,6 +1388,22 @@ function closePoojaPopup(){
 
 
 function submitPoojaBooking(){
+
+    // Wait until offer-emails.txt has loaded.
+    if(!offerEmailsLoaded){
+
+        loadOfferEmails().then(
+            function(){
+
+                submitPoojaBooking();
+
+            }
+        );
+
+        return;
+
+    }
+
 
     if(!isBookingOpen(selectedPoojaId)){
 
