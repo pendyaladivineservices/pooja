@@ -1636,8 +1636,10 @@ function submitPoojaBooking(){
     };
 
 
+    // Allow English and Telugu letters, vowel signs/diacritics,
+    // spaces, periods, apostrophes, and hyphens in names and gothras.
     const nameRegex =
-        /^[A-Za-z\s]+$/;
+        /^[A-Za-z\u0C00-\u0C7F\s.'’\-]+$/u;
 
     const phoneRegex =
         /^[0-9+\-\s()]{7,20}$/;
@@ -1665,7 +1667,7 @@ function submitPoojaBooking(){
     if(!nameRegex.test(data.name1)){
 
         alert(
-            "Name should contain only letters"
+            "Name should contain English or Telugu letters only"
         );
 
         return;
@@ -1679,7 +1681,7 @@ function submitPoojaBooking(){
     ){
 
         alert(
-            "Name 2 invalid"
+            "Name 2: Please use English or Telugu letters only"
         );
 
         return;
@@ -1693,7 +1695,7 @@ function submitPoojaBooking(){
     ){
 
         alert(
-            "Name 3 invalid"
+            "Name 3: Please use English or Telugu letters only"
         );
 
         return;
@@ -1707,7 +1709,7 @@ function submitPoojaBooking(){
     ){
 
         alert(
-            "Name 4 invalid"
+            "Name 4: Please use English or Telugu letters only"
         );
 
         return;
@@ -1721,7 +1723,7 @@ function submitPoojaBooking(){
     ){
 
         alert(
-            "Name 5 invalid"
+            "Name 5: Please use English or Telugu letters only"
         );
 
         return;
@@ -1732,7 +1734,7 @@ function submitPoojaBooking(){
     if(!nameRegex.test(data.gothram)){
 
         alert(
-            "Gothram invalid"
+            "Gothram: Please use English or Telugu letters only"
         );
 
         return;
