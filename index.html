@@ -571,7 +571,7 @@ class="btn"
 onclick="openPoojaPopup(
 this,
 'Single',
-'Rudrabhishekam & Annadanam',
+'Nandi Abhishekam',
 'POOJA_001'
 )">
 
@@ -629,7 +629,7 @@ class="btn"
 onclick="openPoojaPopup(
 this,
 'Couple',
-'Rudrabhishekam & Annadanam',
+'Nandi Abhishekam',
 'POOJA_001'
 )">
 
@@ -688,7 +688,7 @@ class="btn"
 onclick="openPoojaPopup(
 this,
 'Family',
-'Rudrabhishekam & Annadanam',
+'Nandi Abhishekam',
 'POOJA_001'
 )">
 
@@ -737,7 +737,7 @@ Kuja Dosha Nivarana/Shanthi Pooja
 <p class="desc">
 
 Kuja Dosha Nivarana/Shanthi Pooja
-Ujjain loni svayamga aa Kuja graham puttina Angareswara/Mangalanath Mahadev aalayamlo 
+Ujjain loni svayamga aa Kuja graham puttina Angareswara/Mangalanath Mahadev aalayamlo Prati Mangalavaram
 meekunna Kuja dosha nivarana kosam shanthi pooja cheyabadutundi
 
 </p>
@@ -752,12 +752,12 @@ Kuja doshan nivarana dvara meekunna vivaham, pillalu and bhoomi vivadalaku samba
 
 <p class="desc">
 
-<b>Date:</b> 10/10/2026
+<b>Date:</b> Every Tuesday (your pooja will done on coming tuesday)
 
 </p>
 
 <div class="price">
-₹516
+₹3100
 </div>
 
 </div>
@@ -771,7 +771,7 @@ class="btn"
 onclick="openPoojaPopup(
 this,
 'Single',
-'Go Seva (Go Feeding)',
+'Kuja Dosha Nivarana/Shanthi Pooja',
 'POOJA_002'
 )">
 
@@ -1031,14 +1031,11 @@ const ENABLE_POOJA_DISCOUNTS = true;
 =====================================================
 DISCOUNT RULES
 
-ONLY CHANDI HOMAM GETS DISCOUNT.
+POOJA_003 (Chandi Homam) and POOJA_001 (Nandi Abhishekam) get discounts. POOJA_002 (Kuja Dosha Nivarana/Shanthi Pooja) gets NO discount.
 
-POOJA_001 = Rudrabhishekam & Annadanam
-POOJA_002 = Go Seva
-POOJA_003 = Chandi Homam
-
-POOJA_001 = 0%
-POOJA_002 = 0%
+POOJA_001 = Nandi Abhishekam (discount enabled)
+POOJA_002 = Kuja Dosha Nivarana/Shanthi Pooja (no discount)
+POOJA_003 = Chandi Homam (discount enabled)
 
 For Chandi Homam:
 
@@ -1072,9 +1069,9 @@ The count is taken ONLY from offer-emails.txt.
 
 const BOOKING_STATUS = {
 
-    "POOJA_001": false,
+    "POOJA_001": true,
 
-    "POOJA_002": false,
+    "POOJA_002": true,
 
     "POOJA_003": true
 
@@ -1233,12 +1230,12 @@ function getOfferDiscount(
 ){
 
     /*
-    Discounts are ONLY for Chandi Homam.
+    Discounts apply to Nandi Abhishekam (POOJA_001) and Chandi Homam (POOJA_003). Kuja Dosha Nivarana/Shanthi Pooja (POOJA_002) gets no discount.
     */
 
     if(
         !ENABLE_POOJA_DISCOUNTS ||
-        poojaId !== "POOJA_003"
+        (poojaId !== "POOJA_001" && poojaId !== "POOJA_003")
     ){
 
         return 0;
@@ -1990,3 +1987,4 @@ document.addEventListener(
 </body>
 
 </html>
+indulo 1st 2 poojas ki discount offers apply avvali but last kuja dosha pooja ki no discounts
