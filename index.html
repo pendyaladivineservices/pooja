@@ -1238,7 +1238,7 @@ const ENABLE_POOJA_DISCOUNTS = true;
 =====================================================
 DISCOUNT RULES
 
-Discounts apply to POOJA_001, POOJA_003 and POOJA_004–POOJA_012 (Karthika Somavaram, Shivaratri, Mrityunjaya Homam and packages). POOJA_002 gets no discount.
+Discounts apply to POOJA_001, POOJA_003 and individual sevas POOJA_004–POOJA_007 and POOJA_009–POOJA_011. Package IDs POOJA_008 (Complete Four Karthika Somavaram Package) and POOJA_012 (Complete Karthika Shiva Seva Package) are excluded from all returning-devotee discounts. POOJA_002 gets no discount.
 
 POOJA_001 = Nandi Abhishekam (discount enabled)
 POOJA_002 = Kuja Dosha Nivarana/Shanthi Pooja (no discount)
@@ -1442,16 +1442,15 @@ function getOfferDiscount(
 ){
 
     /*
-    Discounts apply to Nandi Abhishekam (POOJA_001), Chandi Homam (POOJA_003), Karthika Somavaram sevas, Shivaratri sevas, Mrityunjaya Homam and packages (POOJA_004–POOJA_012). Kuja Dosha Nivarana/Shanthi Pooja (POOJA_002) gets no discount.
+    Discounts apply to Nandi Abhishekam (POOJA_001), Chandi Homam (POOJA_003), and individual Karthika sevas (POOJA_004–POOJA_007 and POOJA_009–POOJA_011). Both package IDs POOJA_008 and POOJA_012 are excluded from discounts. Kuja Dosha Nivarana/Shanthi Pooja (POOJA_002) gets no discount.
     */
 
     if(
         !ENABLE_POOJA_DISCOUNTS ||
         ![
              "POOJA_001","POOJA_003","POOJA_004","POOJA_005",
-             "POOJA_006","POOJA_007","POOJA_008",
-             "POOJA_009","POOJA_010","POOJA_011","POOJA_012"
-         ].includes(poojaId)
+             "POOJA_006","POOJA_007"
+             "POOJA_009","POOJA_010","POOJA_011"].includes(poojaId)
     ){
 
         return 0;
