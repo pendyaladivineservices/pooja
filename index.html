@@ -1401,7 +1401,17 @@ function loadKarthikaPackageEmails(){
 }
 
 function isKarthikaPackageCustomer(email){
-    return karthikaPackageEmails.has(normalizeEmail(email));
+    const normalized = normalizeEmail(email);
+    const matched = karthikaPackageEmails.has(normalized);
+
+    // Browser console diagnostic: confirms the exact eligibility match.
+    console.log("[Karthika Hanuman eligibility]", {
+        email: normalized,
+        matched: matched,
+        loadedEmailCount: karthikaPackageEmails.size
+    });
+
+    return matched;
 }
 
 
