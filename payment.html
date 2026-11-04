@@ -593,7 +593,29 @@ let discount =
    DISPLAY PRICE
 ===================================================== */
 
-if(discount > 0){
+const isKarthikaOpenAmount =
+    localStorage.getItem("karthika_package_open_amount") === "true" &&
+    localStorage.getItem("selected_pooja_id") === "POOJA_013";
+
+if(isKarthikaOpenAmount){
+
+    document.getElementById("amountBox").innerHTML = `
+        <div style="font-size:14px;color:#333;margin-bottom:6px;">
+            Your Contribution Amount
+        </div>
+        <div style="font-size:13px;color:#555;margin-bottom:8px;">
+            Enter any amount you wish to contribute.
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:6px;">
+            <span style="font-size:24px;font-weight:bold;">₹</span>
+            <input id="contributionAmount" type="number" min="1" step="1"
+                inputmode="numeric" placeholder="Enter amount"
+                style="width:170px;padding:10px;border:1px solid #ff6600;border-radius:8px;font-size:22px;text-align:center;font-weight:bold;">
+        </div>
+    `;
+
+}
+else if(discount > 0){
 
     document.getElementById("amountBox").innerHTML = `
 
@@ -741,6 +763,24 @@ function paymentDone(){
     let btn =
         document.getElementById("payBtn");
 
+    const openAmountMode =
+        localStorage.getItem("karthika_package_open_amount") === "true" &&
+        localStorage.getItem("selected_pooja_id") === "POOJA_013";
+
+    if(openAmountMode){
+
+        const amountInput = document.getElementById("contributionAmount");
+        const contribution = amountInput ? Number(amountInput.value) : 0;
+
+        if(!Number.isFinite(contribution) || contribution <= 0){
+            alert("Please enter a valid contribution amount greater than ₹0.");
+            return;
+        }
+
+        localStorage.setItem("temp_price", String(Math.round(contribution)));
+        localStorage.setItem("original_price", String(Math.round(contribution)));
+        localStorage.setItem("discount_percent", "0");
+    }
 
     btn.disabled = true;
 
@@ -810,6 +850,11 @@ function paymentDone(){
             poojaType:
                 localStorage.getItem(
                     "temp_pooja"
+                ),
+
+            poojaId:
+                localStorage.getItem(
+                    "selected_pooja_id"
                 ),
 
             price:
