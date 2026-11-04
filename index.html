@@ -293,6 +293,62 @@ Pooja Services
 
 
 <!-- =====================================================
+     SHANI TRAYODASHI SPECIAL HANUMAN POOJA
+===================================================== -->
+<div class="slider-wrapper">
+  <h2 class="section-title">Shani Trayodashi Special Hanuman Pooja</h2>
+  <div class="slider">
+
+    <div class="service-card">
+      <div class="card-content">
+        <h3>Hanuman Abhishekam &amp; Tamalapaku Pooja (Single)</h3>
+        <p class="desc">Hanuman Abhishekam and Tamalapaku Pooja will be performed with your Gotra Nama Sankalpam at Bade Hanuman Temple, on the banks of the Sarayu River, Ayodhya.</p>
+        <p class="desc"><b>Benefits:</b> Seek Lord Hanuman’s blessings for Shani Dosha Nivaranam, courage, protection, peace of mind and strength to overcome obstacles.</p>
+        <p class="desc"><b>Date:</b> 07/11/2026</p>
+        <div class="price">₹801</div>
+      </div>
+      <div class="card-footer">
+        <button class="btn" onclick="openPoojaPopup(this,'Single','Hanuman Abhishekam & Tamalapaku Pooja','POOJA_013')">
+          Book
+        </button>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="card-content">
+        <h3>Hanuman Abhishekam &amp; Tamalapaku Pooja (Couple)</h3>
+        <p class="desc">Hanuman Abhishekam and Tamalapaku Pooja will be performed with your Gotra Nama Sankalpam at Bade Hanuman Temple, on the banks of the Sarayu River, Ayodhya.</p>
+        <p class="desc"><b>Benefits:</b> Seek Lord Hanuman’s blessings for Shani Dosha Nivaranam, courage, protection, peace of mind and strength to overcome obstacles.</p>
+        <p class="desc"><b>Date:</b> 07/11/2026</p>
+        <div class="price">₹1116</div>
+      </div>
+      <div class="card-footer">
+        <button class="btn" onclick="openPoojaPopup(this,'Couple','Hanuman Abhishekam & Tamalapaku Pooja','POOJA_013')">
+          Book
+        </button>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="card-content">
+        <h3>Hanuman Abhishekam &amp; Tamalapaku Pooja (Family)</h3>
+        <p class="desc">Hanuman Abhishekam and Tamalapaku Pooja will be performed with your Gotra Nama Sankalpam at Bade Hanuman Temple, on the banks of the Sarayu River, Ayodhya.</p>
+        <p class="desc"><b>Benefits:</b> Seek Lord Hanuman’s blessings for Shani Dosha Nivaranam, courage, protection, peace of mind and strength to overcome obstacles.</p>
+        <p class="desc"><b>Date:</b> 07/11/2026</p>
+        <div class="price">₹1401</div>
+      </div>
+      <div class="card-footer">
+        <button class="btn" onclick="openPoojaPopup(this,'Family','Hanuman Abhishekam & Tamalapaku Pooja','POOJA_013')">
+          Book
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =====================================================
      First Karthika Somavaram – Rudrabhishekam
 ===================================================== -->
 <div class="slider-wrapper">
@@ -994,6 +1050,7 @@ Book
   </div>
 </div>
 
+
 </div> <!-- End shared Pooja Services frame -->
 
     
@@ -1286,7 +1343,8 @@ const BOOKING_STATUS = {
     "POOJA_009": true,
     "POOJA_010": true,
     "POOJA_011": true,
-    "POOJA_012": true
+    "POOJA_012": true,
+    "POOJA_013": true
 };
 
 
@@ -1300,6 +1358,50 @@ function normalizeEmail(email){
         .trim()
         .toLowerCase();
 
+}
+
+
+/* =====================================================
+   KARTHIKA PACKAGE EMAIL ELIGIBILITY
+===================================================== */
+
+let karthikaPackageEmails = new Set();
+let karthikaPackageEmailsLoaded = false;
+let karthikaPackageEmailsLoadPromise = null;
+
+function loadKarthikaPackageEmails(){
+
+    if(karthikaPackageEmailsLoadPromise){
+        return karthikaPackageEmailsLoadPromise;
+    }
+
+    karthikaPackageEmailsLoadPromise =
+        fetch("karthika-package-emails.txt", { cache:"no-store" })
+        .then(response => {
+            if(!response.ok){
+                throw new Error("karthika-package-emails.txt could not be loaded");
+            }
+            return response.text();
+        })
+        .then(text => {
+            karthikaPackageEmails = new Set(
+                text.split(/\\r?\\n/)
+                    .map(normalizeEmail)
+                    .filter(email => email && email.includes("@"))
+            );
+            karthikaPackageEmailsLoaded = true;
+        })
+        .catch(error => {
+            karthikaPackageEmails = new Set();
+            karthikaPackageEmailsLoaded = true;
+            console.error("Karthika package email list could not be loaded:", error);
+        });
+
+    return karthikaPackageEmailsLoadPromise;
+}
+
+function isKarthikaPackageCustomer(email){
+    return karthikaPackageEmails.has(normalizeEmail(email));
 }
 
 
@@ -1745,15 +1847,14 @@ function submitPoojaBooking(){
     has not loaded yet.
     */
 
-    if(!offerEmailsLoaded){
+    if(!offerEmailsLoaded || !karthikaPackageEmailsLoaded){
 
-        loadOfferEmails().then(
-            function(){
-
-                submitPoojaBooking();
-
-            }
-        );
+        Promise.all([
+            loadOfferEmails(),
+            loadKarthikaPackageEmails()
+        ]).then(function(){
+            submitPoojaBooking();
+        });
 
         return;
 
@@ -1779,6 +1880,9 @@ function submitPoojaBooking(){
 
         poojaType:
             selectedPoojaType,
+
+        poojaId:
+            selectedPoojaId,
 
         product:
             selectedPoojaName,
@@ -2088,6 +2192,14 @@ function submitPoojaBooking(){
         selectedPoojaId
     );
 
+    const isOpenAmountEligible =
+        selectedPoojaId === "POOJA_013" &&
+        isKarthikaPackageCustomer(data.email);
+
+    localStorage.setItem(
+        "karthika_package_open_amount",
+        isOpenAmountEligible ? "true" : "false"
+    );
 
     window.location.href =
         "payment.html";
@@ -2193,6 +2305,7 @@ document.addEventListener(
         updateBookingButtons();
 
         loadOfferEmails();
+        loadKarthikaPackageEmails();
 
     }
 );
